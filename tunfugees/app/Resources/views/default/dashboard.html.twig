@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+{% block head %}{% endblock %}
+<head>
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/tether.css') }}">#}
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">#}
+    <meta charset="UTF-8"/>
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <style type="text/css">
+        .dropdown-toggle {
+            margin-top: -9px;
+            margin-right: 20px;
+        }
+
+        .navbar-login {
+            width: 220px;
+            padding: 10px;
+            padding-bottom: 0px;
+        }
+
+        .navbar-login-session {
+            padding: 10px;
+            padding-bottom: 0px;
+            padding-top: 0px;
+        }
+
+        .icon-size {
+            font-size: 87px;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            padding-top: 0px;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1270px !important;
+            }
+        }
+    </style>
+
+    <link href="{{ asset ('assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/plugins/switchery/css/switchery.min.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/plugins/nvd3/nv.d3.min.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/plugins/mapplic/css/mapplic.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/rickshaw/rickshaw.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset ('assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset ('assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/datatables-responsive/css/datatables.responsive.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/pages/css/pages-icons.css') }}" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="{{ asset ('assets/pages/css/themes/modern.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/solid.css" integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/regular.css" integrity="sha384-IG162Tfx2WTn//TRUi9ahZHsz47lNKzYOp0b6Vv8qltVlPkub2yj9TVwzNck6GEF" crossorigin="anonymous">#}
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/brands.css" integrity="sha384-BKw0P+CQz9xmby+uplDwp82Py8x1xtYPK3ORn/ZSoe6Dk3ETP59WCDnX+fI1XCKK" crossorigin="anonymous">#}
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">#}
+
+    <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset ('assets/css/dashboard.widgets.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <script>
+        $(function () {
+            var style = 'bar';
+            var position = "top";
+            var timeout = 5000;
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+            $('body').pgNotification({
+                style: style,
+                message: "{{ flashMessage }}",
+                position: position,
+                timeout: timeout,
+                type: "success"
+            }).show();
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('error') %}
+            $('body').pgNotification({
+                style: style,
+                message: "{{ flashMessage }}",
+                position: position,
+                timeout: timeout,
+                type: "danger"
+            }).show();
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+            $('body').pgNotification({
+                style: style,
+                message: "{{ flashMessage }}",
+                position: position,
+                timeout: timeout,
+                type: "warning"
+            }).show();
+            {% endfor %}
+        });
+    </script>
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+
+
+<body class="fixed-header dashboard">
+<!-- BEGIN SIDEBPANEL-->
+<nav class="page-sidebar" data-pages="sidebar">
+    <!-- BEGIN SIDEBAR MENU HEADER-->
+    <div class="sidebar-header">
+        <a href="{{ path('homepage') }}">
+            <img src="{{ asset('assets/img/logofinalev2.png') }}" alt="logo" class="brand"  style="width: 170px !important; height: 50px;">
+        </a>
+        <div class="sidebar-header-controls">
+            <button type="button" class="btn btn-link hidden-md-down" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+            </button>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        {% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+        <ul class="menu-items">
+            <li class="" style="padding: 10px 5px;">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('da_annonce_index') }}" class="detailed"><span class="title">Annonces</span></a>
+                    <span class="{% if path('da_annonce_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Ano</span>
+                {% else %}
+                    <a href="{{ path('du_annonce_index') }}" class="detailed"><span class="title">Annonces</span></a>
+                    <span class="{% if path('du_annonce_index') == currentPath %}bg-success {% endif %} icon-thumbnail">Ano</span>
+                {% endif %}
+            </li>
+            <li class="" style="padding: 10px 5px;">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('da_rep_index') }}" class="detailed"><span class="title">Réparation</span></a>
+                    <span class="{% if path('da_rep_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Rép</span>
+                {% else %}
+                    <a href="{{ path('du_rep_index') }}" class="detailed"><span class="title">Réparation</span></a>
+                    <span class="{% if path('du_rep_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Rép</span>
+                {% endif%}
+            </li>
+            <li class="" style="padding: 10px 5px;">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('da_missions_index') }}" class="detailed"><span class="title">Recyclages</span></a>
+                    <span class="{% if path('da_missions_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Recy</span>
+                {% else %}
+                    <a href="{{ path('du_missions_index') }}" class="detailed"><span class="title">Recyclages</span></a>
+                    <span class="{% if path('du_missions_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Recy</span>
+                {% endif %}
+            </li>
+            <li class="" style="padding: 10px 5px;">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('da_evenements_index') }}"><span class="title">Evénements</span></a>
+                    <span class="{% if path('da_evenements_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Evt</span>
+                {% else %}
+                    <a href="{{ path('du_evenements_index') }}"><span class="title">Evénements</span></a>
+                    <span class="{% if path('du_evenements_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Evt</span>
+                {% endif %}
+            </li>
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path ('da_forum_index') }}"><span class="title">Forum</span></a>
+                    <span class="{% if path('da_forum_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Frm</span>
+                </li>
+            {% else %}
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path ('du_forum_index') }}"> <span class="title">Forum</span></a>
+                    <span class="{% if path('du_forum_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Forum</span>
+                </li>
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path('show_commande') }}"><span class="title" style="width: 95%;">Commandes</span></a>
+                    <span class=" {% if path('show_commande') == currentPath %}bg-success{% endif %}  icon-thumbnail">cmd</span>
+                </li>
+
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path('show_livraison') }}"><span class="title" style="width: 95%;">Livraison</span></a>
+                    <span class=" {% if path('show_livraison') == currentPath %}bg-success{% endif %}  icon-thumbnail">Lvr</span>
+                </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path('da_groups_index') }}"><span class="title" style="width: 95%;">Groupes / Sociétés</span></a>
+                    <span class=" {% if path('da_groups_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">Grp</span>
+                </li>
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path('da_users_index') }}"><span class="title">Utilisateur</span></a>
+                    <span class=" {% if path('da_users_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">User</span>
+                </li>
+                <li class="" style="padding: 10px 5px;">
+                    <a href="{{ path('da_signalisation_index') }}"><span class="title">Signalisation</span></a>
+                    <span class=" {% if path('da_signalisation_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">Sign</span>
+                </li>
+                    <li>
+                        <a href="{{ path('da_show_commande') }}"><span class="title" >Commandes</span></a>
+                        <span class="{% if path('da_show_commande') == currentPath %}bg-success{% endif %} icon-thumbnail">Cmd</span>
+                    </li>
+                    <li class="" style="padding: 10px 5px;">
+                        <a href="{{ path('da_show_livraison') }}"><span class="title">Livraisons</span></a>
+                        <span class=" {% if path('da_show_livraison') == currentPath %}bg-success{% endif %} icon-thumbnail">Lvr</span>
+                    </li>
+            {% endif %}
+
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</nav>
+
+<div class="page-container " style="padding-right: 25px;">
+    <div class="header" style=" background-color: #9a9da1;padding-right: 25px;">
+        <a href="#" class="btn-link toggle-sidebar hidden-lg-up" data-toggle="sidebar"><i class="fa fa-bars"></i></a>
+
+        <!-- END MOBILE SIDEBAR TOGGLE -->
+        <div class="">
+            <div class="brand inline   ">
+            </div>
+            <!-- START NOTIFICATION LIST -->
+        </div>
+        <div class="d-flex align-items-center">
+        {% if app.user %}
+            <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down">
+                <span class="semi-bold">{{ app.user.prenom}}</span> <span class="">{{ app.user.nom | upper }}</span>
+            </div>
+            <div class="dropdown pull-right">
+                <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="thumbnail-wrapper d32 circular inline sm-m-r-5">
+                <img src="{{ asset('assets/img/profiles/avatar.jpg') }}" alt="" width="32" height="32">
+                </span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
+                    <a href="#" class="dropdown-item" data-unsp-sanitized="clean"><i class="fa fa-wrench" aria-hidden="true"></i> Settings</a>
+                    <a href="#" class="dropdown-item" data-unsp-sanitized="clean"><i class="fa fa-comments" aria-hidden="true"></i> Feedback</a>
+                    <a href="#" class="dropdown-item" data-unsp-sanitized="clean"><i class="fa fa-info" aria-hidden="true"></i> Help</a>
+                    <a href="{{ path('fos_user_security_logout') }}" class="clearfix bg-master-lighter dropdown-item" data-unsp-sanitized="clean">
+                        <span class="pull-left">Logout</span>
+                        <span class="pull-right"><i class="fa fa-sign-out" aria-hidden="true"></i></span>
+                    </a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="javascript:;" id="notification-center" class="header-icon" data-toggle="dropdown">
+                    <i class="fa fa-globe"></i>
+                    <span class="bubble"></span>
+                </a>
+                <!-- START Notification Dropdown -->
+                <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">
+                    <!-- START Notification -->
+                    <div class="notification-panel">
+                        <!-- START Notification Body-->
+                        <div class="notification-body scrollable">
+                            <!-- START Notification Item-->
+                            <div class="notification-item unread clearfix">
+                                <!-- START Notification Item-->
+                                <div class="heading open">
+                                    <a href="#" class="text-complete pull-left">
+                                        <i class="pg-map fs-16 m-r-10"></i>
+                                        <span class="bold">Carrot Design</span>
+                                        <span class="fs-12 m-l-10">David Nester</span>
+                                    </a>
+                                    <div class="pull-right">
+                                        <div class="thumbnail-wrapper d16 circular inline m-t-15 m-r-10 toggle-more-details">
+                                            <div><i class="fa fa-angle-left"></i>
+                                            </div>
+                                        </div>
+                                        <span class=" time">few sec ago</span>
+                                    </div>
+                                    <div class="more-details">
+                                        <div class="more-details-inner">
+                                            <h5 class="semi-bold fs-16">“Apple’s Motivation - Innovation <br>
+                                                distinguishes between <br>
+                                                A leader and a follower.”</h5>
+                                            <p class="small hint-text">
+                                                Commented on john Smiths wall.
+                                                <br> via pages framework.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END Notification Item-->
+                                <!-- START Notification Item Right Side-->
+                                <div class="option" data-toggle="tooltip" data-placement="left" title="mark as read">
+                                    <a href="#" class="mark"></a>
+                                </div>
+                                <!-- END Notification Item Right Side-->
+                            </div>
+                            <!-- START Notification Body-->
+                            <!-- START Notification Item-->
+                            <div class="notification-item  clearfix">
+                                <div class="heading">
+                                    <a href="#" class="text-danger pull-left">
+                                        <i class="fa fa-exclamation-triangle m-r-10"></i>
+                                        <span class="bold">98% Server Load</span>
+                                        <span class="fs-12 m-l-10">Take Action</span>
+                                    </a>
+                                    <span class="pull-right time">2 mins ago</span>
+                                </div>
+                                <!-- START Notification Item Right Side-->
+                                <div class="option">
+                                    <a href="#" class="mark"></a>
+                                </div>
+                                <!-- END Notification Item Right Side-->
+                            </div>
+                            <!-- END Notification Item-->
+                            <!-- START Notification Item-->
+                            <div class="notification-item  clearfix">
+                                <div class="heading">
+                                    <a href="#" class="text-warning-dark pull-left">
+                                        <i class="fa fa-exclamation-triangle m-r-10"></i>
+                                        <span class="bold">Warning Notification</span>
+                                        <span class="fs-12 m-l-10">Buy Now</span>
+                                    </a>
+                                    <span class="pull-right time">yesterday</span>
+                                </div>
+                                <!-- START Notification Item Right Side-->
+                                <div class="option">
+                                    <a href="#" class="mark"></a>
+                                </div>
+                                <!-- END Notification Item Right Side-->
+                            </div>
+                            <!-- END Notification Item-->
+                            <!-- START Notification Item-->
+                            <div class="notification-item unread clearfix">
+                                <div class="heading">
+                                    <div class="thumbnail-wrapper d24 circular b-white m-r-5 b-a b-white m-t-10 m-r-10">
+                                        <img width="30" height="30" data-src-retina="assets/img/profiles/1x.jpg"
+                                             data-src="assets/img/profiles/1.jpg" alt=""
+                                             src="assets/img/profiles/1.jpg">
+                                    </div>
+                                    <a href="#" class="text-complete pull-left">
+                                        <span class="bold">Revox Design Labs</span>
+                                        <span class="fs-12 m-l-10">Owners</span>
+                                    </a>
+                                    <span class="pull-right time">11:00pm</span>
+                                </div>
+                                <!-- START Notification Item Right Side-->
+                                <div class="option" data-toggle="tooltip" data-placement="left" title="mark as read">
+                                    <a href="#" class="mark"></a>
+                                </div>
+                                <!-- END Notification Item Right Side-->
+                            </div>
+                            <!-- END Notification Item-->
+                        </div>
+                        <!-- END Notification Body-->
+                        <!-- START Notification Footer-->
+                        <div class="notification-footer text-center">
+                            <a href="#" class="">Read all notifications</a>
+                            <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
+                                <i class="pg-refresh_new"></i>
+                            </a>
+                        </div>
+                        <!-- START Notification Footer-->
+                    </div>
+                    <!-- END Notification -->
+                </div>
+                <!-- END Notification Dropdown -->
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    <!-- END HEADER -->
+    <!-- START PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrapper ">
+        <!-- START PAGE CONTENT -->
+        <div class="content sm-gutter">
+            <!-- START CONTAINER FLUID -->
+            {% block body %}
+
+            {% endblock %}
+            <!-- END CONTAINER FLUID -->
+        </div>
+        <div class=" container-fluid  container-fixed-lg footer">
+            <div class="copyright sm-text-center">
+                <p class="small no-margin pull-left sm-pull-reset">
+                    <span class="hint-text">Copyright &copy; 2017 </span>
+                    <span class="font-montserrat">EcoZone</span>.
+                    <span class="hint-text">All rights reserved. </span>
+                    <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> <span class="muted">|</span> <a href="#" class="m-l-10">Privacy Policy</a></span>
+                </p>
+                <p class="small no-margin pull-right sm-pull-reset">
+                    {#Hand-crafted <span class="hint-text">&amp; made with Love</span>#}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+        <script src="{{ asset ('assets/plugins/pace/pace.min.js' ) }} " type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery/jquery-1.11.1.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/modernizr.custom.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-ui/jquery-ui.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/tether/js/tether.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery/jquery-easy.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-unveil/jquery.unveil.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-ios-list/jquery.ioslist.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-actual/jquery.actual.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset ('assets/plugins/select2/js/select2.full.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset ('assets/plugins/classie/classie.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/switchery/js/switchery.min.js') }}" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/lib/d3.v3.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/nv.d3.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/utils.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/tooltip.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/interactiveLayer.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/models/axis.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/models/line.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/nvd3/src/models/lineWithFocusChart.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/mapplic/js/hammer.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/mapplic/js/jquery.mousewheel.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/mapplic/js/mapplic.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/rickshaw/rickshaw.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery-metrojs/MetroJs.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/skycons/skycons.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/moment/moment.min.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+        <script src="{{ asset ('assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset ('assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}"
+                type="text/javascript"></script>
+        <script type="text/javascript"
+                src="{{ asset ('assets/plugins/datatables-responsive/js/datatables.responsive.js') }}"></script>
+        <script type="text/javascript"
+                src="{{ asset ('assets/plugins/datatables-responsive/js/lodash.min.js') }}"></script>
+        <!-- END VENDOR JS -->
+        <!-- BEGIN CORE TEMPLATE JS -->
+        <script src="{{ asset ('assets/pages/js/pages.min.js') }}"></script>
+        <!-- END CORE TEMPLATE JS -->
+        <!-- BEGIN PAGE LEVEL JS -->
+        <script src="{{ asset ('assets/js/dashboard.js') }}" type="text/javascript"></script>
+        <script src="{{ asset ('assets/js/scripts.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('assets/plugins/datatables-responsive/js/datatables.responsive.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/plugins/datatables-responsive/js/lodash.min.js') }}"></script>
+        <script>
+            $(function () {
+                var style = 'bar';
+                var position = "top";
+                var timeout = 5000;
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                $('body').pgNotification({
+                    style: style,
+                    message: "{{ flashMessage }}",
+                    position: position,
+                    timeout: timeout,
+                    type: "success"
+                }).show();
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                $('body').pgNotification({
+                    style: style,
+                    message: "{{ flashMessage }}",
+                    position: position,
+                    timeout: timeout,
+                    type: "danger"
+                }).show();
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('warning') %}
+                $('body').pgNotification({
+                    style: style,
+                    message: "{{ flashMessage }}",
+                    position: position,
+                    timeout: timeout,
+                    type: "warning"
+                }).show();
+                {% endfor %}
+            });
+        </script>
+<!-- END VENDOR JS -->
+        {% block javascripts %}{% endblock %}
+
+</body>
+</html>
