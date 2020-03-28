@@ -131,79 +131,79 @@
                     <a href="{{ path('da_annonce_index') }}" class="detailed"><span class="title">Annonces</span></a>
                     <span class="{% if path('da_annonce_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Ano</span>
                 {% else %}
-                    <a href="{{ path('du_annonce_index') }}" class="detailed"><span class="title">Annonces</span></a>
-                    <span class="{% if path('du_annonce_index') == currentPath %}bg-success {% endif %} icon-thumbnail">Ano</span>
+                    <a href="#" class="detailed"><span class="title">Annonces</span></a>
+                    <span class="bg-success  icon-thumbnail">Ano</span>
                 {% endif %}
             </li>
             <li class="" style="padding: 10px 5px;">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('da_rep_index') }}" class="detailed"><span class="title">Réparation</span></a>
-                    <span class="{% if path('da_rep_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Rép</span>
+                    <a href="#" class="detailed"><span class="title">Réparation</span></a>
+                    <span class=" bg-success  icon-thumbnail">Rép</span>
                 {% else %}
-                    <a href="{{ path('du_rep_index') }}" class="detailed"><span class="title">Réparation</span></a>
-                    <span class="{% if path('du_rep_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Rép</span>
+                    <a href="#" class="detailed"><span class="title">Réparation</span></a>
+                    <span class="bg-success icon-thumbnail">Rép</span>
                 {% endif%}
             </li>
             <li class="" style="padding: 10px 5px;">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('da_missions_index') }}" class="detailed"><span class="title">Recyclages</span></a>
-                    <span class="{% if path('da_missions_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Recy</span>
+                    <a href="#" class="detailed"><span class="title">Recyclages</span></a>
+                    <span class=" bg-success  icon-thumbnail">Recy</span>
                 {% else %}
-                    <a href="{{ path('du_missions_index') }}" class="detailed"><span class="title">Recyclages</span></a>
-                    <span class="{% if path('du_missions_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Recy</span>
+                    <a href="#" class="detailed"><span class="title">Recyclages</span></a>
+                    <span class=" bg-success  icon-thumbnail">Recy</span>
                 {% endif %}
             </li>
             <li class="" style="padding: 10px 5px;">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('da_evenements_index') }}"><span class="title">Evénements</span></a>
-                    <span class="{% if path('da_evenements_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Evt</span>
+                    <a href="#"><span class="title">Evénements</span></a>
+                    <span class=" bg-success  icon-thumbnail">Evt</span>
                 {% else %}
-                    <a href="{{ path('du_evenements_index') }}"><span class="title">Evénements</span></a>
-                    <span class="{% if path('du_evenements_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Evt</span>
+                    <a href="#"><span class="title">Evénements</span></a>
+                    <span class="bg-success icon-thumbnail">Evt</span>
                 {% endif %}
             </li>
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path ('da_forum_index') }}"><span class="title">Forum</span></a>
-                    <span class="{% if path('da_forum_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Frm</span>
+                    <a href="#"><span class="title">Forum</span></a>
+                    <span class="bg-success icon-thumbnail">Frm</span>
                 </li>
             {% else %}
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path ('du_forum_index') }}"> <span class="title">Forum</span></a>
-                    <span class="{% if path('du_forum_index') == currentPath %}bg-success{% endif %} icon-thumbnail">Forum</span>
+                    <a href="#"> <span class="title">Forum</span></a>
+                    <span class="bg-success icon-thumbnail">Forum</span>
                 </li>
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path('show_commande') }}"><span class="title" style="width: 95%;">Commandes</span></a>
-                    <span class=" {% if path('show_commande') == currentPath %}bg-success{% endif %}  icon-thumbnail">cmd</span>
+                    <a href=""><span class="title" style="width: 95%;">Commandes</span></a>
+                    <span class="bg-success  icon-thumbnail">cmd</span>
                 </li>
 
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path('show_livraison') }}"><span class="title" style="width: 95%;">Livraison</span></a>
-                    <span class=" {% if path('show_livraison') == currentPath %}bg-success{% endif %}  icon-thumbnail">Lvr</span>
+                    <a href="#"><span class="title" style="width: 95%;">Livraison</span></a>
+                    <span class=" bg-success  icon-thumbnail">Lvr</span>
                 </li>
             {% endif %}
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path('da_groups_index') }}"><span class="title" style="width: 95%;">Groupes / Sociétés</span></a>
-                    <span class=" {% if path('da_groups_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">Grp</span>
+                    <a href="#"><span class="title" style="width: 95%;">Groupes / Sociétés</span></a>
+                    <span class=" bg-success  icon-thumbnail">Grp</span>
                 </li>
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path('da_users_index') }}"><span class="title">Utilisateur</span></a>
-                    <span class=" {% if path('da_users_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">User</span>
+                    <a href="#"><span class="title">Utilisateur</span></a>
+                    <span class=" bg-success  icon-thumbnail">User</span>
                 </li>
                 <li class="" style="padding: 10px 5px;">
-                    <a href="{{ path('da_signalisation_index') }}"><span class="title">Signalisation</span></a>
-                    <span class=" {% if path('da_signalisation_index') == currentPath %}bg-success{% endif %}  icon-thumbnail">Sign</span>
+                    <a href="#"><span class="title">Signalisation</span></a>
+                    <span class=" bg-success  icon-thumbnail">Sign</span>
                 </li>
                     <li>
-                        <a href="{{ path('da_show_commande') }}"><span class="title" >Commandes</span></a>
-                        <span class="{% if path('da_show_commande') == currentPath %}bg-success{% endif %} icon-thumbnail">Cmd</span>
+                        <a href="#"><span class="title" >Commandes</span></a>
+                        <span class=" bg-success  icon-thumbnail">Cmd</span>
                     </li>
                     <li class="" style="padding: 10px 5px;">
-                        <a href="{{ path('da_show_livraison') }}"><span class="title">Livraisons</span></a>
-                        <span class=" {% if path('da_show_livraison') == currentPath %}bg-success{% endif %} icon-thumbnail">Lvr</span>
+                        <a href="#"><span class="title">Livraisons</span></a>
+                        <span class=" bg-success  icon-thumbnail">Lvr</span>
                     </li>
             {% endif %}
 

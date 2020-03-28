@@ -1,9 +1,15 @@
+produit:
+    resource: "@ProduitBundle/Controller/Front"
+    type: annotation
+    prefix:   /
+
 user:
-    resource: "@UserBundle/Resources/config/routing.yml"
+    resource: "@UserBundle/Controller"
+    type : annotation
     prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@ProduitBundle/Controller/'
     type: annotation

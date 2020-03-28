@@ -1,0 +1,56 @@
+{% block title %}
+    <center><h3>Annonce</h3></center>
+{% endblock %}
+ {% block stylesheets %}
+     <link rel="stylesheet" href={{ app.request.schemeAndHttpHost ~ asset('css/style.css') }}>
+ {% endblock %}
+{% block body %}
+    <center>
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="row">
+                        <aside class="col-sm-5 border-right">
+                            <div class="img-big-wrap">
+                                <div>
+                                    {% if annonce.photo != '' %}
+                                        <img alt="annonce Pic" style="height:450px;width: 450px;display: inline-block;"
+                                             src="{{ app.request.schemeAndHttpHost ~ asset('uploads/Produit/photo/' ~ annonce.photo) }}"
+                                             class="img-circle img-responsive">
+                                    {% else %}
+                                        <img alt="annonce_Pic"
+                                             src="{{ app.request.schemeAndHttpHost ~ asset('assets/img/NA.png') }}"
+                                             id="profile-image1" class="img-circle img-responsive">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="col-sm-7">
+                            <article class="card-body p-5">
+                                <h3 class="title mb-3">Titre : {{ annonce.titre |upper }}</h3>
+
+                                <p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+		<span class="currency">Prix : DT</span><span class="num"> {{ annonce.prix }}</span>
+	</span>
+                                </p> <!-- price-detail-wrap .// -->
+                                <dl class="item-property">
+                                    <dt>Description :</dt>
+                                    <dd><p>{{ annonce.description }} </p></dd>
+                                </dl>
+                                <dl class="param param-feature">
+                                    <dt>Region :</dt>
+                                    <dd>{{ annonce.region }}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="param param-feature">
+                                    <dt>Viwes :</dt>
+                                    <dd>{{ annonce.views }}</dd>
+                                </dl>  <!-- item-property-hor .// -->
+                            </article> <!-- card-body.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                </div> <!-- card.// -->
+            </div>
+        </div>
+    </center>
+{% endblock %}

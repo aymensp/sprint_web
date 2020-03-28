@@ -55,6 +55,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZXfUx80ZG1j6k47f5Ksqz6rrwc" />
@@ -66,14 +70,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Resources/views/default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/images" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\tunfugees\app\Resources\views\default" />
-      <recent name="C:\wamp64\www\tunfugees\web" />
-      <recent name="C:\wamp64\www\tunfugees\app\Resources" />
+      <recent name="C:\wamp64\www\tunfugees\web\images" />
+      <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Resources\views\DashboardAdmin\Produit" />
+      <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Controller\DashboardAdmin" />
+      <recent name="C:\wamp64\www\tunfugees\src\UserBundle\Resources\views\Default" />
+      <recent name="C:\wamp64\www\tunfugees\src\UserBundle\Form" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -81,6 +87,11 @@
       <command value="c dump-autoload" />
       <command value="s generate:bundle" />
       <command value="s generate:bundle " />
+      <command value="s doctrine:generate:entity" />
+      <command value="s doctrine:mapping:import --force ProduitBundle annotation" />
+      <command value="s doctrine:cache:delete" />
+      <command value="s doctrine:cache:clear" />
+      <command value=" composer require vich/uploader-bundle" />
       <command value="s doctrine:schema:update --force" />
     </option>
   </component>
@@ -107,7 +118,11 @@
       <option name="presentableId" value="Default" />
       <updated>1584990378663</updated>
       <workItem from="1584990820182" duration="18129000" />
-      <workItem from="1585019773532" duration="1901000" />
+      <workItem from="1585019773532" duration="2496000" />
+      <workItem from="1585087326783" duration="11054000" />
+      <workItem from="1585154033129" duration="19620000" />
+      <workItem from="1585315935680" duration="37218000" />
+      <workItem from="1585375470145" duration="477000" />
     </task>
     <servers />
   </component>
@@ -115,49 +130,65 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="476" y="81" key="#com.intellij.ide.util.MemberChooser" timestamp="1585010595260">
+    <state x="449" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585346255451">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="476" y="81" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1585010595260" />
+    <state x="449" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1585346255451" />
+    <state x="476" y="81" key="#com.intellij.ide.util.MemberChooser" timestamp="1585359128086">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="476" y="81" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1585359128086" />
+    <state x="399" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585167951174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="399" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1585167951174" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585167188892">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1585167188892" />
     <state x="407" y="243" key="ComposerCompositePathDialog" timestamp="1584991065195">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="407" y="243" key="ComposerCompositePathDialog/0.0.1366.728@0.0.1366.728" timestamp="1584991065195" />
-    <state x="462" y="106" key="FileChooserDialogImpl" timestamp="1584991114066">
+    <state x="462" y="106" key="FileChooserDialogImpl" timestamp="1585159268338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="462" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584991114066" />
-    <state width="1323" height="75" key="GridCell.Tab.0.bottom" timestamp="1585008901872">
+    <state x="462" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585159268338" />
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom" timestamp="1585374700843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="75" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585008901872" />
-    <state width="1323" height="75" key="GridCell.Tab.0.center" timestamp="1585008901872">
+    <state width="1323" height="75" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585374700843" />
+    <state width="1323" height="75" key="GridCell.Tab.0.center" timestamp="1585374700843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="75" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585008901872" />
-    <state width="1323" height="75" key="GridCell.Tab.0.left" timestamp="1585008901872">
+    <state width="1323" height="75" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585374700843" />
+    <state width="1323" height="75" key="GridCell.Tab.0.left" timestamp="1585374700842">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="75" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585008901872" />
-    <state width="1323" height="75" key="GridCell.Tab.0.right" timestamp="1585008901872">
+    <state width="1323" height="75" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585374700842" />
+    <state width="1323" height="75" key="GridCell.Tab.0.right" timestamp="1585374700843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="75" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585008901872" />
-    <state x="184" y="7" key="SettingsEditor" timestamp="1584991156989">
+    <state width="1323" height="75" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585374700843" />
+    <state x="517" y="288" key="NewPhpFileDialog" timestamp="1585372997533">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584991156989" />
+    <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1585372997533" />
+    <state x="184" y="7" key="SettingsEditor" timestamp="1585365838614">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1585365838614" />
     <state x="450" y="267" key="SymfonyPathDialog" timestamp="1584991117843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="450" y="267" key="SymfonyPathDialog/0.0.1366.728@0.0.1366.728" timestamp="1584991117843" />
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1585020204300">
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1585154082808">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585020204300" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1585008444783">
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585154082808" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1585366507555">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1585008444783" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1585366507555" />
   </component>
 </project>

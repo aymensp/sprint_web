@@ -8,13 +8,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * User
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="cin", columns={"id"})})
+ * @ORM\Table(name="user")
+ * @Vich\Uploadable
  * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
  */
 class User extends BaseUser
 {
@@ -23,7 +28,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     public $id;
 
@@ -69,14 +74,24 @@ class User extends BaseUser
      * @ORM\Column(name="Role", type="string", length=30, nullable=false)
      */
     private $role;
-
+    /**
+     * @Vich\UploadableField(mapping="user_photo", fileNameProperty="photo")
+     *
+     * @var File
+     */
+    private  $userPhoto;
     /**
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=false)
      */
     private $photo;
-
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTime
+     */
+    private $photoUpdatedAt;
     /**
      * @var integer
      *
@@ -256,6 +271,36 @@ class User extends BaseUser
         $this->photo = $photo;
     }
 
+    /**
+     * @return File
+     */
+    public function getUserPhoto()
+    {
+        return $this->userPhoto;
+    }
 
+    public function setUserPhoto(File $userPhoto = null)
+    {
+        $this->userPhoto = $userPhoto;
+
+        if ($userPhoto instanceof UploadedFile) {
+            $this->setPhotoUpdatedAt(new \DateTime());
+        }
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getPhotoUpdatedAt()
+    {
+        return $this->photoUpdatedAt;
+    }
+
+    /**
+     * @param \DateTime $photoUpdatedAt
+     */
+    public function setPhotoUpdatedAt($photoUpdatedAt)
+    {
+        $this->photoUpdatedAt = $photoUpdatedAt;
+    }
 }
 
