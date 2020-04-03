@@ -1,0 +1,75 @@
+{% extends './Default/dashboard.html.twig' %}
+
+{% block title %}
+    Affichage Annonce
+{% endblock %}
+ {% block stylesheets %}
+     <style>
+         .img-big-wrap img {
+             height: 450px;
+             width: 450px;
+             display: inline-block;
+         }
+     </style>
+ {% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-8 text-right">
+                <br>
+                <a href="{{ path('du_annonce_index') }}" class="btn btn-success">
+                    <i class="fa fa-undo" aria-hidden="true"></i> Retourner à la page d'annonce
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="row">
+                    <aside class="col-sm-5 border-right">
+                        <div class="img-big-wrap">
+                            <div>
+                                {% if annonce.photo != '' %}
+                                    <img alt="annonce Pic"
+                                         src="{{ asset('uploads/Produit/photo/' ~ annonce.photo) }}"
+                                         class="img-circle img-responsive">
+                                {% else %}
+                                    <img alt="annonce_Pic" src="{{ asset('assets/img/NA.png') }}"
+                                         id="profile-image1" class="img-circle img-responsive">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="col-sm-7">
+                        <article class="card-body p-5">
+                            <h3 class="title mb-3">{{ annonce.titre |upper }}</h3>
+
+                            <p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+		<span class="currency">DT $</span><span class="num">{{ annonce.prix }}</span>
+	</span>
+                            </p> <!-- price-detail-wrap .// -->
+                            <dl class="item-property">
+                                <dt>Description</dt>
+                                <dd><p>{{ annonce.description }} </p></dd>
+                            </dl>
+                            <dl class="param param-feature">
+                                <dt>Region</dt>
+                                <dd>{{ annonce.region }}</dd>
+                            </dl>  <!-- item-property-hor .// -->
+                            <dl class="param param-feature">
+                                <dt>Color</dt>
+                                <dd>Black and white</dd>
+                            </dl>  <!-- item-property-hor .// -->
+                            <hr>
+                            <a href="#" class="btn btn-lg btn-primary text-uppercase"> Partage
+                                <faceBook></faceBook>
+                            </a>
+                            <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i
+                                        class="fas fa-shopping-cart"></i> Add to cart </a>
+                        </article> <!-- card-body.// -->
+                    </aside> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- card.// -->
+        </div>
+    </div>
+{% endblock %}

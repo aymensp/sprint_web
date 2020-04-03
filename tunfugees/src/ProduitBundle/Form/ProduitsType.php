@@ -18,10 +18,10 @@ class ProduitsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom produit',TextType::class,[
+        $builder->add('nomProd',TextType::class,[
             'required'=>false,
         ])
-            ->add('nom refugies',TextType::class,[
+            ->add('nomRef',TextType::class,[
                 'required'=>false,
             ])
             ->add('description',TextType::class,[
@@ -30,17 +30,18 @@ class ProduitsType extends AbstractType
             ->add('prix',MoneyType::class,[
                 'required'=>false,
             ])
-            ->add('disponbilité',ChoiceType::class,
+            ->add('dispo',ChoiceType::class,
                 array('choices'=>array
                 (   'disponible'=>"disponible",
                     'non disponible'=>"non disponible",
 
                 ),))
-            ->add('produitphoto', VichFileType::class, [
+            ->add('produitPhoto', VichFileType::class, [
                 'required' => false,
                 'allow_delete' => true,
                 'download_link' => true
             ])
+
             ->add('categorie',EntityType::class,array(
                     'class'=>'ProduitBundle:Categorie',
                     'multiple'=>false)

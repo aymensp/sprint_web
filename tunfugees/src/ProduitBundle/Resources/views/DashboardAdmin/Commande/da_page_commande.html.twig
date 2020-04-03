@@ -1,0 +1,80 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready(function () {
+        var users = $('#cmd').DataTable({
+            "paging": true,
+            "stateSave": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+            }
+        });
+
+    });
+</script>
+{% endblock %}
+{% block body %}
+    {% if commandes|length >0 %}
+        <h1> Liste des commandes :</h1>
+        <a href="{{ path('stat_commande') }}"> <button class="btn btn-info float-right btn-sm"> Afficher les statistiques des commandes </button></a> </br>
+        <p></p>
+        <div class="tab-content" >
+            <div class="tab-pane active" id="users" aria-expanded="true">
+                <table id="cmd" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Date Emission </th>
+                        <th> Etat </th>
+                        <th> Prix Total </th>
+                        <th> Nom & Prenom  Utilisateur </th>
+                        <th> Détails </th>
+                    </tr>
+                    <tbody>
+                    {% for value in commandes %}
+                            <tr>
+                                <td>{{ value.id }}</td>
+                                <td>{{ value.dateEmission|date}}</td>
+                                <td>{{ value.etatCommande }}
+                                    {% if value.etatCommande=='En cours' %}
+                                        <i class="fa fa-spinner fa-2x fa-pulse " style="color: #0da899"></i>
+                                    {% endif %}
+                                    {% if value.etatCommande=='Effectué' %}
+                                        <i class="fas fa-check fa-2x " style="color: #0da899"></i>
+                                    {% endif %}
+                                </td>
+                                <td>{{ value.prixTotal }}</td>
+
+                                <td>
+                                    {% for u in users %}
+                                        {% if value.idUtilisateur == u.id %}
+                                   {{ u.nom }} {{ u.prenom }}
+                                        {%  endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a  href="{{ path('ligne_show2',{ 'id_c': value.id  }) }}"> Afficher les détails </a> </br>
+                                    {% if value.etatCommande=='En cours' %}
+                                    <a  href="{{ path('annuler_commande2',{ 'id_c': value.id  }) }}">Annuler Commande </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    {% else %}
+        <h1> Pas de commandes  </h1>
+    {% endif %}
+
+{% endblock %}

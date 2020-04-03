@@ -1,0 +1,74 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="//code.highcharts.com/highcharts.js"></script>
+    <script src="//code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Statistiques par rapport aux Annonces '
+            },
+            subtitle: {
+                text: 'Nombre des Annoces par mois en 2019'
+            },
+            xAxis: {
+                categories: [
+                    'Janvier',
+                    'Février',
+                    'Mars',
+                    'Avril',
+                    'Mai',
+                    'Juin',
+                    'Juillet',
+                    'Août',
+                    'Septembre',
+                    'Octobre',
+                    'Novembre',
+                    'Décembre'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Nombre'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [ {
+                name: 'Nombres Annonce',
+                data: [{{ tab[1] }},{{ tab[2] }}, {{ tab[3] }}, {{ tab[4] }}, {{ tab[5] }}, {{ tab[6] }}, {{ tab[7] }}, {{ tab[8] }}, {{ tab[9] }}, {{ tab[10] }}, {{ tab[11] }}, {{ tab[12] }}]
+
+            }]
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 offset-6 text-right">
+            <a href="{{ path('da_annonce_index') }}" class="btn btn-secondary">
+                <i class="fa fa-undo" aria-hidden="true"></i>  Retour à la liste</a>
+            <br>
+        </div>
+    </div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+    </div>
+{% endblock %}

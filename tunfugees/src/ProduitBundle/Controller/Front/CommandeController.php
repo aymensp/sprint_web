@@ -16,6 +16,7 @@ namespace ProduitBundle\Controller\Front;
 use ProduitBundle\Entity\Commande;
 
 use ProduitBundle\Entity\LigneCommande;
+use Symfony\Component\Validator\Constraints\DateTime;
 use UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -61,7 +62,7 @@ class CommandeController extends Controller
              $Ligne_commande=new LigneCommande();
              $prix=$article_panier->getPrix();
              $id_produit=$article_panier->getIdprod();
-             $Ligne_commande->getIdprod($id_produit);
+             $Ligne_commande->setIdprod($id_produit);
              $Ligne_commande->setPrixprod($prix);
              $Ligne_commande->setIdUtilisateur($id_u);
              $Ligne_commande->setIdCommande($id_com);
@@ -81,7 +82,7 @@ class CommandeController extends Controller
         $commandes = $em->getRepository('ProduitBundle:Commande')->findAll();
         $lignes = $em->getRepository('ProduitBundle:LigneCommande')->findAll();
             $produits = $em->getRepository('ProduitBundle:Produits')->findAll();
-         return $this->render('@Produit/DashboardUser/page_index_commande.html.twig',array(
+         return $this->render('@Produit/Front/Commande/page_index_commande.html.twig',array(
              'commandes'=> $commandes,'lignes'=> $lignes,'produits'=> $produits));
 
 
@@ -147,7 +148,7 @@ class CommandeController extends Controller
 
         }
         $commandes = $em->getRepository('ProduitBundle:Commande')->findAll();
-        return $this->render('@Produit/DashboardUser/page_index_commande.html.twig', array(
+        return $this->render('@Produit/Front/Commande/page_index_commande.html.twig', array(
             'commandes'=> $commandes
         ));
 

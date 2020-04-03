@@ -30,9 +30,9 @@ class Commande
     private $etatCommande;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_emission", type="string", length=30, nullable=false)
+     * @ORM\Column(name="date_emission", type="datetime", length=30, nullable=false)
      */
     private $dateEmission;
 

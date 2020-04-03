@@ -4,7 +4,9 @@ namespace ProduitBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use EcoBundle\Entity\Annonce;
+
+use JMS\Serializer\Annotation as JMS;
+
 
 /**
  * Categorie
@@ -18,7 +20,7 @@ class Categorie
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -74,13 +76,22 @@ class Categorie
     }
 
     /**
+     * Set libelle
+     *
      * @param string $libelle
+     *
+     * @return Categorie
      */
     public function setLibelle($libelle)
     {
         $this->libelle = $libelle;
-    }
 
+        return $this;
+    }
+    public function __toString()
+    {
+        return  $this->getLibelle();
+    }
 
 }
 

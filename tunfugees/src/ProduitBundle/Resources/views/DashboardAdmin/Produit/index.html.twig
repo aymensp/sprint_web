@@ -70,14 +70,14 @@
                         <table id="annonceTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>Titre</th>
+                                <th>Nom du Produit</th>
                                 <th>Description</th>
-                                <th>Date de Creation</th>
-                                <th>Date d'update</th>
+                                <th>Nom Refugies</th>
+
                                 <th>Prix</th>
-                                <th>Region</th>
+
                                 <th>Etat</th>
-                                <th>User</th>
+
                                 <th>Image</th>
                                 <th>Actions</th>
                             </tr>
@@ -88,15 +88,15 @@
                                 <tr>
                                     <td>{{ annonce.nomProd|upper }}</td>
                                     <td>{{ annonce.description }} </td>
-
+                                    <td>{{ annonce.nomRef }} </td>
                                     <td>{{ annonce.prix }}</td>
-                                    <td>{{ annonce.nomRef }}</td>
+
                                     <td>{{ annonce.dispo }}</td>
 
                                     <td style="width: 60px; padding:0px; text-align: center">
                                         {% if annonce.img != '' %}
                                             <img alt="User Pic" style="width:150px;"
-                                                 src="{{ asset('uploads/Annonce/photo/' ~ annonce.img) }}"
+                                                 src="{{ asset('uploads/Produit/photo/' ~ annonce.img) }}"
                                                  class="img-circle img-responsive">
                                         {% else %}
                                             <img alt="annonce_Pic" style="width:50px;" src="{{ asset('assets/img/NA.png') }}"
@@ -106,21 +106,21 @@
                                     <td>
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
-                                               href="#"
+                                               href="{{ path('da_annonce_edit', { 'id': annonce.idProd }) }}"
                                                data-toggle="tooltip" title="Editer Annonce">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
-                                               href="#"
+                                               href="{{ path('da_annonce_delete', { 'id': annonce.idProd }) }}"
                                                data-toggle="tooltip" title="Supprimer Annonce">
                                                 <i class="fa  fa-trash"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
-                                               href="#"
+                                               href="{{ path('da_annonce_show', { 'id': annonce.idProd }) }}"
                                                data-toggle="tooltip" title="Supprimer Categorie">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>

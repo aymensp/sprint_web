@@ -4,13 +4,16 @@ namespace ProduitBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Produits
  *
  * @ORM\Table(name="produits", uniqueConstraints={@ORM\UniqueConstraint(name="nomProd", columns={"nomProd"})})
+ * @Vich\Uploadable
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="ProduitBundle\Repository\ProduitsRepository")
  */
@@ -37,7 +40,7 @@ class Produits
      * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id"   )
      */
-    private $categorie_id;
+    private $categorie;
     /**
      * @var string
      *
@@ -45,14 +48,24 @@ class Produits
      */
     private $nomref;
 
-
+    /**
+     * @Vich\UploadableField(mapping="produit_photo", fileNameProperty="img")
+     *
+     * @var File
+     */
+    private  $produitPhoto;
     /**
      * @var string
      *
      * @ORM\Column(name="img", type="string", length=200, nullable=false)
      */
     private $img;
-
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     *
+     * @var \DateTime
+     */
+    private $photoUpdatedAt;
     /**
      * @var integer
      *
@@ -123,18 +136,23 @@ class Produits
     /**
      * @return mixed
      */
-    public function getCategorieId()
+    public function getCategorie()
     {
-        return $this->categorie_id;
+        return $this->categorie;
     }
 
     /**
-     * @param mixed $categorie_id
+     * @param mixed $categorie
      */
-    public function setCategorieId($categorie_id)
+    public function setCategorie($categorie)
     {
-        $this->categorie_id = $categorie_id;
+        $this->categorie = $categorie;
     }
+
+    /**
+     * @return mixed
+     */
+
 
     /**
      * @return string
@@ -246,6 +264,41 @@ class Produits
     public function setViews($views)
     {
         $this->views = $views;
+    }
+
+    /**
+     * @return File
+     */
+    public function getProduitPhoto()
+    {
+        return $this->produitPhoto;
+    }
+
+    /**
+     * @param File $produitPhoto
+     */
+    public function setProduitPhoto($produitPhoto)
+    {
+        $this->produitPhoto = $produitPhoto;
+        if ($produitPhoto instanceof UploadedFile) {
+            $this->setPhotoUpdatedAt(new \DateTime());
+        }
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPhotoUpdatedAt()
+    {
+        return $this->photoUpdatedAt;
+    }
+
+    /**
+     * @param \DateTime $photoUpdatedAt
+     */
+    public function setPhotoUpdatedAt($photoUpdatedAt)
+    {
+        $this->photoUpdatedAt = $photoUpdatedAt;
     }
 
 

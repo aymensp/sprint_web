@@ -48,13 +48,13 @@ Produits
 {% endblock %}
 {% block body %}
     <div class="bread-crumb">
-        <img src="images/banner-top.jpg" class="img-responsive" alt="banner-top" title="banner-top">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
         <div class="container">
             <div class="matter">
                 <h2>shop</h2>
                 <ul class="list-inline">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">shop</a></li>
+                    <li><a href="{{ path('homepage') }}">HOME</a></li>
+                    <li><a href="{{ path('f_annonce_index') }}">shop</a></li>
                 </ul>
             </div>
         </div>
@@ -136,36 +136,29 @@ Produits
                             </div>
                         </div>
                     </div>
-                    <div class="leftside">
-                        <h5>your cart</h5>
-                        <ul class="list-unstyled cart">
-                            <li>
-                                <a href="#"><img src="images/product/thumb1.jpg" alt="thumb" title="thumb" class="img-responsive"></a>
-                                <h4>Title</h4>
-                                <p>1 x $ 45.00</p>
-                            </li>
-                            <li>
-                                <a href="#"><img src="images/product/thumb2.jpg" alt="thumb" title="thumb" class="img-responsive"></a>
-                                <h4>Title</h4>
-                                <p>1 x $ 45.00</p>
-                            </li>
-                            <li>
-                                <h4>Subtotal : <span>$ 135.00</span></h4>
-                                <button class="btn-primary" type="button" onclick="location.href='checkout.html'">checkout</button> </li>
-                        </ul>
-                    </div>
-                    <div class="leftside">
-                        <h5>Price</h5>
-                        <div class="form-group prices">
-                            <div class="price-filter">
-                                <span class="min">$15</span>
-                                <a href="#" class="one slider-handle"></a>
-                                <div class="price-range"><div class="bg"></div></div>
-                                <span class="max">$1500</span>
-                                <a href="#" class="two slider-handle"></a>
-                            </div>
+
+                    {% if liste|length > 0 %}
+
+
+                        <div class="leftside">
+                            <h5>your cart</h5>
+                            {% for value in liste %}
+                            <ul class="list-unstyled cart">
+                                <li>
+                                    <a href="#"><img src="{{ asset('uploads/Produit/photo/' ~ value.img) }}" width="32" height="32" alt="thumb" title="thumb" class="img-responsive"></a>
+                                    <h4>{{ value.nomProd }}</h4>
+                                    <p>{{ value.prix }} DT</p>
+                                </li>
+
+                                {% endfor %}
+                                <li>
+                                    <h4>Subtotal : <span> DT</span></h4>
+                                    <button class="btn-primary" type="button" onclick="location.href='{{ path('panier_show') }}'">checkout</button> </li>
+                            </ul>
                         </div>
-                    </div>
+
+                    {% endif %}
+
 
                 </div>
 
@@ -180,9 +173,9 @@ Produits
                         <div class="col-md-3 col-sm-4 col-xs-12 paddright">
                             <div class="form-group input-group input-group-sm">
                                 <select id="input-limit" class="form-control selectpicker bs-select-hidden" onchange="location = this.value;">
-                                    <option value="{{ path('f_annonce_trier', { 'val': 'PE' }) }}" >Prix elever</option>
-                                    <option value="{{ path('f_annonce_trier', { 'val': 'PB' }) }}">Prix Bas</option>
-
+                                    <option value="{{ path('f_annonce_index') }}">Default Sorting </option>
+                                    <option value="{{ path('f_annonce_trier', { 'val': 'PB' }) }}">Ascending Price</option>
+                                    <option value="{{ path('f_annonce_trier', { 'val': 'PE' }) }}" >Descending Price</option>
                                 </select>
                             </div>
                         </div>
@@ -195,7 +188,7 @@ Produits
                                 <div class="product-thumb">
                                     <div class="image">
                                         {% if a.img != '' %}
-                                            <a href="{{ path('f_annonce_show', { 'id': a.idprod }) }}"><img src="{{ asset('images/product/' ~ a.img) }}" alt="image" title="image" class="img-responsive" /></a>
+                                            <a href="{{ path('f_annonce_show', { 'id': a.idprod }) }}"><img src="{{ asset('uploads/Produit/photo/' ~ a.img) }}" width="270" height="328" alt="image" title="image" class="img-responsive" /></a>
                                         {% else %}
                                             <img alt="image"
                                                  src="{{ asset('assets/img/NA.png') }}"
@@ -217,7 +210,9 @@ Produits
                                             <a href="{{ path('ajout_annonce',{  'id_a' :a.idprod }) }}" > <button type="button" class="btn-primary">add to cart</button></a>
                                             <button type="button" class="btn-default"><i class="icon_piechart"></i></button>
                                         </div>
+
                                     </div>
+
                                 </div>
 
 

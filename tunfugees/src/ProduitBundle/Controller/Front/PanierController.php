@@ -49,7 +49,7 @@ class PanierController extends Controller
 
         $tab=array("somme"=>$somme);
 
-        return $this->render('@Eco/Panier/page_index_panier.html.twig', array(
+        return $this->render('@Produit/Panier/page_index_panier.html.twig', array(
            'liste'=> $liste,'tab'=> $tab));
 
     }
@@ -161,6 +161,7 @@ class PanierController extends Controller
         $produit = $em->getRepository('ProduitBundle:Produits')->findAll();
         $liste = $em->getRepository('ProduitBundle:PanierProduit')->findAll();
 
+
         return $this->render('@Produit/Front/Produit/produit.html.twig', array(
             "produits"=>$produit,'categories'=> $categories,'liste'=> $liste,
         ));
@@ -174,6 +175,7 @@ class PanierController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $panier_prodduit = $em->getRepository('ProduitBundle:PanierProduit')->findAll();
+
         foreach ($panier_prodduit as $p)
         {
             if($p->getId()==$id)
@@ -185,9 +187,17 @@ class PanierController extends Controller
 
 
         $liste = $em->getRepository('ProduitBundle:PanierProduit')->findAll();
+        $prixtotal=0;
+        $somme=0;
+        foreach ($liste as $value)
+        {
+            $prixtotal=$value->getPrix();
+            $somme=$prixtotal +$somme;
+        }
 
+        $tab=array("somme"=>$somme);
         return $this->render('@Produit/Panier/page_index_panier.html.twig', array(
-            'liste'=> $liste
+            'liste'=> $liste,'tab'=>$tab,
         ));
     }
 

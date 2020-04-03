@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Tunfugees !{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Bootstrap stylesheet -->
@@ -228,8 +228,8 @@
                         </div>
                         {% else %}
 
-                        <button type="button" class="btn btn-default btn-lg" onclick="location.href=' {{ path('fos_user_security_login') }}'">Donate Now <i class="icon_like_alt" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href=' {{ path('inscription') }}'">Become Volunter </button>
+                        <button type="button" class="btn btn-default btn-lg" onclick="location.href=' {{ path('fos_user_security_login') }}'">Sign in <i class="icon_like_alt" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href=' {{ path('inscription') }}'">Sign up </button>
                         {% endif %}
                     </div>
                 </div>

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>shop checkout</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="checkout.html">shop checkout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout">
+    <div class="container">
+    <div class="row">
+
+    {% if commandes|length >0 %}
+        <div class="col-sm-12 col-xs-12 mycart">
+            <form method="post" enctype="multipart/form-data">
+                <div class="table-responsive">
+                    <table class="table tabl1 table-bordered">
+                        <thead>
+                        <tr>
+                            <td class="text-center">Date</td>
+                            <td class="text-center">Etat</td>
+
+                            <td class="text-center">Total Price</td>
+                            <td class="text-center">Remove</td>
+                        </tr>
+                        </thead>
+        {% for value in commandes %}
+         {% if app.user.id == value.idUtilisateur %}
+                        <tbody>
+                        <tr>
+
+                            <td class="text-center">{{ value.dateEmission|date}}</td>
+
+
+                            <td class="text-center">  {% if value.etatCommande=='En cours' %}
+                                    <i class="fa fa-spinner fa-2x fa-pulse " style="color: #0da899"></i>
+                                {% endif %}
+                                {% if value.etatCommande=='Effectué' %}
+                                    <i class="fas fa-check fa-2x " style="color: #0da899"></i>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                {{ value.prixTotal }} DT
+                            </td>
+    {% if value.etatCommande=='En cours' %}
+                            <td class="text-center">
+                               <a href="{{ path('annuler_commande',{ 'id_c': value.id  }) }}"> <button type="button"><i class="fa fa-times"></i></button></a>
+                            </td>
+    {% endif %}
+                        </tr>
+
+
+                        </tbody>
+         {% endif %}
+        {% endfor %}
+
+                    </table>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+    {% else %}
+        <h1 style="color: white"> Vous n'avez pas de commandes</h1>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+{% endblock %}

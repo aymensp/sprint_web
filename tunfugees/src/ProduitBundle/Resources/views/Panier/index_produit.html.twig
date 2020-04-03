@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block Panier %}
+
+    <div class="dropdown">
+        <a href="{{ path('panier_show') }}">
+            <i class="fa fa-shopping-cart" aria-hidden="true">
+
+            </i>
+        </a>
+
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="hero">
+      <a href="{{ path('ajout_annonce',{ 'id_c': app.user.id , 'id_a' :333 }) }}"><button class="btn btn-hero btn-lg" role="button">Ajouter Au Panier</button> </a>
+    </div>
+{% endblock %}

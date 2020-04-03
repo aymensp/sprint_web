@@ -1,0 +1,30 @@
+{% extends './Default/dashboard.html.twig' %}
+
+{% block title %}
+    Modification d'une categorie
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formcat) }}
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1><b>  Modification d'une categorie</b></h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <br>
+            <button type="submit" class="btn btn-success" value="Create">
+                <i class="fa fa-check" aria-hidden="true"></i>Confirmer
+            </button>
+            <a href="{{ path('da_annonce_index') }}" class="btn btn-secondary">
+                <i class="fa fa-undo" aria-hidden="true"></i>Retour à la liste</a>
+            <br>
+        </div>
+    </div>
+
+    {% form_theme formcat 'bootstrap_3_layout.html.twig' %}
+    {{ form_widget(formcat) }}
+    {{ form_end(formcat) }}
+
+
+{% endblock %}
