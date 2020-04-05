@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+
+
+                        {% for r in message %}
+                            <tbody>
+
+
+
+                            <tr>
+
+                                <td> {{ r.id }}</td>
+
+
+                                <td>{{  r.title}} </td>
+
+                                <td>{{ r.description}}</td>
+                                <div class="listing-category">
+                                    <a href="#"><i class="lni-alarm-clock"></i>{{ r.postdate|date() }} </a>
+                                </div>
+
+                                <td> <a href="{{ path('updateMessage',{'id':r.id}) }}'"> Edit</a></td>
+                                <td><a href="{{ path('deleteMessage',{'id':r.id}) }}'">Delete</a></td>
+
+
+
+
+
+                            </tr>
+
+                            </tbody>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

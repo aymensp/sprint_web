@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="promovideo">About</a></li>
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Causes</a>
                                         <div class="dropdown-menu repeating">
                                             <div class="dropdown-inner">
@@ -187,7 +187,7 @@
                                         </div>
                                     </li>
 
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="messageus">Contact</a></li>
                                     {% if is_granted('ROLE_ADMIN') %}
                                     <li>
                                         <a href="{{ path('da_annonce_index') }}"><span class="title">Dashboard</span></a>
@@ -228,8 +228,8 @@
                         </div>
                         {% else %}
 
-                        <button type="button" class="btn btn-default btn-lg" onclick="location.href=' {{ path('fos_user_security_login') }}'">Donate Now <i class="icon_like_alt" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href=' {{ path('inscription') }}'">Become Volunter </button>
+                        <button type="button" class="btn btn-default btn-lg" onclick="location.href=' {{ path('fos_user_security_login') }}'">Login <i class="icon_like_alt" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="location.href=' {{ path('inscription') }}'">Sign Up </button>
                         {% endif %}
                     </div>
                 </div>

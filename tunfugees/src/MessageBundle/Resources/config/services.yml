@@ -1,0 +1,4 @@
+services:
+#    message.example:
+#        class: MessageBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

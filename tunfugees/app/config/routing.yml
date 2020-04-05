@@ -1,3 +1,7 @@
+message:
+    resource: "@MessageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 produit:
     resource: "@ProduitBundle/Controller/Front"
     type: annotation
@@ -13,3 +17,4 @@ fos_user:
 app:
     resource: '@ProduitBundle/Controller/'
     type: annotation
+

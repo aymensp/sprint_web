@@ -1,0 +1,47 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block body %}
+
+<!-- Main content -->
+<div class="card card-primary">
+    <div class="card-header">
+        <h1><b>Edit Message</b></h1>
+
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <div class="card-body">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <div class="form-group has-error">
+                <br>
+                {{ form_start(form) }}
+                <br>
+                {{ form_widget(form.title,{'attr':{'type':'text','class':'form-control','placeholder':'Title...'}}) }}
+                <br>
+                {{ form_widget(form.category,{'attr':{'type':'text','class':'form-control','placeholder':'category...'}}) }}
+                <br>
+                {{ form_widget(form.description,{'attr':{'type':'textarea','class':'form-control','placeholder':'Description...'}}) }}
+                <br>
+                {{ form_widget(form.photo,{'attr':{'type':'text','class':'form-control','placeholder':'photo...'}}) }}
+                <br>
+                {{ form_widget(form.Submit,{'attr':{'type':'text','class':'btn','placeholder':'Submit...'}}) }}
+                <br>
+                {{ form_end(form) }}
+            </div>
+        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+            <br><br><br>
+
+            <div class="alert alert-warning" role="alert">
+                <h3>
+                    In order to send a message to the administration you need to be connected, if you are not
+                    you can join us by clicking <a href="{{ path('fos_user_registration_register') }}">HERE</a>
+                    Or if you already have an account click <a href="{{ path('fos_user_security_login') }}" >HERE</a> to connect !
+                </h3>
+
+            </div>
+        {% endif %}
+
+        <!-- /.content -->
+    </div>
+{% endblock %}

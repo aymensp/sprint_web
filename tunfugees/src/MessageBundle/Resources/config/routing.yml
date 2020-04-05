@@ -1,0 +1,55 @@
+message_homepage:
+    path:     /
+    defaults: { _controller: MessageBundle:Default:index }
+
+
+addMessage:
+    path:     /messageus
+    defaults: { _controller: MessageBundle:Message:addmessage}
+
+listerMessage:
+    path:     /listmessages
+    defaults: { _controller: MessageBundle:Message:listmessages}
+
+
+listmessagesuser:
+    path:     /listm
+    defaults: { _controller: MessageBundle:Message:listmessagesuser}
+
+
+
+
+updateMessage:
+    path:     /updatemessage/{id}
+    defaults: { _controller: MessageBundle:Message:updatemessage }
+
+deleteMessage:
+    path:     /deletemessage/{id}
+    defaults: { _controller: MessageBundle:Message:deletemessage }
+addCat:
+    path:     /addCateg
+    defaults: { _controller: MessageBundle:Message:addCat }
+showCateg:
+    path:     /showCateg
+    defaults: { _controller: MessageBundle:Message:manCat }
+
+editCateg:
+    path:     /editCateg/{id}
+    defaults: { _controller: MessageBundle:Message:editCat }
+deleteCateg:
+    path:     /deleteCateg/{qdt}
+    defaults: { _controller: MessageBundle:Message:deleteCat }
+search:
+    path:     /search
+    defaults: { _controller: MessageBundle:Message:search }
+map:
+    path:     /map
+    defaults: { _controller: MessageBundle:Message:map }
+video:
+    path:     /promovideo
+    defaults: { _controller: MessageBundle:Message:videoProm }
+
+addRep:
+    path:     /reponse
+    defaults: { _controller: MessageBundle:Message:addRep }
+
