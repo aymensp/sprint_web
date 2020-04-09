@@ -1,0 +1,17 @@
+.modalrep {
+
+    overflow-y: auto;
+}
+
+img.ex1 {
+
+    width: 100%;
+    height: 300px;
+
+}
+img.ex2{
+
+    width: 20%;
+    height: 100px;
+
+}

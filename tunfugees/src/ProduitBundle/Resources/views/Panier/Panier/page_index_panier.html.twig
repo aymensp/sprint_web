@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .page-container {
+            background-image: url('{{ asset('assets/img/background_panier7.jpg') }}') !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var panier = $('#panier').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block Panier %}
+
+    <div class="dropdown">
+        <a href="{{ path('panier_show') }}">
+            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true">
+            </i>
+            <span class="bubble">
+                        {{ liste|length }}
+                    </span>
+        </a>
+    </div>
+{% endblock %}
+{% block body %}
+
+    <div class="tab-content" >
+        <div class="tab-pane active" id="users" aria-expanded="true">
+            {% if liste|length >0  %}
+                <table id="panier" class="table table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th style="color: white">Photo </th>
+                        <th style="color: white">Titre de l'annonce </th>
+                        <th style="color: white">Description </th>
+                        <th style="color: white">Region </th>
+                        <th style="color: white">Prix </th>
+                        <th style="color: white">Action </th>
+                    </tr>
+                    <tbody>
+                    {% for value in liste %}
+                        <tr>
+                            <td style="width: 60px; padding:0px; text-align: center">
+                                {% if value.photo != '' %}
+                                    <img alt="User Pic" style="width:150px;" width="50" height="50"
+                                         src="{{ asset('uploads/Produit/photo/' ~ value.photo) }}"
+                                         class="img-circle img-responsive">
+                                {% else %}
+                                    <img alt="annonce_Pic" style="width:50px;" src="{{ asset('assets/img/NA.png') }}" width="50" height="50"
+                                         id="profile-image1" class="img-circle img-responsive">
+                                {% endif %}
+                            </td>
+                            <td>{{ value.titre }}</td>
+                            <td>{{ value.description }}</td>
+                            <td>{{ value.region }}</td>
+                            <td>{{ value.prix }}</td>
+                            <td> <a href="{{ path('supprimer_ligne',{ 'id': value.id  }) }}"> <button class="btn btn-info float-right btn-sm">Supprimer Annonce du Panier </button></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('vider_panier') }}"> <button class="btn btn-info float-right btn-sm"> Vider Panier  </button></a>
+                <table id="usersTab" class="table table-striped table-bordered" cellspacing="0" >
+
+                    <tr>
+                        <th > <h3 style="color: white">Prix Total :  {{ tab.somme }}  DT </h3></th>
+
+                    </tr>
+                </table>
+
+                <a href="{{ path('ajout_commande',{ 'id_u': app.user.id ,'prix_total' :tab.somme}) }}"> <button class="btn btn-success" data-target="#mo_c" data-toggle="modal"> Passer Commande </button></a>
+
+                <div class="modal fade " id="mo_c" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <center><h1 class="modal-title" id=""> Confirmation de Commande </h1></center>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <input name="id" value="" style="display: none">
+                                <center><h1 class="h1">Commande passé aves succès</h1></center>
+
+                                <center><h1 class="h1">Prix Total</h1></center>
+                                <center> <p> <h3>{{ tab.somme }} DT </h3></p></center>
+
+                                <center><h1 class="h1"> <i class="fas fa-check fa-4x" style="color: #0eb2a3"> </i></h1></center>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <h1 style="color: white">Votre Panier est vide </h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Liste des Annonces et Categories
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var annonce = $('#annonceTab').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+            var categorie = $('#categorieTab').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><b>Liste des Annonces et Categories</b></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <br>
+                    <a href="{{ path('da_annonce_stat') }}" class="btn btn-info">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                        Statistique sur les Annonce
+                    </a>
+                    <a href="{{ path('da_annonce_new') }}" class="btn btn-success">
+                        <i class="icon-plus">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            &nbsp;Ajouter une Annonce ou une categorie
+                        </i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-borderless">
+                <ul class="nav nav-tabs nav-tabs-simple hidden-sm-down" role="tablist"
+                    data-init-reponsive-tabs="dropdownfx">
+                    <li class="nav-item">
+                        <a class="active" data-toggle="tab" role="tab" data-target="#annonce" href="#"
+                           aria-expanded="true">Annonce</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" data-toggle="tab" role="tab" data-target="#categorie" class=""
+                           aria-expanded="false">Categorie</a>
+                    </li>
+                </ul>
+                <div class="tab-content" >
+                    <div class="tab-pane active" id="annonce" aria-expanded="true">
+                        <table id="annonceTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Description</th>
+                                <th>Date de Creation</th>
+                                <th>Date d'update</th>
+                                <th>Prix</th>
+                                <th>Region</th>
+                                <th>Etat</th>
+                                <th>User</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <thead>
+                            <tbody>
+                            {% for annonce in annonce %}
+                                <tr>
+                                    <td>{{ annonce.nomProd|upper }}</td>
+                                    <td>{{ annonce.description }} </td>
+
+                                    <td>{{ annonce.prix }}</td>
+                                    <td>{{ annonce.nomRef }}</td>
+                                    <td>{{ annonce.dispo }}</td>
+
+                                    <td style="width: 60px; padding:0px; text-align: center">
+                                        {% if annonce.img != '' %}
+                                            <img alt="User Pic" style="width:150px;"
+                                                 src="{{ asset('uploads/Annonce/photo/' ~ annonce.img) }}"
+                                                 class="img-circle img-responsive">
+                                        {% else %}
+                                            <img alt="annonce_Pic" style="width:50px;" src="{{ asset('assets/img/NA.png') }}"
+                                                 id="profile-image1" class="img-circle img-responsive">
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="#"
+                                               data-toggle="tooltip" title="Editer Annonce">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="#"
+                                               data-toggle="tooltip" title="Supprimer Annonce">
+                                                <i class="fa  fa-trash"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="#"
+                                               data-toggle="tooltip" title="Supprimer Categorie">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="categorie" aria-expanded="false">
+                        <table id="categorieTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Libelle</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <thead>
+                            <tbody>
+                            {% for categorieAnnonce in categorieAnnonce %}
+                                <tr>
+                                    <td>{{ categorieAnnonce.libelle }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('da_annonce_cat_edit', { 'id': categorieAnnonce.id }) }}"
+                                               data-toggle="tooltip" title="Editer Categorie">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('da_annonce_cat_delete', { 'id': categorieAnnonce.id }) }}"
+                                               data-toggle="tooltip" title="Supprimer Categorie">
+                                                <i class="fa  fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

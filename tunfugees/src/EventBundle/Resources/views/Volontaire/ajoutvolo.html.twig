@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Participation
+{% endblock %}
+{% block body %}
+
+
+    <!-- bread-crumb start here -->
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>become a volunteer</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="become-a-volunteers.html">become a volunteer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- bread-crumb end here -->
+
+    <!-- become start here -->
+    <div class="become">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    <h2>Become a <span>volunteer</span></h2>
+
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Nom: </label><input name="name" value="{{ app.user.nom }}" id="input-name" class="form-control" placeholder="Full Name" type="text">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Prenom: </label><input name="lastname" value="{{ app.user.prenom}}" id="input-lastname" class="form-control" placeholder="Last Name" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Email: </label> <input name="email" value="{{ app.user.email}}" id="input-email" class="form-control" placeholder="Email" type="text">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label>Numero de Telephone: </label><input name="phone" value="{{ app.user.numero }}" id="input-phone" class="form-control" placeholder="Phone" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input name="code" value="" id="input-code" class="form-control" placeholder="Entrer votre adresse " type="text">
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <input class="btn btn-primary" value=" Go
+Count Me" type="submit">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <img src="{{ asset('images/thanks.jpg')}}" class="img-responsive" alt="image" title="image" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

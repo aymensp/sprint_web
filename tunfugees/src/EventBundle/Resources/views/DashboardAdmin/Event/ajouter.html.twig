@@ -1,0 +1,28 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Ajouter un Evénement
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+{% block body %}
+    {{ form_start(formCateg) }}
+    <div class="row">
+        <div class="col-md-6">
+            <h1><b>Ajout Evénement </b></h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <br>
+            <button type="submit" class="btn btn-success" value="Create">
+                <i class="fa fa-check" aria-hidden="true"></i> Confirmer
+            </button>
+            <a href="{{ path('ajoutevent') }}" class="btn btn-secondary">
+                <i class="fa fa-undo" aria-hidden="true"></i>  Retour à la liste</a>
+            <br>
+        </div>
+    </div>
+    {% form_theme formCateg 'bootstrap_3_layout.html.twig' %}
+    {{ form_widget(formCateg) }}
+
+    {{ form_end(formCateg) }}
+{% endblock %}

@@ -1,0 +1,20 @@
+
+
+produit:
+    resource: "@ProduitBundle/Controller/Front"
+    type: annotation
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Controller"
+    type : annotation
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+app:
+    resource: '@ProduitBundle/Controller/'
+    type: annotation
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /

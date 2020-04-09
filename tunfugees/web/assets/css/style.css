@@ -1,0 +1,49 @@
+/*
+
+* Override Pages default styles or create your own styles here
+
+*/
+@font-face {
+  font-family: gothic;
+  src: url("/wp-content/uploads/2019/03/GOTHIC.TTF");
+}
+@font-face {
+  font-family: gothicBold;
+  src: url("/wp-content/uploads/2019/03/GOTHICB.TTF");
+}
+@font-face {
+  font-family: gothicBoldItalic;
+  src: url("/wp-content/uploads/2019/03/GOTHICBI.TTF");
+}
+@font-face {
+  font-family: gothicItalic;
+  src: url("/wp-content/uploads/2019/03/GOTHICI.TTF");
+}
+@font-face {
+  font-family: NexaLightItalic;
+  src: url("/wp-content/uploads/2019/03/Nexa Light Italic.TTF");
+}
+
+.gothic {
+  font-family: gothic !important;
+}
+.gothicB {
+  font-family: gothicBold !important;
+}
+.gothicBI {
+  font-family: gothicBoldItalic !important;
+}
+.gothicI {
+  font-family: gothicItalic !important;
+}
+.nexaLightItalic {
+  font-family: NexaLightItalic !important;
+}
+
+.site-content {
+  padding-bottom: 26%;
+  background-image: url(/wp-content/uploads/2019/03/bg_care.png);
+  background-repeat: no-repeat;
+  background-position: -10% 150%;
+  background-size: 45% 75%;
+}

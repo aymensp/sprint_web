@@ -1,0 +1,281 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+ {% block stylesheets %}
+
+     <style>
+         /*.sideMenu {*/
+             /*bottom: 0;*/
+             /*position: fixed;*/
+             /*z-index: 1;*/
+             /*top: 20px;*/
+             /*left: 10px;*/
+             /*background: #eee;*/
+             /*overflow-x: hidden;*/
+             /*padding: 8px 0;*/
+         /*}*/
+         .card-title {
+             color: #000 !important;
+         }
+         .card-inverse .card-text {
+             color: #000 !important;
+         }
+     </style>
+     {#<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">#}
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!------ Include the above in your HEAD tag ---------->
+
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+ {% endblock %}
+
+{% block Panier %}
+    {% if app.user %}
+
+        <div class="dropdown">
+            <a >
+                <a href="javascript:;" id="notification-center" class="header-icon" data-toggle="dropdown">
+                    <i class="fa fa-shopping-cart fa-2x" aria-hidden="true">
+                    </i>
+                    <span class="bubble">
+                        {{ liste|length }}
+                    </span>
+                </a>
+            </a>
+
+            <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">
+
+                <div class="notification-panel">
+                    <div class="notification-body scrollable">
+                        {% if liste|length > 0 %}
+
+                            {% for value in liste %}
+                                <div class="notification-item  clearfix">
+                                    <div class="heading">
+                                        <a href="#" class="text-danger pull-left">
+                                            <i class="fa fa-check-square m-r-10"></i>
+                                            <span class="bold">{{ value.titre }}</span>
+                                            <span class="fs-12 m-l-10"> {{ value.description }}</span>
+                                        </a>
+                                        <span class="pull-right time">{{ value.prix }} DT</span>
+
+                                    </div>
+                                    <div class="option">
+                                        <a href="#" class="mark"></a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+
+                            <div class="notification-item unread clearfix">
+                                <!-- START Notification Item-->
+                                <div class="heading open">
+                                    <a href="#" class="text-complete pull-left">
+                                        <i class="fa fa-exclamation-triangle m-r-10"></i>
+                                        <span class="bold">Nombres d'annonces dans le panier : </span>
+                                        <span class="fs-12 m-l-10">0</span>
+                                    </a>
+                                    <div class="pull-right">
+                                        <div class="thumbnail-wrapper d16 circular inline m-t-15 m-r-10 toggle-more-details">
+                                            <div><i class="fa fa-angle-left"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="more-details">
+                                        <div class="more-details-inner">
+                                            <h5 class="semi-bold fs-16">Votre Panier est Vide <br>
+                                                Veuillez Ajouter des annonces <br>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END Notification Item-->
+                                <!-- START Notification Item Right Side-->
+                                <div class="option" data-toggle="tooltip" data-placement="left" title="mark as read">
+                                    <a href="#" class="mark"></a>
+                                </div>
+                                <!-- END Notification Item Right Side-->
+                            </div>
+
+
+                        {% endif %}
+                    </div>
+
+                    <div class="notification-footer text-center">
+                        <a href="{{ path('panier_show') }}" class="">Consulter Panier </a>
+                        <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
+                            <i class="pg-refresh_new"></i>
+                        </a>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="padding: 50px">
+        <div class="row">
+            <div class="col-md-3 " id="sticky-sidebar" >
+                <div class="card" style="padding-left: 58px !important";>
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Brands </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <form>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+				    Mersedes Benz
+				  </span>
+                                    </label> <!-- form-check.// -->
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+				    Nissan Altima
+				  </span>
+                                    </label>  <!-- form-check.// -->
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <span class="form-check-label">
+				    Another Brand
+				  </span>
+                                    </label>  <!-- form-check.// -->
+                                </form>
+
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Choose type </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+			    First hand items
+			  </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+			    Brand new items
+			  </span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadio" value="">
+                                    <span class="form-check-label">
+			    Some other option
+			  </span>
+                                </label>
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+                </div>
+                <div class="card-group horizontal" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingOne">
+                            <h4 class="card-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                                    Collapsible Group Item
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="collapse" role="tabcard" aria-labelledby="headingOne" style="">
+                            <div class="card-body">
+                                Click headers to expand/collapse content that is broken into logical sections, much like tabs. Optionally, toggle sections open/closed on mouseover.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingTwo">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Typography Variables
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="collapse" role="tabcard" aria-labelledby="headingTwo" style="">
+                            <div class="card-body">
+                                <h1 class="light">
+                                    go explore the <span class="semi-bold">world</span>
+                                </h1>
+                                <h4>
+                                    small things in life matters the most
+                                </h4>
+                                <h2>
+                                    Big Heading <span class="semi-bold">Body</span>,
+                                    <i>Variations</i>
+                                </h2>
+                                <h4>
+                                    <span class="semi-bold">Open Me</span>, Light , <span class="semi-bold">Bold</span>, <i>Everything</i>
+                                </h4>
+                                <p>
+                                    is the art and technique of arranging type in order to make language visible. The arrangement of type involves the selection of typefaces, point size, line length, leading (line spacing), adjusting the spaces between groups of letters (tracking)
+                                </p>
+                                <p>
+                                    and adjusting the Case space between pairs of letters (kerning). Type design is a closely related craft, which some consider distinct and others a part of typography
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default m-b-0">
+                        <div class="card-header " role="tab" id="headingThree">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Easy Edit
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="collapse" role="tabcard" aria-labelledby="headingThree" style="">
+                            <div class="card-body">
+                                Click headers to expand/collapse content that is broken into logical sections, much like tabs. Optionally, toggle sections open/closed on mouseover.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9" id="main">
+                <div class="row">
+                    {% for a in annonces %}
+                        <div class=" col-md-3 offset-md-1 card card-inverse card-info" style="padding: 5px;">
+                            <img class="card-img-top" src="C:\wamp\www\ecosystemweb\web\assets\img\{{ a.photo }}">
+                            <div class="card-block">
+                                <h4 class="card-title"> {{ a.titre  }}</h4>
+                                <div class="card-text">
+                                    {{ a.description  }}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small>{{ a.dateUpdate|date  }}</small>
+
+                                {% if app.user %}
+                                    <a href="{{ path('ajout_annonce',{ 'id_c': app.user.id , 'id_a' :a.id }) }}"> <button class="btn btn-info float-right btn-sm">Ajouter Au Panier</button></a>
+                                {% else %}
+                                    <a href="{{ path('fos_user_security_login') }}"> <button class="btn btn-info float-right btn-sm">Ajouter Au Panier</button></a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}{% endblock %}

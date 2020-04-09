@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Affichage Events
+{% endblock %}
+{% block body %}
+    <!-- bread-crumb start here -->
+
+    <div class="bread-crumb">
+        <img src=" {{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>events</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="{{ path('event') }}">events</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- bread-crumb end here -->
+
+
+
+
+
+
+
+    <div class="events">
+    <div class="container">
+        <div class="row">
+
+
+            {% for i in events %}
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="product-thumb">
+                    <div class="image">
+                        <a href="{{ path('details', { 'id': i.id}) }}"><img src={{ asset('uploads/image/'~i.image) }}  class="img-responsive" alt="image" title="image" /></a>
+                        <div class="onhover">
+                            <p>{{ i.date |date ("d") }}</p><span>{{ i.date |date ("M") }}</span>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h4><a href="single-event-view.html">{{ i.nomevent }}</a></h4>
+                        <ul class="list-inline">
+                            <li><i class="icon_clock"></i> 08.00 - 16.00</li>
+                            <li>
+                                <i class="fa fa-map-marker"></i> {{ i.adresse }}
+                            </li>
+                        </ul>
+                        <p class="des">{{ i.description }}</p>
+                        {% if app.user %}
+                            {% if i.volontaires|length >= i.nbrMax%}
+                                <div class="text-center">
+
+                                    <button type="submit" class="btn-primary" value="Create"data-toggle="modal" data-target="#myModall">
+                                        <i  aria-hidden="true"></i>Become Volunteer
+                                    </button>
+                                </div>
+                            {% else %}
+
+                                {% if app.user in i.volontaires %}
+                                    <button id="annuleParticiper" type="submit" value="{{ i.id}}"
+                                            class="annuler{{ i.id }} btn annuleParticiper btn-primary" >
+                                        <i  aria-hidden="true"></i>Je participe plus
+                                    </button>
+                                {% else %}
+                                    <div class="text-center">
+                                        <button type="button" class="btn-primary" onclick="location.href='{{ path('ajoutvolo') }}'">Become Volunteer</button>
+                                    </div>
+                                {% endif %}
+
+
+
+
+
+
+
+                                <div class="modal fade" id="myModall" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <i class="fa fa-exclamation fa-5x" style="color: red;margin: 0 auto;"></i>
+                                                <h5 class="modal-title" id="exampleModalLabel">Evenement complet</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endif %}
+                        {% else %}
+                                <div class="text-center">
+
+                                    <button type="submit" class="btn-primary" value="Create"data-toggle="modal" data-target="#myModal">
+                                        <i  aria-hidden="true"></i>Become Volunteer
+                                    </button>
+                                 </div>
+
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <i class="fa fa-exclamation fa-5x" style="color: red;margin: 0 auto;"></i>
+                                                <h5 class="modal-title" id="exampleModalLabel">Vous devez se connecter d'abord</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                <a href="{{ path('inscription') }}">
+                                                    <button class="btn btn-default btn-cons  btn-sm">S'inscrire</button>
+                                                </a>
+                                                <a href="{{ path('fos_user_security_login') }}">
+                                                    <button type="button" class="btn btn-primary">Se connecter</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+        </div>
+    </div>
+</div>
+<!-- events end here -->
+
+
+
+{% endblock %}

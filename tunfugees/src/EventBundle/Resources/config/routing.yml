@@ -1,0 +1,45 @@
+event_homepage:
+    path:     /
+    defaults: { _controller: EventBundle:Default:index }
+event:
+    path:     /event
+    defaults: { _controller: EventBundle:Event:event }
+
+ajoutvolo:
+    path:     /ajoutvolo
+    defaults: { _controller: EventBundle:Volontaire:ajoutvolo}
+ajoutevent:
+    path:     /ajoutevent
+    defaults: { _controller: EventBundle:Event:ajoutevent}
+deleteEvent:
+    path:     /deleteEvent/{id}
+    defaults: { _controller: EventBundle:Event:deleteEvent}
+ajouter:
+    path:     /ajouter
+    defaults: { _controller: EventBundle:Event:ajouter}
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: EventBundle:Event:edit}
+show:
+    path:     /show
+    defaults: { _controller: EventBundle:Volontaire:show}
+
+deleteVolo:
+    path:     /deleteVolo/{id}
+    defaults: { _controller: EventBundle:Volontaire:deleteVolo}
+editVolo:
+    path:     /editVolo/{id}
+    defaults: { _controller: EventBundle:Volontaire:editVolo}
+details:
+    path:     /details/{id}
+    defaults: { _controller: EventBundle:Event:details}
+description:
+    path:     /description/{id}
+    defaults: { _controller: EventBundle:Event:description}
+participerAjax:
+    path:     /participerAjax
+    defaults: { _controller: EventBundle:Event:participerAjax}
+noParticiperAjax:
+    path:     /noParticiperAjax
+    defaults: { _controller: EventBundle:Event:noParticiperAjax}
+

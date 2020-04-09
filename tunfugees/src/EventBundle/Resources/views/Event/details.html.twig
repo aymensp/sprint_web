@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Détails
+{% endblock %}
+
+
+{% block body %}
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>Details event view</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="{{ path('event') }}">Events</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="singlevent">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="owl-carousel" id="event">
+                    <div class="item">
+                        <div class="image">
+                            <a href="#"><img src={{ asset('uploads/image/'~events.image) }}  class="img-responsive" alt="image" title="image" /></a>
+                        </div>
+                        <div class="common">
+                            <div class="pull-left">
+                                <h4>{{ events.nomEvent }}</h4>
+                            </div>
+
+                        </div>
+                        <ul class="list-inline link">
+                            <li><i class="icon_clock"></i> 08.00 - 16.00</li>
+                            <li>
+                                <i class="fa fa-map-marker"></i> {{ events.adresse }}
+                            </li>
+                        </ul>
+                        <h6 >This the description of our event : </h6>
+                        <p class="des">{{ events.description }} </p>
+                        <div class="col-sm-4 paddleft">
+                            <h6>Details</h6>
+                            <h3>Date</h3>
+                            <p class="des1">{{ events.date|date("d") }}-{{ events.date|date("m") }}-{{ events.date|date("y") }}</p>
+                            <h3>Time</h3>
+                            <p class="des1">08.00 am - 04.00 pm</p>
+
+                            <button class="btn-primary" data-target="#collapseSearch" data-toggle="collapse"
+                                    href="collapseSearch" role="button"><i class="fa fa-filter" aria-hidden="true"></i> list of volunteers
+
+                            </button>
+                            {% if events.volontaires|length>= events.nbrMax%}
+                            <div class="collapse col-md-12" id="collapseSearch">
+
+                                    <div class="card card-body col-md-12" style="padding: 20px; width: 200%">
+                                        <h6 class="m-t-10"> cet Evenement est complet </h6>
+                                    </div>
+                            </div>
+                            {% else %}
+                            <div class="collapse col-md-12" id="collapseSearch">
+
+                                <div class="card card-body col-md-12" style="padding: 20px; width: 200%">
+                                    <h6 class="m-t-10"> Il ya {{ events.volontaires|length }} volontaires il nous reste {{ events.nbrMax}}-{{events.volontaires|length}}</h6>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219104.85983086875!2d75.71658808151895!3d30.90026973769041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a837462345a7d%3A0x681102348ec60610!2sLudhiana%2C+Punjab!5e0!3m2!1sen!2sin!4v1482266274532"></iframe>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div class="icons text-center">
+                    <ul class="list-inline">
+                        <li>Help us by share : </li>
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://plus.google.com/" target="_blank"><i class="social_googleplus" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
