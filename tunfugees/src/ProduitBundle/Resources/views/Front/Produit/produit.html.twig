@@ -45,6 +45,8 @@ Produits
             });
         });
     </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
 {% endblock %}
 {% block body %}
     <div class="bread-crumb">
@@ -65,75 +67,38 @@ Produits
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-12 hidden-xs">
                     <div class="leftside">
-                        <form class="form-horizontal search" method="post">
-                            <fieldset>
+                        <form role ="form" class="form-horizontal search" >
+
                                 <div class="form-group">
-                                    <input name="s" value="" class="form-control" type="text" placeholder="Search">
+                                    <input  class="form-control" type="search" placeholder="Search">
                                 </div>
-                                <button type="submit" value="submit" class="btn"><i class="icon_search" aria-hidden="true"></i></button>
-                            </fieldset>
+
+
                         </form>
                     </div>
                     <div class="leftside">
                         <h5>category</h5>
                         <div class="category">
                             <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Men's</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse1" class="panel-collapse collapse ">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div class="panel panel-default active">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Girl's</a>
+                                            <a  href="{{ path('f_annonce_index') }}">All</a>
                                         </h4>
                                     </div>
-                                    <div id="collapse2" class="panel-collapse collapse in">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
-                                <div class="panel panel-default">
+                                {% for c in categories %}
+                                <div class="panel panel-default active">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Accessories</a>
+                                            <a  href="{{ path('f_recherch_Categorie', { 'cat': c.id }) }}">{{ c.libelle }}</a>
                                         </h4>
                                     </div>
-                                    <div id="collapse3" class="panel-collapse collapse">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Others</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse4" class="panel-collapse collapse">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -212,11 +177,7 @@ Produits
                                         <h4> {{ a.nomprod }}</h4>
                                         <p class="price">{{ a.prix }} DT</p>
                                         <div class="rating">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            {{ a.views|rating }}
                                         </div>
                                         <div class="buttons">
                                             <button type="submit" value="{{ a.idprod }}" class="btn-danger"><i class="icon_heart"></i></button>

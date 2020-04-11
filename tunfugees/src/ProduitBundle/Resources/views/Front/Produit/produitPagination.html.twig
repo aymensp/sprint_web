@@ -77,65 +77,29 @@ Produits
                         <h5>category</h5>
                         <div class="category">
                             <div class="panel-group" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Men's</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse1" class="panel-collapse collapse ">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div class="panel panel-default active">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Girl's</a>
+                                            <a  href="{{ path('f_annonce_index') }}">All</a>
                                         </h4>
                                     </div>
-                                    <div id="collapse2" class="panel-collapse collapse in">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Accessories</a>
-                                        </h4>
+                                {% for c in categories %}
+                                    <div class="panel panel-default active">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a  href="{{ path('f_recherch_Categorie', { 'cat': c.id }) }}">{{ c.libelle }}</a>
+                                            </h4>
+                                        </div>
+
                                     </div>
-                                    <div id="collapse3" class="panel-collapse collapse">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Others</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse4" class="panel-collapse collapse">
-                                        <ul class="list-group list-unstyled">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Title Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
+
 
                     {% if liste|length > 0 %}
 
