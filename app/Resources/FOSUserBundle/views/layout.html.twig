@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <link href="{{ asset ('assets/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <link href="{{ asset ('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <link href="{{ asset ('assets/plugins/switchery/css/switchery.min.css') }}" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <link href="{{ asset ('assets/plugins/nvd3/nv.d3.min.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/plugins/mapplic/css/mapplic.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/rickshaw/rickshaw.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet"
+          type="text/css" media="screen">
+    <link href="{{ asset ('assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet"
+          type="text/css" media="screen">
+    <link href="{{ asset ('assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset ('assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css') }}"
+          rel="stylesheet" type="text/css"/>
+    <link href="{{ asset ('assets/plugins/datatables-responsive/css/datatables.responsive.css') }}" rel="stylesheet"
+          type="text/css" media="screen"/>
+    <link href="{{ asset ('assets/pages/css/pages-icons.css') }}" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="{{ asset ('assets/pages/css/themes/modern.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/solid.css"
+          integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" crossorigin="anonymous">
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/regular.css" integrity="sha384-IG162Tfx2WTn//TRUi9ahZHsz47lNKzYOp0b6Vv8qltVlPkub2yj9TVwzNck6GEF" crossorigin="anonymous">#}
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/brands.css" integrity="sha384-BKw0P+CQz9xmby+uplDwp82Py8x1xtYPK3ORn/ZSoe6Dk3ETP59WCDnX+fI1XCKK" crossorigin="anonymous">#}
+    {#<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/fontawesome.css" integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" crossorigin="anonymous">#}
+
+    <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset ('assets/css/dashboard.widgets.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+
+
+</head>
+
+<body>
+<div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}({{ app.user.nom | upper }} {{ app.user.prenom }})|
+        <a href="{{ path('fos_user_security_logout') }}"> Déconnexion
+            {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
+        </a>
+    {% else %}
+        {#<a href="{{ path('fos_user_security_login') }}">Se Connecter</a>#}
+    {% endif %}
+</div>
+
+{% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+<div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+</body>
+</html>

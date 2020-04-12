@@ -1,0 +1,122 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Liste des Camps
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var camps = $('#campsTab').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><b>Liste des camps</b></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <br>
+                    <a href="{{ path('Ca_camps_new') }}" class="btn btn-success">
+                        <i class="icon-plus">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            &nbsp;Ajouter un camp
+                        </i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-borderless">
+                <ul class="nav nav-tabs nav-tabs-simple hidden-sm-down" role="tablist"
+                    data-init-reponsive-tabs="dropdownfx">
+                    <li class="nav-item">
+                        <a class="active" data-toggle="tab" role="tab" data-target="#camps" href="#"
+                           aria-expanded="true">camps</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" >
+                    <div class="tab-pane active" id="camps" aria-expanded="true">
+                        <div id="annonceTab_wrapper" class="dataTables_wrapper no-footer">
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="dataTables_length" id="refugiesTab_length">
+                                        <label>Afficher <select name="refugiesTab_length" aria-controls="refugiesTab" class="form-control input-sm">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option></select> éléments</label></div></div>
+                                <div class="col-sm-6"><div id="refugiesTab_filter" class="dataTables_filter">
+                                        <label>Rechercher&nbsp;:<input type="search" class="form-control input-sm" placeholder="" aria-controls="refugiesTab">
+                                        </label></div></div>
+
+                            </div>
+                        <table id="campsTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>idCamp</th>
+                                <th>nbrMax</th>
+                                <th>Categories</th>
+                                <th>adresse</th>
+
+                            </tr>
+                            </thead>
+                            <thead>
+                            <tbody>
+                            {% for i in camps %}
+                                <tr>
+
+                                    <td>{{ i.idcamp }} </td>
+                                    <td>{{ i.nbrmax }}</td>
+                                    <td>{{ i.Categories }}</td>
+                                    <td>{{ i.adresse }}</td>
+
+                                    <td>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('Ca_camp_edit', { 'idcamp': i.idcamp }) }}"
+                                               data-toggle="tooltip" title="Modifié un camp">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('Ca_camps_delete', { 'idcamp': i.idcamp }) }}"
+                                               data-toggle="tooltip" title="Supprimer un camp">
+                                                <i class="fa  fa-trash"></i>
+                                            </a>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

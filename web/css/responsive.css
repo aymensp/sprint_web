@@ -1,0 +1,1019 @@
+/*----------------
+[responsive]
+------------------*/
+@media (max-width:1180px){
+	#menu .nav > li > a {
+		margin: 0 26px 0 0;
+	}
+	#menu .nav > li:first-child > a {
+		margin: 0 26px 0 22px;
+	}
+	header .button-login .btn-default {
+		margin-right: 10px;
+	}
+	.recentcause .right .detail {
+		padding: 15px 15px;
+    }
+	.recentcause .right .detail h4 {
+		font-size: 18px;
+		margin: 0 0 15px;
+    }
+	.recentcause .right .detail .des {
+		margin: 0 0 30px;
+	}
+	.upcoming .nav-tabs > li {
+		padding: 28px 23px;
+	}
+	.des {
+		font-size: 12px;
+    }
+	.upcoming .tab-content ul li .pull-left {
+		width: 70%;
+	}
+	.donator .box {
+		padding: 34px 30px;
+	}
+	.blog .rightside .product-thumb .caption h4 {
+		margin: 0px 0 5px;
+	}
+	.blog .rightside .product-thumb .caption .des {
+		margin: 0 0 10px;
+	}
+	.blog .product-thumb .caption .btn-primary {
+		padding: 16px 18px;
+    }
+	#newsletter #subscribe .btn-news {
+		font-size: 12px;
+		padding: 18px 14px;
+    }
+	footer .social li {
+		margin-right: 5px;
+	}
+	footer .recent li i {
+		line-height: 34px;
+	}
+	footer .recent li a p {
+		font-size: 12px;
+	}
+	footer .powered li {
+		margin-right: 20px;
+	}
+	.who p {
+		font-size: 12px;
+		margin: 0 0 20px;
+	}
+	.mission ul li p {
+		font-size: 12px;
+    }
+	.choose .panel-body h6 {
+		font-size: 12px;
+    }
+	.events .product-thumb .caption ul li {
+		font-size: 12px;
+    }
+	.volunteer .product-thumb .caption .social {
+		padding: 32px 12px;
+    }
+	.volunteer .product-thumb .caption .social li {
+		margin-right: 10px;
+    }
+	.volunteer-profile table tr td {
+		line-height: 18px;
+	}
+	.donation .nav-tabs > li > a {
+		padding: 17px 26px;
+	}
+	.shop .product-thumb .caption h4 {
+		font-size:16px;
+	}
+	.shop .product-thumb .caption {
+		padding: 20px 14px 0;
+    }
+	.shop .product-thumb .caption .btn-danger, .shop .product-thumb .caption .btn-default {
+		padding: 11px 8px 12px;
+    }
+	.shop .product-thumb .caption .btn-primary {
+		font-size: 12px;
+		padding: 15px 6px 14px;
+    }
+	.leftside .cart li .btn-primary {
+		padding: 19px 48px;
+    }
+	.price-range .bg {
+		margin-left: 56px;
+    }
+	.shopdetail .images li {
+		padding: 0 1px 10px 0;
+	}	
+	.mycart .tabl1 tbody tr:last-child td:last-child {
+		padding: 40px 10px !important;
+	}
+	.mycart .btn-primary + .btn-primary {
+		margin-left: 15px !important;
+    }
+	.mycart .buttons .btn-primary {
+		margin-left:0;
+	}
+	.mycart .tabl1 td img {
+		margin: 0 14px 0 28px;
+    }
+	.qtypara {
+		margin: 0 18px;
+    }
+	.blog-detail .comment ul li p {
+		font-size: 12px;
+	}
+	.contactus .links li {
+		padding: 50px 30px;
+	}
+	.header2 #menu .nav > li:first-child > a {
+		margin: 0;
+		padding: 0 14px 0 0;
+	}
+	.header2 #menu .nav > li > a {
+		padding: 0 14px;
+	}
+	.header2 #menu .nav > li:last-child > a {
+		padding: 0 0 0 14px;
+	}
+	.header2 .icon li {
+		padding: 0 14px 0 0;
+	}
+	.header2 .product-thumb .caption h4 {
+		font-size: 13px;
+    }
+	.header2 .product-thumb .caption h6 {
+		font-size:12px;
+	}
+	.header2 .upcoming .box .matter {
+		padding: 20px 15px 16px 15px;
+    }
+	.header2 .upcoming .box .matter h4 {
+		font-size: 12px;
+    }
+	.header2 #newsletter p {
+		font-size: 13px;
+	}
+	.header2 .flicker li {
+		width: 32%;
+	}
+	.header2 footer .contact li a {
+		font-size:12px;
+	}
+	.header2 footer .contact li i {
+		margin-right: 18px;
+    }
+	.header2 .doner .owl-buttons .owl-prev {
+		left: 44% !important;
+	}
+}
+
+
+@media (max-width:1000px){
+	.top .icon li {
+		padding: 0 11px 0 0;
+	}
+	.top .icon li a, .top .social li a {
+		font-size: 12px;
+	}
+	header .call {
+		margin: 12px 0;
+    }
+	header .call li p {
+		font-size: 14px;
+    }
+	header .call li a {
+		font-size: 11px;
+    }
+	#menu .nav > li > a {
+		font-size: 12px;
+    }
+	#menu .nav > li:first-child > a {
+		margin: 0 18px 0 16px;
+	}
+	#menu .nav > li > a {
+		margin: 0 16px 0 0;
+	}
+	#menu .dropdown-menu li a {
+		font-size: 12px;
+	}
+	header .button-login .btn-default {
+		font-size: 10px;
+    }
+	header .button-login .btn-primary {
+		font-size: 10px;
+    }
+	.slide-detail h4 {
+		font-size: 58px;
+    }
+	.cause h6 {
+		font-size: 16px;
+    }
+	.des {
+		font-size: 10px;
+	}
+	.recentcause ul li {
+		padding: 25px 15px 15px;
+    }
+	.recentcause ul li p {
+		font-size: 13px;
+    }	
+	.recentcause .right .detail h4 {
+		font-size: 17px;
+    }
+	.recentcause ul li img {
+		margin-right: 10px;
+		width:22%;
+	}
+	.product-thumb .caption h4 {
+		font-size: 14px;
+    }
+	.product-thumb .caption h6 {
+		font-size: 12px;
+    }
+	.upcoming .nav-tabs > li {
+		padding: 28px 16px;
+	}
+	.upcoming .nav-tabs > li > a {
+		font-size: 12px;
+	}
+	.upcoming .tab-content ul li h4 {
+		font-size: 14px;
+    }
+	.upcoming .tab-content ul li .pull-left {
+		width: 58%;
+	}
+	.recentcause .right img {
+		width: 260px;
+		height: 501px;
+	}
+	.recentcause .right .detail {
+		margin-left: 260px;
+		min-height: 501px;
+	}
+	.donator .box {
+		padding: 20px 15px;
+	}
+	.donator .box .btn-primary {
+		padding: 19px 22px;
+		font-size: 12px;
+	}
+	.donator .box h4 {
+		font-size: 14px;
+    }
+	.donator .box p {
+		margin: 0 0 20px;
+	}
+	.featured .box p {
+		font-size: 14px;
+    }
+	.blog .rightside .product-thumb .image {
+		width:49%;
+	}
+	.blog .product-thumb .caption .btn-primary {
+		padding: 7px 18px;
+		font-size:12px;
+	}
+	.blog .rightside .product-thumb .caption .des {
+		line-height: 15px;
+	}
+	#newsletter #subscribe .news {
+		font-size: 18px;
+    }
+	#newsletter #subscribe p {
+		font-size: 10px;
+    }
+	#newsletter #subscribe .btn-news {
+		font-size: 9px;
+		padding: 18px 12px;
+	}
+	footer p {
+		font-size: 10px;
+    }
+	footer .contact li a {
+		font-size: 11px;
+    }
+	footer .social li {
+		margin-right: 2px;
+		padding:10px 8px;
+	}
+	footer h5 {
+		margin: 10px 0 0;
+	}
+	footer .links li {
+		padding: 0 0 25px;
+    }
+	footer .links .btn-primary {
+		padding: 16px 12px;
+    }
+	footer .recent li {
+		padding: 0 0 12px;
+    }
+	footer .recent li a span, footer .recent li a p {
+		font-size: 10px;
+    }
+	footer .links li a {
+		font-size: 12px;
+    }
+	footer .powered p {
+		font-size: 10px;
+    }
+	footer .powered li {
+		margin-right: 18px;
+	}
+	footer .powered li a{
+		font-size: 10px;
+	}
+	.who h4 {
+		margin: 0 0 15px;
+    }
+	.who p {
+		font-size: 10px;
+	}
+	.mission ul li {
+		margin-bottom: 15px;
+		width: 46.5%;
+	}
+	.mission li .icon {
+		margin: 0 13px 40px 0;
+	}
+	.mission ul li h4 {
+		font-size: 12px;
+    }
+	.mission ul li p {
+		font-size: 9px;
+	}
+	.choose .panel-title {
+		font-size: 10px;
+    }
+	.choose .panel-body h6 {
+		font-size: 10px;
+	}
+	#cause .owl-controls .owl-buttons div{
+		bottom: -8.5%;
+	}
+	#event .owl-controls .owl-buttons div {
+		bottom: -5.5%;
+	}
+	.donation .nav-tabs > li > a {
+		padding: 17px 22px;
+		font-size: 13px;
+	}	
+	.donation .nav-tabs > li {
+		padding: 0 10px 0 0;
+	}
+	.donation h2 {
+		font-size: 26px;
+    }
+	.timer #ctime {
+		width: 700px;
+    }
+	.pagination li a {
+		padding: 15px 12px;
+    }
+	.leftside .category .list-group li {
+		padding: 20px 0px 19px;
+    }
+	.leftside .cart li .btn-primary {
+		padding: 19px 23px;
+	}
+	.sort p {
+		font-size: 11px;
+	}
+	.leftside .cart li img {
+		margin-right: 10px;
+	}
+	.leftside .latest img {
+		margin-right: 6px;
+	}
+	.leftside .latest h4 {
+		font-size: 12px;
+    }
+	.leftside .latest li {
+		padding: 8px;
+    }
+	.leftside h5 {
+		font-size: 16px;
+    }
+	.leftside .tag li {
+		padding: 9px 14px;
+	}
+	.price-range .bg {
+		margin-left: 34px;
+	}
+	.two {
+		right: 17%;
+	}
+	.one {
+		left: 21%;
+	}
+	.min {
+		left: 8%;
+	}
+	.max {
+		right: 0%;
+	}
+	.leftside .cart li {
+		padding: 10px;
+	}
+	.shopdetail .buttons .btn-primary {
+		padding: 19px 20px;
+	}
+	.mycart .tabl1 td img {
+		margin: 0 5px 0 0;
+	}
+	.mycart .tabl1 td {
+		padding: 15px 10px !important;
+	}
+	.qtypara .fa {
+		padding: 9px 10px;
+	}
+	.mycart .tabl1 tbody tr:last-child td:first-child {
+		padding: 40px 45px !important;
+	}
+	.mycart .buttons .btn-primary {
+		font-size: 10px;
+	}
+	.mycart .btn-primary + .btn-primary {
+		margin-left: 4px !important;
+	}
+	.mycart .cartable .btn-primary {
+		width: 255px;
+	}
+	.checkout .mycart .tabl1 p {
+		font-size: 12px;
+	}
+	.right-box .archives ul li {
+		padding: 17px 18px;
+	}
+	.right-box .archives ul li a {
+		font-size: 14px;
+	}
+	.right-box .lastest {
+		padding: 30px 16px;	
+	}
+	.right-box .lastest .product-thumb .caption h4 {
+		font-size: 12px;
+	}
+	.right-box .lastest .product-thumb .caption p, .right-box .lastest .product-thumb .caption span {
+		font-size: 11px;
+    }
+	.blog-detail .comment ul li p {
+		font-size: 10px;
+	}
+	.blog-detail .comment ul li img {
+		margin-bottom: 10px;
+	}
+	.contactus .links li span {
+		font-size: 12px;
+	}
+	.contactus .links li {
+		padding: 50px 6px;
+	}
+	.header2 #language .text, .header2 #currency .text, .header2 .icon li a, .header2 .icon .account .btn .text  {
+		font-size: 9px;
+	}
+	.header2 .icon li {
+		padding: 0 5px 0 0;
+	}
+	.header2 .button-login .btn-default {
+		padding: 20px 10px 19px;
+	}
+	.header2 .button-login .btn-default img {
+		margin-right: 2px;
+	}
+	.header2 #menu .nav > li > a {
+		padding: 0 8px;
+	}
+	.header2 #menu .nav > li:first-child > a {
+		padding: 0 8px 0 0;
+	}
+	.header2 #menu .nav > li:last-child > a {
+		padding: 0 0 0 8px;
+	}
+	.header2 .slide-detail h4 {
+		font-size: 50px;
+	}
+	.header2 .slide-detail h4 small {
+		font-size: 70px;
+	}
+	.header2 .about .des {
+		line-height: 18px;
+	}
+	.header2 .product-thumb img{
+		width:100%;
+	}
+	.header2 .upcoming .box .image img {
+		height: 145px;
+		width: 140px;
+	}
+	.header2 .upcoming .box .matter {
+		margin-left: 140px;
+		padding: 20px 10px 16px 10px;
+	}
+	.header2 .upcoming .box .matter ul li {
+		font-size: 11px;
+	}
+	.header2 .doner .owl-buttons .owl-next {
+		right: 43% !important;
+	}
+	.header2 #newsletter p {
+		font-size: 10px;
+	}
+	.header2 footer .contact li i {
+		margin-right: 5px;
+		width: 25px;
+		height: 28px;
+		padding: 8px 7px;
+		font-size: 12px;
+	}
+	.header2 footer .contact li a {
+		font-size: 10px;
+	}
+	.header2 footer h5 {
+		font-size: 16px;
+    }
+	.header2 .icon {
+		margin: 35px 0;
+	}
+	.header2 .icons {
+		margin: 32px 0;
+	}
+	.donator .product-thumb .caption p {
+		font-size: 12px;
+	}
+}
+
+
+
+@media (max-width:767px){
+	header #logo {
+		margin: 20px 0;
+	}
+	.top .pull-left, .top .pull-right, header .pull-right {
+		float:none !important;
+		text-align:center;
+	}
+	.top .icon li {
+		padding: 15px 20px 0px 0;
+	}
+	header #logo img{
+		margin: 0 auto;
+	}
+	header .call li:first-child {
+		padding:0 30px 15px 0;
+	}
+	header .call li p {
+		font-size: 16px;
+	}
+	header .call li a {
+		font-size: 13px;
+	}
+	#menu .menutext{
+		float: left;
+		padding: 17px;
+		font-size: 16px;
+		color: #fff;
+	}	
+	#menu .navbar-toggle{
+		color:#fff;
+	}
+	#menu .text-right{
+		text-align:left;
+	}
+	#menu .nav > li > a {
+		font-size: 16px;
+	    padding: 30px 25px 29px;
+	}
+	#menu .nav > li:first-child > a {
+		margin: 0 18px 0 0px;
+	}
+	#menu .dropdown-menu li a {
+		font-size: 16px;
+		color:#fff;
+	}
+	header .button-login .btn-default {
+		font-size: 15px;
+	}
+	header .button-login .btn-primary {
+		font-size: 14px;
+	}	
+	.slideshow img, .header2 .slideshow img {
+		min-height: auto;
+	}
+	.slide-detail, .header2 .slide-detail {
+		position: relative;
+		bottom: 0;
+		background: #f7f7f7;
+		padding:20px 0;
+	}
+	.slide-detail h4{
+		font-size: 30px;
+	}
+	.slide-detail h4, .slide-detail p {
+		color: #000;
+	}
+	.cause-detail {
+		position: relative;
+		top: 0px;
+		margin:25px 0; 
+    }
+	.cause {
+		padding: 30px 0px;
+    }
+	.cause .color {
+		margin-left: 0px;
+	}
+	.cause .btn-primary {
+		font-size:14px;
+		padding: 19px 16px;
+		margin-bottom:30px;
+	}
+	.des {
+		font-size: 14px;
+	}
+	.recentcause .right img {
+		width: 100%;
+		height: auto;
+		float:none;
+	}
+	.recentcause .right .detail {
+		margin-left: 0;
+		min-height: auto;
+		margin-bottom:20px;
+	}
+	.upcoming .nav-tabs > li > a {
+		font-size: 18px;
+	}
+	.upcoming .nav-tabs > li {
+		padding: 28px 0px;
+		width: 24.5%;
+		text-align: center;
+	}
+	.upcoming .image img {
+		height: auto;
+		width: 100%;
+	}
+	.upcoming .tab-content ul li:last-child {
+		margin-bottom: 30px;
+	}
+	.product-thumb .caption h4 {
+		font-size: 18px;
+	}
+	.product-thumb img {
+		width:100%;
+	}
+	.donator .box h4 {
+		font-size: 18px;
+	}
+	.donator .box {
+		padding: 70px 30px;
+	}
+	.donator .box .btn-primary {
+		padding: 19px 30px;
+		font-size: 16px;
+	}
+	.donator .product-thumb .caption p {
+		font-size: 14px;
+	}
+	.featured .box p {
+		font-size: 12px;
+	}
+	.blog .rightside .product-thumb .image, .blog .rightside .product-thumb .image img {
+		width: 100%;
+		float:none;
+	}
+	.blog .rightside .product-thumb .caption .des {
+		margin: 0 0 24px;
+	}
+	.blog .product-thumb .caption .btn-primary {
+		padding: 19px 18px;
+		font-size: 16px;
+		margin-bottom:30px;
+	}
+	.testimonail img {
+		height: 300px;
+	}
+	.testimonail .inner {
+		top: 20px;
+    }
+	.testimonail h4 {
+		font-size: 21px;
+    }
+	.testimonails p {
+		width: 100%;
+		color:#000;
+		margin:0 0 10px;
+		line-height:18px;
+    }
+	.testimonails p i {
+		font-size: 30px;
+	}
+	footer .about, .header2 .flicker, footer .info  {
+		width: 100%;
+	}
+	footer p, footer .contact li a, footer .links li a, footer .recent li a span, footer .recent li a p, footer .powered li a{
+		font-size: 14px;
+	}
+	footer .social li {
+		margin-right: 10px;
+		padding: 10px 12px;
+	}
+	footer h5 {
+		margin: 30px 0 0;
+	}
+	footer .powered p {
+		font-size: 14px;
+		text-align: center;
+		margin-bottom:15px;
+	}
+	footer .powered .text-right{
+		text-align:center;
+	}
+	.bread-crumb .matter h2 {
+		font-size: 28px;
+    }
+	.who h4 {
+		margin: 30px 0;
+	}
+	.who p, .mission ul li p, .choose .panel-body h6, .product-thumb .caption h6 {
+		font-size: 14px;
+	}
+	.mission img, .who img{
+		margin:0 auto;
+	}
+ 	.mission ul{
+		margin:50px 0 0;
+	}
+	.mission ul li {
+		width: 100%;
+		margin-bottom:50px;
+	}
+	.mission ul li h4 {
+		font-size: 18px;
+	}
+	.choose .panel-title {
+		font-size: 16px;
+	}
+	.choose .panel-group {
+		margin-bottom: 30px;
+	}
+	.pagination li > a {
+		margin-bottom:15px;
+	}
+	.pagination > li {
+		display: inline-block;
+		padding:0;
+	}
+	.singlecause .common, .singlevent .common {
+		height: auto;
+	}
+	.singlecause .common .pull-left, .singlecause .common .pull-right, .singlevent .common .pull-left, .singlevent .common .pull-right{
+		float:none !important;
+	}
+	.singlecause h4, .singlevent h4 {
+		font-size: 22px;
+    }
+	.singlecause .icons ul li, .singlevent .icons ul li {
+		padding: 8px 9px;
+		margin-right: 0px;
+	}
+	#cause .owl-controls .owl-buttons div {
+		bottom: -20px;
+	}
+	.singlevent .paddleft{
+		padding-left:15px;
+	}
+	#event .owl-controls .owl-buttons div {
+		bottom: -38px;
+	}
+	.volunteer .product-thumb .caption .social li {
+		margin-right: 14px;
+	}
+	.volunteer-profile img{
+		margin:0 auto 30px;
+	}
+	.volunteer-profile .box {
+		padding: 30px 15px 28px;
+	}
+	.volunteer-profile .social {
+		padding: 18px 12px;
+		width: auto;
+		position: relative;
+		top: 0;
+		margin:0 0 20px;
+	}
+	.volunteer-profile .social li{
+		margin-right:0;
+	}
+	.volunteer-profile table tr td {
+		font-size: 12px;
+		padding: 0 18px 18px 0;
+    }
+	.volunteer-profile table tr:last-child td {
+		padding: 0 18px 0px 0;
+	}
+	.profileform .form-group, .donation .form-group, .become .form-group, .checkout .form-group, .contactus .form-group {
+		margin-bottom: 0px;
+	}
+	.profileform .form-control, .donation .form-control, .become .form-control, .checkout .form-control, .contactus .form-control {
+		margin-bottom: 30px !important;
+	}
+	.donation .nav-tabs > li {
+		margin-bottom: 20px;
+	}
+	.donation img, .become img {
+		margin-top: 40px;
+	}
+	.become h2 {
+		font-size: 28px;
+    }
+	.timer h2 {
+		font-size: 34px;
+    }
+	.timer .inner {
+		left: 20px;
+		right: 20px;
+		bottom: 100px;
+    }
+	.timer #ctime {
+		width: auto;
+		padding: 50px 50px;
+	}	
+	.timer #ctime li{
+		width: 100%;
+	}	
+	.timer #ctime li + li{
+		margin-left:0px;
+	}
+	.gallery .nav-tabs > li {
+		padding: 0 20px 20px 0;
+	}
+	.sort .text-right{
+		text-align:left;
+	}
+	.sort .paddleft{
+		padding-left:15px;
+	}
+	.sort {
+		padding-bottom: 20px;
+	}
+	.shop .product-thumb .caption .btn-danger, .shop .product-thumb .caption .btn-default {
+		padding: 11px 12px 12px;
+	}
+	.shop .product-thumb .caption .btn-primary {
+		font-size: 14px;
+		padding: 15px 10px 14px;
+	}
+	.shopdetail .nav-tabs > li a {
+		padding: 19px 15px;
+	}
+	.mycart .tabl1 tbody tr td:nth-child(1), .mycart .tabl1 tbody tr td:nth-child(2), .mycart .tabl1 tbody tr td:nth-child(3), .mycart .tabl1 tbody tr td:nth-child(4), .mycart .tabl1 tbody tr td:nth-child(5){
+		width:auto;
+	}
+	.mycart .tabl1 td img {
+		margin: 0 6px 0 0;
+		width: 25px;
+		height: 35px;
+	}
+	.mycart .tabl1 td .name {
+		margin-left: 32%;
+		font-size: 9px;
+    }
+	.mycart .tabl1 td .rating i {
+		font-size: 9px;
+	}
+	.qtypara {
+		margin: 0 0px;
+	}
+	.qtypara .fa {
+		padding: 9px 6px;
+	}
+	.mycart .cartable {
+		margin: 50px 0 0;
+	}
+	.mycart .cartable thead tr td{
+		font-size:16px;
+	}
+	.mycart .cartable tbody tr td {
+		padding: 21px 15px 19px;
+    }
+	.checkout .bank-transfer {
+		padding: 29px 21px 37px;
+	}
+	.checkout .bank-transfer input {
+		margin: 0 2px 0 0;
+    }
+	.checkout .bank-transfer .check {
+		font-size: 9px;
+    }
+	.blog-detail .common {
+		min-height: auto;
+    }
+	.blog-detail .common .pull-left, .blog-detail .common .pull-right{
+		float:none !important;
+    }
+	.blog-detail .common .icon li {
+		padding: 0 27px 0 0;
+	}
+	.blog-detail .comment ul li p {
+		font-size: 14px;
+	}
+	.contactus h6 {
+		font-size: 32px;
+    }
+	.contactus .links {
+		margin:20px 0 0;
+	}
+	.contactus .links li span {
+		font-size: 15px;
+	}
+	#newsletter #subscribe .btn-news {
+		font-size: 14px;
+		padding: 18px 25px;
+	}
+	#newsletter #subscribe p {
+		font-size: 14px;
+	}
+	.header2 #language .text, .header2 #currency .text, .header2 .icon li a, .header2 .icon .account .btn .text {
+		font-size: 12px;
+	}
+	.header2 .icon li {
+		padding: 0 28px 0 0;
+	}
+	.header2 #menu .navbar-toggle, .header2 #menu .menutext, .header2 #menu .dropdown-menu li a, .header2 .slide-detail h4 small {
+		color: #000;
+	}
+	.header2 #menu .nav > li, 	.header2 #menu .nav > li:first-child  {
+		margin: 25px 30px 26px;
+		border-right: 0px solid #B5B5B5;
+	}
+	.header2 #menu .nav > li:first-child > a {
+		padding: 0 0px 0 0;
+		margin: 0 0px 0 9px;
+	}
+	.header2 .button-login {
+		float:none !important;
+		text-align:center;
+	}
+	.header2 .slideshow .owl-buttons .owl-prev, .header2 .slideshow .owl-buttons .owl-next{
+		top:28%;
+	}
+	.header2 .about .aboutside {
+		background: #cccccc;
+	}
+	.header2 .product-thumb .caption h4 {
+		font-size: 16px;
+	}
+	.header2 .upcoming .image img {
+		height:auto;
+		width: auto;
+		margin:0 auto;
+	}
+	.header2 .donator .boxes p {
+		margin: 0 0 0 100px;	
+	}
+	.header2 .doner .owl-buttons .owl-next {
+		right: 35% !important;
+	}
+	.header2 .doner .owl-buttons .owl-prev {
+		left: 35% !important;
+	}
+	.header2 footer .contact li a{
+		font-size:14px;
+	}
+	.header2 .flicker img {
+		width: 100%;
+	}
+	
+}
+
+@media (min-width:320px) and  (max-width:414px){
+	.upcoming .nav-tabs > li > a {
+		font-size: 9px;
+	}
+	.upcoming .tab-content ul li {
+		padding: 25px 15px;
+    }
+	.upcoming .tab-content ul li h4 {
+		font-size: 11px;
+	}
+	.upcoming .tab-content ul li .box {
+		width: 86px;
+    }
+	.featured ul li {
+		width: 48.5%;
+	}
+	.featured .inner {
+		top: 25px;
+    }
+	.featured .box h4 {
+		margin: 0 0 15px;
+	}
+	.choose .panel-title {
+		font-size: 11px;
+	}
+	.header2 .about .aboutside {
+		height: 280px;
+    }
+}

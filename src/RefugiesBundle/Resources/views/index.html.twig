@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Affichage DEs Refugies
+{% endblock %}
+
+{% block body %}
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>Our Refugees</h2>
+                <ul class="list-inline">
+
+                    <li><a href="{{ path ('front_evenements_index') }}">Our Refugees</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container">
+
+    <div class="blog-detail mar-both">
+
+        <div class="container">
+
+
+            <div class="row">
+
+
+
+
+
+
+                {% for i in Refugies %}
+                        <!-- volunteer start here -->
+                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                            <div class="volunteer">
+                                <div class="container">
+                                    <div class="row">
+
+                                        <div class="col-md-3 col-sm-4 col-xs-12">
+                                            <div class="product-thumb">
+                                                <div class="image" onclick="location.href='{{ path('front_evenements_show', { 'idref': i.idref }) }}' ">
+                                                    <a href="{{ path('front_evenements_show', { 'idref': i.idref }) }}"><img src={{ asset('images/refugies/' ~ i.image) }} class="img-responsive" alt="image" title="image" /></a>
+                                                    <div class="hoverbox">
+                                                        <div class="show">
+                                                            <i class="icon_link" aria-hidden="true"></i>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+
+                                                    <h4>{{ i.nom }}  {{ i.prenom }}</h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- volunteer end here -->
+
+                        </div>
+                    {% endfor %}
+
+
+
+
+
+
+
+
+            </div></div>
+    </div>
+    <!-- blog end here -->
+    <!--pagination code start here-->
+    <center>
+        <div class="list-inline pagination">
+            {{ knp_pagination_render(Refugies) }}
+        </div>
+    </center>
+    <!--pagination code end here-->
+    </div>
+    </div>
+    </div>
+{% endblock %}

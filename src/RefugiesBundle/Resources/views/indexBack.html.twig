@@ -1,0 +1,149 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Liste des Refugies
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var refugies = $('#refugiesTab').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><b>Liste des Refugies</b></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <br>
+                    <a href="{{ path('da_ref_stat') }}" class="btn btn-info">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                        Statistique sur les Annonce
+                    </a>
+                    <a href="{{ path('da_refugies_new') }}" class="btn btn-success">
+                        <i class="icon-plus">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            &nbsp;Ajouter un Refugié
+                        </i>
+                    </a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-borderless">
+                <ul class="nav nav-tabs nav-tabs-simple hidden-sm-down" role="tablist"
+                    data-init-reponsive-tabs="dropdownfx">
+                    <li class="nav-item">
+                        <a class="active" data-toggle="tab" role="tab" data-target="#refugies" href="#"
+                           aria-expanded="true">Refugies</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" >
+                    <div class="tab-pane active" id="refugies" aria-expanded="true">
+
+
+                        <div id="annonceTab_wrapper" class="dataTables_wrapper no-footer">
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <div class="dataTables_length" id="refugiesTab_length">
+                                            <label>Afficher <select name="refugiesTab_length" aria-controls="refugiesTab" class="form-control input-sm">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option></select> éléments</label></div></div>
+                                    <div class="col-sm-3"><div id="refugiesTab_filter" class="dataTables_filter">
+                                            <label>Rechercher&nbsp;:<input type="search" class="form-control input-sm" placeholder="" aria-controls="refugiesTab">
+                                            </label></div></div>
+                                    <div class="col-sm-3">
+
+                                        <select id="input-limit" class="form-control selectpicker bs-select-hidden" onchange="location = this.value;">
+                                            <option value="{{ path('da_refugies_index') }}">Default Sorting </option>
+                                            <option value="{{ path('da_ref_trier', { 'val': 'PB' }) }}">Ascending Age</option>
+                                            <option value="{{ path('da_ref_trier', { 'val': 'PE' }) }}" >Descending Age</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <table id="refugiesTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>nom</th>
+                                <th>prenom</th>
+                                <th>age</th>
+                                <th>pays</th>
+                                <th>image</th>
+
+                            </tr>
+                            </thead>
+                            <thead>
+                            <tbody>
+                            {% for i in refugies %}
+                                <tr>
+
+                                    <td>{{ i.nom }} </td>
+                                    <td>{{ i.prenom }}</td>
+                                    <td>{{ i.age }}</td>
+                                    <td>{{ i.pays }}</td>
+
+
+                                    <td style="width: 60px; padding:0px; text-align: center">
+                                        {% if i.image != '' %}
+                                            <img alt="User Pic" style="width:150px;"
+                                                 src="{{ asset('images/refugies/' ~ i.image) }}"
+                                                 class="img-circle img-responsive">
+                                        {% else %}
+                                            <img alt="refugies_Pic" style="width:50px;" src="{{ asset('assets/img/NA.png') }}"
+                                                 id="profile-image1" class="img-circle img-responsive">
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('da_ref_edit', { 'id': i.idref }) }}"
+                                               data-toggle="tooltip" title="Modifié un Refugié">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group btn-group-sm btn-group-horizontal">
+                                            <a class="btn btn-secondary"
+                                               href="{{ path('da_refugies_delete', { 'idref': i.idref }) }}"
+                                               data-toggle="tooltip" title="Supprimer un Refugié">
+                                                <i class="fa  fa-trash"></i>
+                                            </a>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                              </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
