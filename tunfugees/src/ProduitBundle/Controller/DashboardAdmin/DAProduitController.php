@@ -170,7 +170,7 @@ class DAProduitController extends Controller
      * @Route("/annonce/{id}", name="da_annonce_show")
      * @Method("GET")
      */
-    public function showAction(Annonce $annonce)
+    public function showAction(Produits $annonce)
     {
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException("Vous n'êtes pas autorisés à accéder à cette page!", Response::HTTP_FORBIDDEN);

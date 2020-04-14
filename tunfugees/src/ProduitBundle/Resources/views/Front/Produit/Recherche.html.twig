@@ -1,63 +1,35 @@
-{% for a in annonces %}
-    <div class="col-md-4">
-        <figure class="card card-product">
-            <div class="img-wrap">
-                {% if a.photo != '' %}
-                    <img style="width:230px;" src="{{ asset('uploads/Produit/photo/' ~ a.photo) }}"
-                         class="card-img-top">
+{% for a in produits %}
+    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+
+        <div class="product-thumb">
+            <div class="image">
+                {% if a.img != '' %}
+                    <a href="{{ path('f_annonce_show', { 'id': a.idprod }) }}"><img src="{{ asset('uploads/Produit/photo/' ~ a.img) }}" width="270" height="328" alt="image" title="image" class="img-responsive" /></a>
                 {% else %}
-                    <img alt="annonce_Pic" style="width:230px ; height: 230px;"
+                    <img alt="image"
                          src="{{ asset('assets/img/NA.png') }}"
-                         id="profile-image1" class="card-img-top">
+                         class="img-responsive">
                 {% endif %}
             </div>
-            <figcaption class="info-wrap">
-                <a href="{{ path('f_annonce_show', { 'id': a.id }) }}"><h4 class="title"><b>{{ a.titre }}</b></h4></a>
-                {#<p class="desc">{{ a.description }}</p>#}
-                <div class="price-wrap h5">
-                    <span class="price-new">${{ a.prix }}</span>
+            <div class="caption">
+                <h4> {{ a.nomprod }}</h4>
+                <p class="price">{{ a.prix }} DT</p>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-            </figcaption>
-            <div class=" btn-group bottom-wrap">
-                <button type="submit" value="{{ a.id }}"
-                        class="jaime btn btn-tag">
-                    <i class="fa fa-thumbs-up" aria-hidden="true"></i> Like
-                </button>
-                <button type="button" class="btn btn-tag btn-tag-rounded float-left" data-toggle="modal" data-target="#exampleModal">
-                    Signaler<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Signaler cette Annonce</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body"><br>
-                                <form action="{{ path('f_annonce_signaler', {'id': a.id}) }}"
-                                      id="{{ a.id }}" method="get" name="formulario_login">
-                                    <input type="radio" value="violence" name="radioLib" id="violence"><label for="violence">Violence</label><br>
-                                    <input type="radio" value="arnaque" name="radioLib" id="arnaque"><label for="arnaque">arnaque</label><br>
-                                    <input type="radio" value="harcelement" name="radioLib" id="harcelement"><label for="harcelement">Harcelement</label><br>
-                                    <input type="radio" value="haine" name="radioLib" id="haine"><label for="haine">Discour insitant à la haine</label><br>
-
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                    <button type="submit" class="btn btn-success">Signaler</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="buttons">
+                    <button type="submit" value="{{ a.idprod }}" class="btn-danger"><i class="icon_heart"></i></button>
+                    <a href="{{ path('ajout_annonce',{  'id_a' :a.idprod }) }}" > <button type="button" class="btn-primary">add to cart</button></a>
+                    <button type="button" class="btn-default"><i class="icon_piechart"></i></button>
                 </div>
-                {#<a href="{{ path('du_annonce_signaler', { 'id': a.id }) }}"#}
-                {#class="btn btn-tag btn-tag-rounded float-left">#}
-                {#Signaler  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>#}
-                {#</a>#}
-                <a href="#" class="btn btn-tag btn-tag-rounded float-left">Panier
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                </a>
             </div>
-        </figure>
+        </div>
+
+
     </div>
+
 {% endfor %}

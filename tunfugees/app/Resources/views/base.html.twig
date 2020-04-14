@@ -19,6 +19,7 @@
         <link href="{{ asset('js/owl-carousel/owl.carousel.css') }}" rel="stylesheet" type="text/css" />
         <!--bootstrap select-->
         <link href="{{ asset('js/dist/css/bootstrap-select.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -90,7 +91,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div id="logo">
-                        <a href="index-2.html"><img class="img-responsive" src="{{ asset('images/logo.png')}}" alt="logo" title="logo" /></a>
+                        <a href="index-2.html"><img class="img-responsive" src="{{ asset('assets/img/logofinalev2.png') }}" alt="logo" title="logo" width="80" height="150"/></a>
                     </div>
                 </div>
 
@@ -181,7 +182,7 @@
                                                     <li><a href="{{ path('f_annonce_index') }}">Shop</a></li>
                                                     <li><a href="shopdetail.html">Shop Detail</a></li>
                                                     <li><a href="shoppingcart.html">Shopping Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                    <li><a href="{{ path('show_commande') }}">Checkout</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -205,16 +206,17 @@
 
                             <button type="button" class="btn btn-default btn-lg" {{ app.user.nom | upper }}  </button>
                             <span class="">{{ app.user.nom | upper }}</span>
+
                         <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
               <span class="thumbnail-wrapper d32 circular inline sm-m-r-5">
                 {% if app.user.photo != '' %}
 
-                    <img alt="User Pic" style="width:50px;" width="32" height="32"
+                    <img alt="User Pic" style="width:20px;"
                          src="{{ asset('uploads/user/photo/' ~ app.user.photo) }}"
-                         class="img-circle img-responsive">
+                         id="profile-image1" class="img-circle img-responsive">
                                     {% else %}
-                    <img alt="User Pic" style="width:50px;" src="{{ asset('assets/img/profile.png') }}" width="32" height="32"
+                    <img alt="User Pic" style="width:32px;" src="{{ asset('assets/img/profile.png') }}" width="20" height="20"
                          id="profile-image1" class="img-circle img-responsive">
                 {% endif %}
                 </span>

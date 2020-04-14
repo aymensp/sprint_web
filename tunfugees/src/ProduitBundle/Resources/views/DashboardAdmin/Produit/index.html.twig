@@ -32,18 +32,18 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
-                    <h1><b>Liste des Annonces et Categories</b></h1>
+                    <h1><b>Liste des Produits et Categories</b></h1>
                 </div>
                 <div class="col-md-6 text-right">
                     <br>
                     <a href="{{ path('da_annonce_stat') }}" class="btn btn-info">
                         <i class="fa fa-pie-chart" aria-hidden="true"></i>
-                        Statistique sur les Annonce
+                        Statistique sur les Produits
                     </a>
                     <a href="{{ path('da_annonce_new') }}" class="btn btn-success">
                         <i class="icon-plus">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                            &nbsp;Ajouter une Annonce ou une categorie
+                            &nbsp;Ajouter un Produit ou une categorie
                         </i>
                     </a>
 
@@ -58,7 +58,7 @@
                     data-init-reponsive-tabs="dropdownfx">
                     <li class="nav-item">
                         <a class="active" data-toggle="tab" role="tab" data-target="#annonce" href="#"
-                           aria-expanded="true">Annonce</a>
+                           aria-expanded="true">Produit</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" data-toggle="tab" role="tab" data-target="#categorie" class=""
@@ -107,21 +107,21 @@
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
                                                href="{{ path('da_annonce_edit', { 'id': annonce.idProd }) }}"
-                                               data-toggle="tooltip" title="Editer Annonce">
+                                               data-toggle="tooltip" title="Editer Produit">
                                                 <i class="fa fa-pencil-square-o"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
                                                href="{{ path('da_annonce_delete', { 'id': annonce.idProd }) }}"
-                                               data-toggle="tooltip" title="Supprimer Annonce">
+                                               data-toggle="tooltip" title="Supprimer Produit">
                                                 <i class="fa  fa-trash"></i>
                                             </a>
                                         </div>
                                         <div class="btn-group btn-group-sm btn-group-horizontal">
                                             <a class="btn btn-secondary"
                                                href="{{ path('da_annonce_show', { 'id': annonce.idProd }) }}"
-                                               data-toggle="tooltip" title="Supprimer Categorie">
+                                               data-toggle="tooltip" title="Voir Produit">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
                                         </div>

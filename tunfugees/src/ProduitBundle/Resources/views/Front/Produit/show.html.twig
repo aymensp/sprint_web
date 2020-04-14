@@ -17,66 +17,61 @@
 
 {% endblock %}
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-right" style="margin: 20px 0px;padding: 0">
-                {% if app.user %}
-                <a href="#" class="btn btn-outline-primary text-uppercase">
-                    <i class="fas fa-shopping-cart"></i> Add to cart </a>
-                <a href="{{ path('pdf',{ 'id': annonce.id }) }}" class="btn btn-outline-primary text-uppercase">
-                    <i class="fa fa-file-pdf-o"></i> PDF </a>
-                {% endif %}
-                <a href="{{ path('f_annonce_index') }}" class="btn btn-success">
-                    <i class="fa fa-undo" aria-hidden="true"></i> Retourner à la page d'annonce
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card">
-                <div class="row">
-                    <aside class="col-sm-5 border-right">
-                        <div class="img-big-wrap">
-                            <div>
-                                {% if annonce.photo != '' %}
-                                    <img alt="annonce Pic"
-                                         src="{{ asset('uploads/Produit/photo/' ~ annonce.photo) }}"
-                                         class="img-circle img-responsive">
-                                {% else %}
-                                    <img alt="annonce_Pic" src="{{ asset('assets/img/NA.png') }}"
-                                         id="profile-image1" class="img-circle img-responsive">
-                                {% endif %}
-                            </div>
-                        </div>
-                    </aside>
-                    <aside class="col-sm-7">
-                        <article class="card-body p-5">
-                            <h3 class="title mb-3">{{ annonce.titre |upper }}</h3>
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>shop</h2>
+                <ul class="list-inline">
+                    <li><a href="{{ path('homepage') }}">HOME</a></li>
+                    <li><a href="{{ path('f_annonce_index') }}">shop</a></li>
 
-                            <p class="price-detail-wrap">
-                            <span class="price h3 text-warning">
-                                <span class="currency">DT $</span><span class="num">{{ annonce.prix }}</span>
-                            </span>
-                            </p> <!-- price-detail-wrap .// -->
-                            <dl class="item-property">
-                                <dt>Description</dt>
-                                <dd><p>{{ annonce.description }} </p></dd>
-                            </dl>
-                            <dl class="param param-feature">
-                                <dt>Region</dt>
-                                <dd>{{ annonce.region }}</dd>
-                            </dl>  <!-- item-property-hor .// -->
-                            <dl class="param param-feature">
-                                <dt>Viwes</dt>
-                                <dd>{{ annonce.views }}</dd>
-                            </dl>  <!-- item-property-hor .// -->
-                            <hr>
-                            {% if app.user %}
-                            {{ socialButtons() }}
-                            {% endif %}
-                        </article>
-                    </aside>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
+<div class="shop shopinner">
+    <div class="container">
+        <div class="row">
+<div class="row shopdetail">
+    <div class="col-md-9 col-sm-9 col-xs-12">
+<div class="col-sm-5 col-xs-12">
+        <a href="#"><img src="{{ asset('uploads/Produit/photo/' ~ produit.img) }}" title="thumb image" alt="thumb image" class="img-responsive" /></a>
+
+    </div>
+    <!--thumb image code end-->
+
+    <!--Product detail code start-->
+    <div class="col-sm-7 col-xs-12">
+        <h2>{{ produit.nomprod|upper }}</h2>
+        <div class="prorating">
+            <div class="price pull-left">
+                {{ produit.prix }} DT
+            </div>
+            <p class="pull-right">
+                <span><i class="fa fa-star"></i></span>
+                <span><i class="fa fa-star"></i></span>
+                <span><i class="fa fa-star"></i></span>
+                <span><i class="fa fa-star"></i></span>
+                <span><i class="fa fa-star"></i></span>
+            </p>
+
+        </div>
+        <p class="shortdes">
+            {{ produit.description }}
+        </p>
+        <h6>Ctegory : {{ produit.categorie.libelle }}<span> </span></h6>
+        <div class="common">
+
+            <div class="buttons pull-right">
+                <a href="{{ path('ajout_annonce',{  'id_a' :produit.idprod }) }}" > <button type="button" class="btn-primary">add to cart</button></a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
 {% endblock %}

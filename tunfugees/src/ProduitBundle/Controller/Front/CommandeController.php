@@ -30,7 +30,49 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class CommandeController extends Controller
 {
+    /**
+     * Finds and displays a user entity.
+     *
+     * @Route("/pay/{id_c}", name="payer_commande")
+     * @Method("GET")
+     */
+public function payAction($id_c)
+{
+    $em=$this->getDoctrine()->getManager();
+    $commandes = $em->getRepository('ProduitBundle:Commande')->findAll();
 
+
+    foreach ($commandes as $value)
+    {
+        if($value->getId()==$id_c)
+        {
+            $etat="Payeé";
+            $prix=$value->getPrixtotal();
+            $value->setEtatCommande($etat);
+            $em->persist($value);
+            $em->flush();
+
+            \Stripe\Stripe::setApiKey('sk_test_rR8VRX6Jm99hnqLV1XMHDl3a00EOJxQSqo');
+
+// Token is created using Stripe Checkout or Elements!
+// Get the payment token ID submitted by the form:
+            $token = $_POST['stripeToken'];
+            $charge = \Stripe\Charge::create([
+                'amount' => $prix*100,
+                'currency' => 'usd',
+                'description' => 'Example charge',
+                'source' => $token,
+            ]);
+        }
+
+    }
+    $commandes = $em->getRepository('ProduitBundle:Commande')->findAll();
+    return $this->render('@Produit/Front/Commande/page_index_commande.html.twig', array(
+        'commandes'=> $commandes
+    ));
+
+
+}
     /**
      * Finds and displays a user entity.
      *
@@ -181,7 +223,7 @@ class CommandeController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $commandes = $em->getRepository('ProduitBundle:Commande')->findAll();
-        return $this->render('@Produit/DashboardUser/page_index_commande.html.twig', array(
+        return $this->render('@Produit/Front/Commande/page_index_commande.html.twig', array(
             'commandes'=> $commandes
         ));
     }

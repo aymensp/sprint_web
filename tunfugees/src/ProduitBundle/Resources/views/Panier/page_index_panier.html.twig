@@ -92,8 +92,8 @@
 
                                     <td colspan="2" class="text-center">
                                         <div class="buttons">
-                                            <a href="#" class="btn btn-primary">Update Cart</a>
-                                            <a href="#" class="btn btn-primary">Continue Shopping</a>
+                                            <a href="{{ path('f_annonce_index') }}" class="btn btn-primary">Update Cart</a>
+                                            <a href="{{ path('f_annonce_index') }}" class="btn btn-primary">Continue Shopping</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -108,7 +108,7 @@
                         <div class="col-sm-6">
                             <div class="shipping">
                                 <h2>Calculate shipping</h2>
-                                <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="{{ path('ajout_commande',{ 'id_u': app.user.id ,'prix_total' :tab.somme}) }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <select class="selectpicker form-control bs-select-hidden">
@@ -127,9 +127,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="buttons text-center">
-                                        <input class="btn btn-primary" value="check" type="submit">
-                                    </div>
+
                                 </form>
                             </div>
                         </div>
@@ -157,6 +155,7 @@
                                 <tr>
                                     <td class="text-center" colspan="2"><a href="{{ path('ajout_commande',{ 'id_u': app.user.id ,'prix_total' :tab.somme}) }}" class="btn btn-block btn-primary" >Checkout</a></td>
                                 </tr>
+
                                 </tbody>
                             </table>
                         </div>

@@ -11,17 +11,17 @@
                     <th> Image </th>
                     <th> Titre </th>
                     <th> Description </th>
-                    <th> Prix Annonce  </th>
+                    <th> Prix Produit  </th>
                 </tr>
                 <tbody>
                 {% for a in annonces %}
                     {% for value in liste_ligne %}
                         {% if value.idCommande == tab.id_commande %}
-                            {% if value.idAnnonce == a.id %}
+                            {% if value.idprod == a.idprod %}
                                 <tr>
                                     <td> {% if a.img != '' %}
-                                            <img alt="User Pic" style="width:150px;" width="50" height="50"
-                                                 src="{{ asset('uploads/user/photo/' ~ a.img) }}"
+                                            <img alt="User Pic" style="width:50px;height:50px"
+                                                 src="{{ asset('uploads/Produit/photo/' ~ a.img) }}"
                                                  class="img-circle img-responsive">
                                         {% else %}
                                             <img alt="annonce_Pic" style="width:50px;" src="{{ asset('assets/img/NA.png') }}" width="50" height="50"

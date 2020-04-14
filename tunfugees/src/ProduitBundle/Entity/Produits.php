@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Produits
  *
- * @ORM\Table(name="produits", uniqueConstraints={@ORM\UniqueConstraint(name="nomProd", columns={"nomProd"})})
+ * @ORM\Table(name="produits")
  * @Vich\Uploadable
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="ProduitBundle\Repository\ProduitsRepository")
@@ -32,6 +32,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="nomProd", type="string", length=30, nullable=false)
+     *
+     * @Assert\NotBlank
      */
     private $nomprod;
 
@@ -39,12 +41,14 @@ class Produits
      *
      * @ORM\ManyToOne(targetEntity="Categorie")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id"   )
+     *
      */
     private $categorie;
     /**
      * @var string
      *
      * @ORM\Column(name="nomRef", type="string", length=30, nullable=false)
+     * @Assert\NotBlank
      */
     private $nomref;
 
@@ -58,6 +62,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="img", type="string", length=200, nullable=false)
+     *
+     *
      */
     private $img;
     /**
@@ -70,6 +76,9 @@ class Produits
      * @var integer
      *
      * @ORM\Column(name="prix", type="integer", nullable=false)
+     *
+     * @Assert\NotNull
+     * @Assert\GreaterThan("0")
      */
     private $prix;
 
@@ -84,6 +93,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=200, nullable=false)
+     *
+     * @Assert\NotBlank
      */
     private $description;
 

@@ -83,7 +83,7 @@ class Commande
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getDateEmission()
     {
@@ -91,7 +91,7 @@ class Commande
     }
 
     /**
-     * @param string $dateEmission
+     * @param \DateTim $dateEmission
      */
     public function setDateEmission($dateEmission)
     {

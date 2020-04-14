@@ -62,6 +62,7 @@
       <path value="$PROJECT_DIR$/vendor/nomaya/social-bundle" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-json" />
       <path value="$PROJECT_DIR$/vendor/ob/highcharts-bundle" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZXfUx80ZG1j6k47f5Ksqz6rrwc" />
@@ -73,16 +74,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../espritclub" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PI" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\tunfugees\vendor" />
+      <recent name="C:\wamp64\www\tunfugees\web\bundles" />
       <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Resources\views\Front\Commande" />
       <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Resources\views\DashboardAdmin\Produit" />
       <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Form" />
-      <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Resources\views" />
-      <recent name="C:\wamp64\www\tunfugees\src\ProduitBundle\Resources\views\DashboardAdmin\Commande" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -130,6 +131,10 @@
       <workItem from="1585624709284" duration="6965000" />
       <workItem from="1585682116313" duration="27815000" />
       <workItem from="1585906512986" duration="387000" />
+      <workItem from="1586114565648" duration="618000" />
+      <workItem from="1586133269611" duration="22538000" />
+      <workItem from="1586682848278" duration="9781000" />
+      <workItem from="1586770659420" duration="7503000" />
     </task>
     <servers />
   </component>
@@ -157,11 +162,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="407" y="243" key="ComposerCompositePathDialog/0.0.1366.728@0.0.1366.728" timestamp="1584991065195" />
-    <state x="433" y="99" key="FileChooserDialogImpl" timestamp="1585906594926">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="462" y="106" key="FileChooserDialogImpl" timestamp="1586777928273">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="433" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585906594926" />
-    <state x="462" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585159268338" />
+    <state x="462" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586777928273" />
     <state width="1323" height="75" key="GridCell.Tab.0.bottom" timestamp="1585374700843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -182,10 +187,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="288" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1585372997533" />
-    <state x="184" y="7" key="SettingsEditor" timestamp="1585365838614">
+    <state x="184" y="7" key="SettingsEditor" timestamp="1586133578201">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1585365838614" />
+    <state x="184" y="7" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586133578201" />
     <state x="450" y="267" key="SymfonyPathDialog" timestamp="1584991117843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
