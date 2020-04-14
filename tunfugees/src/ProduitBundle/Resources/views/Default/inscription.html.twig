@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Inscription
+{% endblock %}
+{% block body %}
+    <br>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card card-borderless">
+                <ul class="nav nav-tabs nav-tabs-simple hidden-sm-down" role="tablist"
+                    data-init-reponsive-tabs="dropdownfx">
+                    <li class="nav-item active">
+                        <a class="active" href="#" data-toggle="tab" role="tab" data-target="#user"
+                           aria-expanded="false">user</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="tab" role="tab" data-target="#reparateur" href="#" class=""
+                           aria-expanded="true">reparateur</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="user" aria-expanded="false">
+                        {{ form_start(formUser) }}
+                        {% form_theme formUser 'bootstrap_3_layout.html.twig' %}
+                        {{ form_widget(formUser) }}
+                        <button type="submit" class="btn btn-success" value="Create">
+                            <i class="fa fa-check" aria-hidden="true"></i> Confirmer
+                        </button>
+                        {{ form_end(formUser) }}
+                    </div>
+                    <div class="tab-pane" id="reparateur" aria-expanded="true">
+                        {{ form_start(formRep) }}
+                        {% form_theme formRep 'bootstrap_3_layout.html.twig' %}
+                        {{ form_widget(formRep) }}
+                        <button type="submit" class="btn btn-success" value="Create">
+                            <i class="fa fa-check" aria-hidden="true"></i> Confirmer
+                        </button>
+                        {{ form_end(formRep) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

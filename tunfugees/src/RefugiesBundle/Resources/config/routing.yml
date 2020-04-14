@@ -1,0 +1,3 @@
+refugies_homepage:
+    path:     /
+    defaults: { _controller: RefugiesBundle:Default:index }
