@@ -1,0 +1,87 @@
+{% extends './Default/dashboard.html.twig' %}
+
+{% block body %}
+
+<!-- Main content -->
+   <div class="card card-primary">
+    <div class="col-md-6">
+        <h1><b>Manage Category</b></h1>
+    </div>
+       <div class="col-md-6 text-right">
+           <br>
+           <a href="{{ path('showCateg') }}" class="btn btn-info">
+               <i class="fa fa-pie-chart" aria-hidden="true"></i>
+               &nbsp;Liste des categories
+           </a>
+           <a href="listmessages" class="btn btn-success">
+               <i class="icon-plus">
+                   <i class="fa fa-plus" aria-hidden="true"></i>
+                   &nbsp;Liste des reclamations
+               </i>
+           </a>
+
+       </div>
+
+
+    <!-- /.card-header -->
+    <!-- form start -->
+    <div class="card-body">
+
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0" style="height: 400px;">
+                        <table class="table table-head-fixed text-nowrap">
+                            <thead>
+                            <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <th>Label</th>
+                                <th>Action</th>
+
+                            </tr>
+                            {%  for car in car %}
+                            </tbody>
+                            <tbody>
+                            <tr>
+                                <td>{{ car.id }}
+                                </td>
+                                <td>{{ car.label }}</td>
+
+                                <td> <a href="{{ path('editCateg',{'id':car.id}) }}'" class="btn btn-success"> Edit</a></td>
+                                <td><a href="{{ path('deleteCateg',{'qdt':car.id}) }}'"class="btn btn-danger">Delete</a></td>
+                                <td><a href="addCateg"class="btn btn-danger">Ajouter</a></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            <thead>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+<!-- /.content -->
+{% endblock %}

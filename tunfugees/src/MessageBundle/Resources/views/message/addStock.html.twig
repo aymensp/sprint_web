@@ -1,0 +1,78 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block body %}
+
+<!-- bread-crumb end here -->
+
+<!-- contactus start here -->
+<div class="contactus">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+
+</html>
+
+</div>
+            <div class="col-sm-8 col-xs-12">
+                <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="form-group">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="listmessagesStock"   class="btn btn-news"><span class="title"><h3>Cliquer ici pour voir toutes la liste des stocks</h3></span></a>
+
+                            <div class="form-group has-error">
+                                <br> <br><br><br><br>
+                                {{ form_start(form) }}
+                                <br><br><br>
+                                {{ form_widget(form.title,{'attr':{'type':'text','class':'form-control','placeholder':'Title...'}}) }}
+                                <br> <br>
+
+                                {{ form_widget(form.category,{'attr':{'type':'text','class':'form-control','placeholder':'category...'}}) }}
+                                <br> <br><br><br>
+                                {{ form_widget(form.description,{'attr':{'type':'text','class':'form-control','placeholder':'Quantite...'}}) }}
+                                <br> <br>
+                                {{ form_widget(form.photo,{'attr':{'type':'text','class':'form-control','placeholder':'photo...'}}) }}
+                                <br> <br>
+                                   {{ form_widget(form.Submit,{'attr':{'type':'text','class':'btn btn-primary','placeholder':'Submit...'}}) }}
+                                <br> <br>
+                                {{ form_end(form) }}
+                                <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+
+                            </div>
+                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                            <br><br><br>
+
+                            <div class="alert alert-warning" role="alert">
+                                <h3>
+                                    In order to send a message to the administration you need to be connected, if you are not
+                                    you can join us by clicking <a href="{{ path('fos_user_registration_register') }}">HERE</a>
+                                    Or if you already have an account click <a href="{{ path('fos_user_security_login') }}" >HERE</a> to connect !
+                                </h3>
+
+                            </div>
+                        {% endif %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- contactus end here -->
+
+
+<!-- footer end here -->
+
+<!-- jquery -->
+<script src="js/jquery.2.1.1.min.js" type="text/javascript"></script>
+<!-- bootstrap js -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--bootstrap select-->
+<script src="js/dist/js/bootstrap-select.js" type="text/javascript"></script>
+<!-- owlcarousel js -->
+<script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+<!--internal js-->
+<script src="js/internal.js" type="text/javascript"></script>
+</body>
+
+<!-- Mirrored from wptheme.co.in/charity/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Mar 2020 18:21:54 GMT -->
+</html>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends './Default/dashboard.html.twig' %}
+
+{% block body %}
+
+
+<!-- Main content -->
+<div class="card card-primary">
+    <div class="card-header">
+        <h1><b>Edit Category Name</b></h1>
+
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <div class="card-body">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <div class="form-group has-error">
+                <br>
+                {{ form_start(form) }}
+                <br>
+                {{ form_widget(form.label,{'attr':{'type':'text','class':'form-control','placeholder':'label...'}}) }}
+                <br><br>
+                {{ form_widget(form.Submit,{'attr':{'type':'text','class':'btn btn-common','placeholder':'Save...'}}) }}
+                {{ form_end(form) }}
+            </div>
+        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+            <br><br><br>
+
+            <div class="alert alert-warning" role="alert">
+                <h3>
+                    In order to send a message to the administration you need to be connected, if you are not
+                    you can join us by clicking <a href="{{ path('fos_user_registration_register') }}">HERE</a>
+                    Or if you already have an account click <a href="{{ path('fos_user_security_login') }}" >HERE</a> to connect !
+                </h3>
+
+            </div>
+        {% endif %}
+
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+
+{% endblock %}

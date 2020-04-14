@@ -1,0 +1,56 @@
+{% extends './Default/dashboard.html.twig' %}
+
+{% block body %}
+
+    <!-- Main content -->
+    <div class="card card-primary">
+        <div class="col-md-6">
+            <h1><b>Add  Category</b></h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <br>
+            <a href="showCateg" class="btn btn-info">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                &nbsp;Liste des categories
+            </a>
+
+            <a href="listmessages" class="btn btn-success">
+                <i class="icon-plus">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    &nbsp;Liste des reclamations
+                </i>
+            </a>
+
+        </div>
+
+
+        <!-- /.card-header -->
+        <!-- form start -->
+        <div class="card-body">
+
+
+            {{ form_start(Form) }}
+            <div class="form-group has-error">
+                <br><br><br>
+                <div class="form-group">
+                    <br>
+                    <div class="form-control">
+
+                        {{ form_row(Form.label) }}
+
+
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success"
+                    tn btn-primary">Add Category</button>
+            <br><br><br><br><br><br><br><br><br><br>
+            {{ form_end(Form) }}
+
+
+        </div>
+    </div>
+    <!-- /.content -->
+
+{% endblock %}

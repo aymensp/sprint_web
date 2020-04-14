@@ -1,0 +1,82 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block body %}
+<!-- /.card-header -->
+<div class="card-body table-responsive p-0" style="height: 350px;">
+    <table class="table table-head-fixed text-nowrap">
+        <thead>
+        </thead>
+
+        <tr>
+            <th>{{ knp_pagination_sortable(res,'ID','bp.id') }}</th>
+            <th>Title</th>
+            <th>User</th>
+            <th>Photo</th>
+            <th>Description</th>
+            <th>{{ knp_pagination_sortable(res,'Date','bp.postdate') }}</th>
+            <th>Action</th>
+        </tr>
+        <tr align="right">
+            {% for r in res %}
+        <tr>
+
+            <td> {{ r.id }}</td>
+
+
+            <td>{{  r.title}} </td>
+
+            <td>{{  r.createur}} </td>
+
+            <td><figure><img  style="height: 60x" width="60" src="{{ asset('imagesrec/'~(r.photo) ) }}" ></td>
+            <td>{{ r.description}}</td>
+
+            <td> {{ r.postdate|date() }} </td>
+
+
+            <td> <a href="{{ path('updateMessage',{'id':r.id}) }}'" class="btn btn-success"> Edit</a></td>
+            <td><a href="{{ path('deleteMessage',{'id':r.id}) }}'"class="btn btn-danger">Delete</a></td>
+            <td><a href="reponse"class="btn btn-danger">Repondre</a></td>
+            <td><a href=""class="btn btn-danger">Envoyer Mail</a></td>
+
+
+        </tr>
+        </thead>
+        {% endfor %}
+
+    </table>
+
+
+
+
+
+</div>
+<!-- /.card-body -->
+
+
+<!-- /.card -->
+<div class="navigation">
+    {{ knp_pagination_render(res) }}
+</div>
+
+
+    <div class="container">
+        <button type="button" class=" btn btn-rounded btn-dark">
+            <a href="{{ path('pdf', {'id': 'x'}) }}">PDF</a>
+        </button>
+    </div>
+
+    <br>
+    <div class="container">
+        <button type="button" class=" btn btn-rounded btn-dark">
+            <a href="{{ path('listerMessagedown') }}">ORDER BY DATE DOWN</a>
+        </button>
+    </div>
+<br>
+
+    <div class="container">
+        <button type="button" class=" btn btn-rounded btn-dark">
+            <a href="{{ path('listerMessageup') }}">ORDER BY DATE UP</a>
+        </button>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+<!-- bread-crumb end here -->
+
+<!-- contactus start here -->
+<div class="contactus">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <h1>This is our Location! </h1>
+
+                <style>
+                    /* Set the size of the div element that contains the map */
+                    #map {
+                        height: 500px;  /* The height is 400 pixels */
+                        width: 100%;  /* The width is the width of the web page */
+                    }
+                </style>
+
+
+
+
+                <div id="map"></div> <br/>
+
+                <script>
+                    // Initialize and add the map
+                    function initMap() {
+                        // The location of Uluru
+                        var uluru = {lat: 	36.862499, lng: 	10.195556};
+
+                        // The map, centered at Uluru
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {zoom: 6, center: uluru});
+                        // The marker, positioned at Uluru
+                        var marker = new google.maps.Marker({position: uluru, map: map});
+                    }
+
+                </script>
+                <!--Load the API from the specified URL
+                * The async attribute allows the browser to render the page while the API loads
+                * The key parameter will contain your own API key (which is not needed for this tutorial)
+                * The callback parameter executes the initMap() function
+                -->
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD019NOvfWgsMxDxctf6mQycsYuXb_JCEo&callback=initMap">
+                </script>
+
+
+</html>
+
+</div>
+            <div class="col-sm-8 col-xs-12">
+                <h6>Send your <span>Query</span></h6>
+                <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="form-group">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="listm"   class="btn btn-news"><span class="title"><h3>Cliquer ici pour voir toutes les reclamations</h3></span></a>
+
+                            <div class="form-group has-error">
+                                <br> <br><br><br><br>
+                                {{ form_start(form) }}
+                                <br><br><br>
+                                {{ form_widget(form.title,{'attr':{'type':'text','class':'form-control','placeholder':'Title...'}}) }}
+                                <br> <br>
+
+                                {{ form_widget(form.category,{'attr':{'type':'text','class':'form-control','placeholder':'category...'}}) }}
+                                <br> <br><br><br>
+                                {{ form_widget(form.description,{'attr':{'type':'textarea','class':'form-control','placeholder':'Description...'}}) }}
+                                <br> <br>
+                                {{ form_widget(form.photo,{'attr':{'type':'text','class':'form-control','placeholder':'photo...'}}) }}
+                                <br> <br>
+                                   {{ form_widget(form.Submit,{'attr':{'type':'text','class':'btn btn-primary','placeholder':'Submit...'}}) }}
+                                <br> <br>
+                                {{ form_end(form) }}
+                                <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+
+                            </div>
+                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                            <br><br><br>
+
+                            <div class="alert alert-warning" role="alert">
+                                <h3>
+                                    In order to send a message to the administration you need to be connected, if you are not
+                                    you can join us by clicking <a href="{{ path('fos_user_registration_register') }}">HERE</a>
+                                    Or if you already have an account click <a href="{{ path('fos_user_security_login') }}" >HERE</a> to connect !
+                                </h3>
+
+                            </div>
+                        {% endif %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- contactus end here -->
+
+<!-- newsletter start here -->
+<div id="newsletter">
+    <div class="container">
+        <div class="row">
+            <div id="subscribe">
+                <form class="form-horizontal" name="subscribe">
+                    <div class="col-sm-5">
+                        <span class="news">subscriber for newsletter</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis lorem augue, at dapibus quam finibus eget.</p>
+                    </div>
+                    <div class="col-sm-5 form-group">
+                        <input class="form-control " value="" name="subscribe_email" id="subscribe_email" placeholder="Enter your email address" type="text">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <button class="btn btn-news" type="submit" value="submit">Subscribe now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- newsletter end here -->
+
+
+<!-- footer start here -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 about">
+                <img src="images/logo.png" class="img-responsive" alt="logo" title="logo" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis lorem augue, at dapibus quam finibus eget. Donec viverra aliquet ex...</p>
+                <ul class="list-unstyled contact">
+                    <li><a href="contact.html"><i class="fa fa-map-marker"></i> 123,Jolo AV. Ludhiana, India.</a></li>
+                    <li><a href="contact.html"><i class="fa fa-phone"></i>(123) 456 7890</a></li>
+                    <li><a href="contact.html"><i class="fa fa-envelope"></i>Example@gmail.com</a></li>
+                </ul>
+                <ul class="list-inline social">
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="https://plus.google.com/" target="_blank"><i class="social_googleplus" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank"><i class="social_youtube"></i></a></li>
+                    <li><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 info">
+                <h5>Usefull Links</h5>
+                <hr>
+                <ul class="list-unstyled links">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="our-donators.html">Our Donators</a></li>
+                    <li><a href="our-volunteer.html">Volunteers</a></li>
+                    <li><a href="our-events.html">Our Events</a></li>
+                    <li><a href="make-an-donation.html">Make An Donation</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+                <h5>Donations</h5>
+                <hr>
+                <ul class="list-unstyled links">
+                    <li><a href="make-an-donation.html">How To Donate</a></li>
+                    <li><a href="make-an-donation.html">Donation List</a></li>
+                    <li><a href="our-causes.html">Recent Causes</a></li>
+                    <li><a href="become-a-volunteers.html">Become A Volunteers</a></li>
+                    <li><button type="button" class="btn-primary" onclick="location.href='make-an-donation.html'">donate now!</button></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+                <h5>Recent Posts</h5>
+                <hr>
+                <ul class="list-unstyled recent">
+                    <li>
+                        <a href="blog.html"><i class="fa fa-caret-right"></i><p>How you can import your customers?</p>
+                            <span>Just Now</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html"><i class="fa fa-caret-right"></i><p>How you can import your customers?</p>
+                            <span>2 Hour ago</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html"><i class="fa fa-caret-right"></i><p>How you can import your customers?</p>
+                            <span>10 Hour ago</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html"><i class="fa fa-caret-right"></i><p>How you can import your customers?</p>
+                            <span>2 Days ago</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="powered">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <p>© 2017 <span>The Charity plus</span>. All rights reserved. Theme by <span>TMD Studio</span></p>
+                </div>
+                <div class="col-sm-6 col-xs-12 text-right">
+                    <ul class="list-inline">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li><a href="our-causes.html">Causes</a></li>
+                        <li><a href="our-events.html">Events</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer end here -->
+
+<!-- jquery -->
+<script src="js/jquery.2.1.1.min.js" type="text/javascript"></script>
+<!-- bootstrap js -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--bootstrap select-->
+<script src="js/dist/js/bootstrap-select.js" type="text/javascript"></script>
+<!-- owlcarousel js -->
+<script src="js/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+<!--internal js-->
+<script src="js/internal.js" type="text/javascript"></script>
+</body>
+
+<!-- Mirrored from wptheme.co.in/charity/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Mar 2020 18:21:54 GMT -->
+</html>
+{% endblock %}

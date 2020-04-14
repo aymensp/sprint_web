@@ -1,0 +1,39 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block body %}
+
+<!-- Main content -->
+<div class="card card-primary">
+    <div class="card-header">
+        <h1><b>Add  Message</b></h1>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <div class="card-body">
+
+
+        {{ form_start(form) }}
+        <div class="card-body">
+            <br><br><br>
+            <div class="form-group">
+                <br>
+                <div class="form-control">
+
+                    {{ form_row(form.description) }}
+
+
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Response</button>
+        <br><br><br><br><br><br><br><br><br><br>
+        {{ form_end(form) }}
+
+
+    </div>
+</div>
+<!-- /.content -->
+</div>
+
+
+{% endblock %}
