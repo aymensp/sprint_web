@@ -182,9 +182,13 @@
                         <span class="bg-success  icon-thumbnail">Recl</span>
                     {% endif %}
                 </li>
+
             <li class="" style="padding: 10px 5px;">
-                <a href="#"><span class="title">Stock</span></a>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('addCatStock') }}" class="detailed"><span class="title">Stock</span></a>
                 <span class=" bg-success  icon-thumbnail">Stk</span>
+                {% endif %}
+
             </li>
                     <li>
                         <a href="#"><span class="title" >Commandes</span></a>

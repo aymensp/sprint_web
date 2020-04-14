@@ -11,7 +11,7 @@
             <th>Title</th>
             <th>User</th>
             <th>Photo</th>
-            <th>Description</th>
+            <th>Quantite</th>
             <th>{{ knp_pagination_sortable(res,'Date','bp.postdate') }}</th>
             <th>Action</th>
         </tr>
@@ -32,10 +32,8 @@
             <td> {{ r.postdate|date() }} </td>
 
 
-            <td> <a href="{{ path('updateMessage',{'id':r.id}) }}'" class="btn btn-success"> Edit</a></td>
-            <td><a href="{{ path('deleteMessage',{'id':r.id}) }}'"class="btn btn-danger">Delete</a></td>
-            <td><a href="reponse"class="btn btn-danger">Repondre</a></td>
-            <td><a href=""class="btn btn-danger">Envoyer Mail</a></td>
+            <td> <a href="{{ path('updateMessageStock',{'id':r.id}) }}'" class="btn btn-success"> Edit</a></td>
+            <td><a href="{{ path('deletemessageStock',{'id':r.id}) }}'"class="btn btn-danger">Delete</a></td>
 
 
         </tr>
@@ -60,23 +58,8 @@
 
     <div class="container">
         <button type="button" class=" btn btn-rounded btn-dark">
-            <a href="{{ path('pdf', {'id': 'x'}) }}">PDF</a>
+            <a href="">PDF</a>
         </button>
     </div>
-
-    <br>
-    <div class="container">
-        <button type="button" class=" btn btn-rounded btn-dark">
-            <a href="{{ path('listerMessagedown') }}">ORDER BY DATE DOWN</a>
-        </button>
-    </div>
-<br>
-
-    <div class="container">
-        <button type="button" class=" btn btn-rounded btn-dark">
-            <a href="{{ path('listerMessageup') }}">ORDER BY DATE UP</a>
-        </button>
-    </div>
-
 
 {% endblock %}

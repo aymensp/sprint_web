@@ -3,13 +3,47 @@ message_homepage:
     defaults: { _controller: MessageBundle:Default:index }
 
 
+pdf:
+    path:     /pdf
+    defaults: { _controller: MessageBundle:Message:generate_pdfs }
+
+
+
 addMessage:
     path:     /messageus
     defaults: { _controller: MessageBundle:Message:addmessage}
 
+
+addStock:
+    path:     /addStock
+    defaults: { _controller: MessageBundle:Message:addStock}
+
+pdfs:
+    path:     /pdfs
+    defaults: { _controller: MessageBundle:Message:generate_pdfs }
+
+
 listerMessage:
     path:     /listmessages
     defaults: { _controller: MessageBundle:Message:listmessages}
+
+
+
+listerMessagedown:
+    path:     /listmessagesdown
+    defaults: { _controller: MessageBundle:Message:listmessagesdown}
+
+
+listerMessageup:
+    path:     /listmessagesup
+    defaults: { _controller: MessageBundle:Message:listmessagesup }
+
+
+
+listmessagesStock:
+    path:     /listmessagesStock
+    defaults: { _controller: MessageBundle:Message:listmessagesStock}
+
 
 
 listmessagesuser:
@@ -23,22 +57,66 @@ updateMessage:
     path:     /updatemessage/{id}
     defaults: { _controller: MessageBundle:Message:updatemessage }
 
+
+
+updateMessageStock:
+    path:     /updatemessageStock/{id}
+    defaults: { _controller: MessageBundle:Message:updatemessageStock }
+
+
 deleteMessage:
     path:     /deletemessage/{id}
     defaults: { _controller: MessageBundle:Message:deletemessage }
+
+
+
+
 addCat:
     path:     /addCateg
     defaults: { _controller: MessageBundle:Message:addCat }
+
+addCatStock:
+    path:     /addCategStock
+    defaults: { _controller: MessageBundle:Message:addCatStock }
+
 showCateg:
     path:     /showCateg
     defaults: { _controller: MessageBundle:Message:manCat }
 
+
+showCategStock:
+    path:     /showCategStock
+    defaults: { _controller: MessageBundle:Message:manCatStock }
+
+
+
 editCateg:
     path:     /editCateg/{id}
     defaults: { _controller: MessageBundle:Message:editCat }
+
+editCategStock:
+    path:     /editCategStock/{id}
+    defaults: { _controller: MessageBundle:Message:editCatStock }
+
 deleteCateg:
     path:     /deleteCateg/{qdt}
     defaults: { _controller: MessageBundle:Message:deleteCat }
+
+
+
+deleteCategStock:
+    path:     /deleteCategStock/{qdt}
+    defaults: { _controller: MessageBundle:Message:deleteCatStock }
+
+
+deletemessageStock:
+    path:     /deletemessageStock/{id}
+    defaults: { _controller: MessageBundle:Message:deletemessageStock }
+
+
+
+
+
 search:
     path:     /search
     defaults: { _controller: MessageBundle:Message:search }

@@ -9,7 +9,6 @@
 
         <tr>
             <th>Title</th>
-            <th>User</th>
             <th>Photo</th>
             <th>Description</th>
             <th>{{ knp_pagination_sortable(res,'Date','bp.postdate') }}</th>
@@ -23,7 +22,6 @@
 
             <td>{{  r.title}} </td>
 
-            <td>{{  r.createur}} </td>
 
             <td><figure><img  style="height: 60x" width="60" src="{{ asset('imagesrec/'~(r.photo) ) }}" ></td>
             <td>{{ r.description}}</td>
@@ -53,6 +51,9 @@
 <div class="navigation">
     {{ knp_pagination_render(res) }}
 </div>
+
+
+
 
 
 {% endblock %}
