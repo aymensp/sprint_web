@@ -128,83 +128,71 @@
         <ul class="menu-items">
             <li class="" style="padding: 10px 5px;">
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('da_annonce_index') }}" class="detailed"><span class="title">Annonces</span></a>
-                    <span class="{% if path('da_annonce_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Ano</span>
-                {% else %}
-                    <a href="#" class="detailed"><span class="title">Annonces</span></a>
-                    <span class="bg-success  icon-thumbnail">Ano</span>
-                {% endif %}
+                    <a href="{{ path('da_annonce_index') }}" class="detailed"><span class="title">Produits</span></a>
+                    <span class="{% if path('da_annonce_index') == currentPath %} bg-success {% endif %} icon-thumbnail">Pro</span>
+
+
             </li>
+
             <li class="" style="padding: 10px 5px;">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="#" class="detailed"><span class="title">Réparation</span></a>
-                    <span class=" bg-success  icon-thumbnail">Rép</span>
-                {% else %}
-                    <a href="#" class="detailed"><span class="title">Réparation</span></a>
-                    <span class="bg-success icon-thumbnail">Rép</span>
-                {% endif%}
-            </li>
-            <li class="" style="padding: 10px 5px;">
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="#" class="detailed"><span class="title">Recyclages</span></a>
-                    <span class=" bg-success  icon-thumbnail">Recy</span>
-                {% else %}
-                    <a href="#" class="detailed"><span class="title">Recyclages</span></a>
-                    <span class=" bg-success  icon-thumbnail">Recy</span>
-                {% endif %}
-            </li>
-            <li class="" style="padding: 10px 5px;">
-                {% if is_granted('ROLE_ADMIN') %}
+
                     <a href="#"><span class="title">Evénements</span></a>
                     <span class=" bg-success  icon-thumbnail">Evt</span>
-                {% else %}
-                    <a href="#"><span class="title">Evénements</span></a>
-                    <span class="bg-success icon-thumbnail">Evt</span>
-                {% endif %}
+
+            </li>
+            <li class="" style="padding: 10px 5px;">
+
+                <a href="#" class="detailed"><span class="title">Volantaires</span></a>
+                <span class=" bg-success  icon-thumbnail">Vol</span>
+
+
+            </li>
+            <li class="" style="padding: 10px 5px;">
+
+                <a href="#" class="detailed"><span class="title">Donneurs</span></a>
+                <span class=" bg-success  icon-thumbnail">Don</span>
+
+
             </li>
 
-            {% if is_granted('ROLE_ADMIN') %}
                 <li class="" style="padding: 10px 5px;">
-                    <a href="#"><span class="title">Forum</span></a>
-                    <span class="bg-success icon-thumbnail">Frm</span>
-                </li>
-            {% else %}
-                <li class="" style="padding: 10px 5px;">
-                    <a href="#"> <span class="title">Forum</span></a>
-                    <span class="bg-success icon-thumbnail">Forum</span>
-                </li>
-                <li class="" style="padding: 10px 5px;">
-                    <a href=""><span class="title" style="width: 95%;">Commandes</span></a>
-                    <span class="bg-success  icon-thumbnail">cmd</span>
+                    <a href="#"><span class="title">Causes</span></a>
+                    <span class="bg-success icon-thumbnail">Cau</span>
                 </li>
 
                 <li class="" style="padding: 10px 5px;">
-                    <a href="#"><span class="title" style="width: 95%;">Livraison</span></a>
-                    <span class=" bg-success  icon-thumbnail">Lvr</span>
+                    <a href="#"><span class="title" style="width: 95%;">Annonces</span></a>
+                    <span class=" bg-success  icon-thumbnail">Ano</span>
                 </li>
-            {% endif %}
-
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="" style="padding: 10px 5px;">
-                    <a href="#"><span class="title" style="width: 95%;">Groupes / Sociétés</span></a>
-                    <span class=" bg-success  icon-thumbnail">Grp</span>
-                </li>
+            <li class="" style="padding: 10px 5px;">
+                <a href="#"><span class="title" style="width: 95%;">Sponseurs</span></a>
+                <span class=" bg-success  icon-thumbnail">Ano</span>
+            </li>
                 <li class="" style="padding: 10px 5px;">
                     <a href="#"><span class="title">Utilisateur</span></a>
                     <span class=" bg-success  icon-thumbnail">User</span>
                 </li>
                 <li class="" style="padding: 10px 5px;">
-                    <a href="#"><span class="title">Signalisation</span></a>
-                    <span class=" bg-success  icon-thumbnail">Sign</span>
+                    <a href="#"><span class="title">Reclamation</span></a>
+                    <span class=" bg-success  icon-thumbnail">Recl</span>
                 </li>
+            <li class="" style="padding: 10px 5px;">
+                <a href="#"><span class="title">Stock</span></a>
+                <span class=" bg-success  icon-thumbnail">Stk</span>
+            </li>
                     <li>
-                        <a href="#"><span class="title" >Commandes</span></a>
-                        <span class=" bg-success  icon-thumbnail">Cmd</span>
+                        <a href="{{ path('da_show_commande') }}"><span class="title" >Commandes</span></a>
+                        <span class="{% if path('da_show_commande') == currentPath %}bg-success{% endif %} icon-thumbnail">Cmd</span>
                     </li>
                     <li class="" style="padding: 10px 5px;">
-                        <a href="#"><span class="title">Livraisons</span></a>
-                        <span class=" bg-success  icon-thumbnail">Lvr</span>
+                        <a href="#"><span class="title">Camps</span></a>
+                        <span class=" bg-success  icon-thumbnail">Cmp</span>
                     </li>
+            <li class="" style="padding: 10px 5px;">
+                <a href="#"><span class="title">Refugies</span></a>
+                <span class=" bg-success  icon-thumbnail">Ref</span>
+            </li>
+
             {% endif %}
 
         </ul>
@@ -230,7 +218,7 @@
             <div class="dropdown pull-right">
                 <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="thumbnail-wrapper d32 circular inline sm-m-r-5">
-                <img src="{{ asset('assets/img/profiles/avatar.jpg') }}" alt="" width="32" height="32">
+                <img src="{{ asset('uploads/user/photo/' ~ app.user.photo) }}" alt="" width="32" height="32">
                 </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
