@@ -1,0 +1,175 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Events list
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+
+    <style>
+        .eya {
+            height:  140px;
+            padding: 0px;
+            width:   40%;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var annonce = $('#evtsTab').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><b>Events list
+                        </b></h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <br>
+                    <a href="{{ path('ajouter')}}" class="btn btn-success">
+                        <i class="icon-plus">
+                            <i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Add an event
+
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="card card-borderless">
+                <ul class="nav nav-tabs nav-tabs-simple hidden-sm-down" role="tablist"
+                    data-init-reponsive-tabs="dropdownfx">
+                    <li class="nav-item">
+                        <a class="active" data-toggle="tab" role="tab" data-target="#evts" href="#"
+                           aria-expanded="true">Events</a>
+                    </li>
+                    <li class="nav-item">
+
+                    </li>
+                </ul>
+                <div class="tab-content" >
+                    <div class="tab-pane active" id="evts" aria-expanded="true">
+
+                        <table id="evtsTab" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <div class="col-sm-6"><div id="evts_filter" class="dataTables_filter">
+
+                                </div>
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Address</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Numbres</th>
+                                    <th>Image</th>
+
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <thead>
+                                <tbody>
+                                {% for i in events %}
+                                    <tr class="event">
+
+                                        <td>
+                                            {{ i.nomEvent }}
+                                        </td>
+                                        <td>{{ i.adresse }}</td>
+                                        <td>{{ i.date|date}}</td>
+                                        <td>{{ i.description }}</td>
+                                        <td>{{ i.nbrMax }}</td>
+                                        <td>
+
+                                            <img src={{ asset('uploads/event/image/'~i.image) }} class="eya" alt="image" title="image"/>
+
+                                        </td>
+
+
+                                        <td>
+
+
+
+
+                                            <div class="btn-group btn-group-sm btn-group-horizontal">
+                                                <a href="{{ path('deleteEvent', { 'id': i.id }) }}" class="btn btn-danger"
+                                                   data-toggle="tooltip" title="Remove">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+
+                                            <div class="btn-group btn-group-sm btn-group-horizontal">
+                                                <a class="btn btn-secondary"
+                                                   href="{{ path('edit', { 'id': i.id }) }}"
+                                                   data-toggle="tooltip" title="Edit">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+
+                                            </div>
+                                            <div class="btn-group btn-group-sm btn-group-horizontal">
+                                                <a  href="{{ path('description', { 'id': i.id }) }}" class="btn btn-default"
+
+                                                    data-toggle="tooltip" title="View">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+
+                                        </td>
+                                        </a>
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

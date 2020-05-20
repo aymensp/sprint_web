@@ -44,9 +44,9 @@ class Commande
     private $idUtilisateur;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="prixTotal", type="integer", nullable=false)
+     * @ORM\Column(name="prixTotal", type="float", nullable=false)
      */
     private $prixtotal;
 
@@ -115,7 +115,7 @@ class Commande
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getPrixtotal()
     {
@@ -123,7 +123,7 @@ class Commande
     }
 
     /**
-     * @param int $prixtotal
+     * @param float $prixtotal
      */
     public function setPrixtotal($prixtotal)
     {

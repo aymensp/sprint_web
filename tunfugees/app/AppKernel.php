@@ -22,7 +22,13 @@ class AppKernel extends Kernel
             new ProduitBundle\ProduitBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new EventBundle\EventBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+            new RefugiesBundle\RefugiesBundle(),
+            new CampsBundle\CampsBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
 
 
             new MessageBundle\MessageBundle(),

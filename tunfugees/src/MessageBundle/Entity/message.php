@@ -84,21 +84,7 @@ class message
         $this->createur = $createur;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
 
-    /**
-     * @param mixed $comments
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-    }
 
 
 

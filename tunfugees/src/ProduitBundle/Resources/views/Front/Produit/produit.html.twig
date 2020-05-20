@@ -9,25 +9,7 @@ Produits
 
 {% block javascripts %}
     <script src="{{ asset('assets/js/jquery.js') }}" type="text/javascript"></script>
-    <script>
-        $(document).ready(function () {
-            $(".jaime").click(function () {
-                var idProd = $(this).val();
-                $.ajax({
-                    dataType: "json",
-                    url: "{{ path("f_annonce_jaime") }}",
-                    data: {
-                        "Id": idProd
-                    },
-                    success: function (data) {
-                        $(".jaime").hide();
-                        $(".dislike").show();
 
-                    }
-                });
-            });
-        });
-    </script>
     <script>
         $(document).ready(function () {
             $(".keyWord").keyup(function () {
@@ -46,7 +28,7 @@ Produits
         });
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
 {% endblock %}
 {% block body %}
     <div class="bread-crumb">
@@ -70,7 +52,7 @@ Produits
                         <form role ="form" class="form-horizontal search" >
 
                                 <div class="form-group">
-                                    <input  class="form-control" type="search" placeholder="Search">
+                                    <input  class="keyWord form-control" type="search" placeholder="Search">
                                 </div>
 
 

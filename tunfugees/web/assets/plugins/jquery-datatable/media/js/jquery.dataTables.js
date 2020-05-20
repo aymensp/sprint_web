@@ -98,9 +98,9 @@
 	//  _selector_row_indexes
 	
 	var _ext; // DataTable.ext
-	var _Api; // DataTable.Api
-	var _api_register; // DataTable.Api.register
-	var _api_registerPlural; // DataTable.Api.registerPlural
+	var _Api; // DataTable.API
+	var _api_register; // DataTable.API.register
+	var _api_registerPlural; // DataTable.API.registerPlural
 	
 	var _re_dic = {};
 	var _re_new_lines = /[\r\n]/g;
@@ -5432,8 +5432,8 @@
 		
 		
 		/**
-		 * Create a DataTables Api instance, with the currently selected tables for
-		 * the Api's context.
+		 * Create a DataTables API instance, with the currently selected tables for
+		 * the API's context.
 		 * @param {boolean} [traditional=false] Set the API instance's context to be
 		 *   only the table referred to by the `DataTable.ext.iApiIndex` option, as was
 		 *   used in the API presented by DataTables 1.9- (i.e. the traditional mode),
@@ -6589,20 +6589,20 @@
 	
 	/**
 	 * Computed structure of the DataTables API, defined by the options passed to
-	 * `DataTable.Api.register()` when building the API.
+	 * `DataTable.API.register()` when building the API.
 	 *
-	 * The structure is built in order to speed creation and extension of the Api
+	 * The structure is built in order to speed creation and extension of the API
 	 * objects since the extensions are effectively pre-parsed.
 	 *
 	 * The array is an array of objects with the following structure, where this
-	 * base array represents the Api prototype base:
+	 * base array represents the API prototype base:
 	 *
 	 *     [
 	 *       {
 	 *         name:      'data'                -- string   - Property name
-	 *         val:       function () {},       -- function - Api method (or undefined if just an object
-	 *         methodExt: [ ... ],              -- array    - Array of Api object definitions to extend the method result
-	 *         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the property
+	 *         val:       function () {},       -- function - API method (or undefined if just an object
+	 *         methodExt: [ ... ],              -- array    - Array of API object definitions to extend the method result
+	 *         propExt:   [ ... ]               -- array    - Array of API object definitions to extend the property
 	 *       },
 	 *       {
 	 *         name:     'row'
@@ -6636,7 +6636,7 @@
 	
 	
 	/**
-	 * Abstraction for `context` parameter of the `Api` constructor to allow it to
+	 * Abstraction for `context` parameter of the `API` constructor to allow it to
 	 * take several different forms for ease of use.
 	 *
 	 * Each of the input parameter types will be converted to a DataTables settings
@@ -6650,7 +6650,7 @@
 	 *   * `node` - `TABLE` node which has already been formed into a DataTable.
 	 *   * `jQuery` - A jQuery object of `TABLE` nodes.
 	 *   * `object` - DataTables settings object
-	 *   * `DataTables.Api` - API instance
+	 *   * `DataTables.API` - API instance
 	 * @return {array|null} Matching DataTables settings objects. `null` or
 	 *   `undefined` is returned if no matching DataTable is found.
 	 * @ignore
@@ -6715,7 +6715,7 @@
 	 * `pop`, `reverse` etc) as well as additional helper methods (`each`, `pluck`,
 	 * `unique` etc) to assist your working with the data held in a table.
 	 *
-	 * Most methods (those which return an Api instance) are chainable, which means
+	 * Most methods (those which return an API instance) are chainable, which means
 	 * the return from a method call also has all of the methods available that the
 	 * top level object had. For example, these two calls are equivalent:
 	 *
@@ -6736,7 +6736,7 @@
 	 *   * `node` - `TABLE` node which has already been formed into a DataTable.
 	 *   * `jQuery` - A jQuery object of `TABLE` nodes.
 	 *   * `object` - DataTables settings object
-	 * @param {array} [data] Data to initialise the Api instance with.
+	 * @param {array} [data] Data to initialise the API instance with.
 	 *
 	 * @example
 	 *   // Direct initialisation during DataTables construction
@@ -6748,7 +6748,7 @@
 	 *
 	 * @example
 	 *   // Initialisation as a constructor
-	 *   var api = new $.fn.DataTable.Api( 'table.dataTable' );
+	 *   var api = new $.fn.DataTable.API( 'table.dataTable' );
 	 */
 	_Api = function ( context, data )
 	{
@@ -7096,9 +7096,9 @@
 	//     [
 	//       {
 	//         name:      'data'                -- string   - Property name
-	//         val:       function () {},       -- function - Api method (or undefined if just an object
-	//         methodExt: [ ... ],              -- array    - Array of Api object definitions to extend the method result
-	//         propExt:   [ ... ]               -- array    - Array of Api object definitions to extend the property
+	//         val:       function () {},       -- function - API method (or undefined if just an object
+	//         methodExt: [ ... ],              -- array    - Array of API object definitions to extend the method result
+	//         propExt:   [ ... ]               -- array    - Array of API object definitions to extend the property
 	//       },
 	//       {
 	//         name:     'row'
@@ -7930,7 +7930,7 @@
 				return out;
 			}, 1 );
 	
-		// Return an Api.rows() extended instance, so rows().nodes() etc can be used
+		// Return an API.rows() extended instance, so rows().nodes() etc can be used
 		var modRows = this.rows( -1 );
 		modRows.pop();
 		$.merge( modRows, newRows );
@@ -7993,7 +7993,7 @@
 			return _fnAddData( settings, row );
 		} );
 	
-		// Return an Api.rows() extended instance, with the newly added row selected
+		// Return an API.rows() extended instance, with the newly added row selected
 		return this.row( rows[0] );
 	} );
 	

@@ -111,6 +111,12 @@ class Produits
      * @ORM\Column(name="views", type="integer", nullable=true)
      */
     private $views;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="note", type="float", nullable=true)
+     */
+    private $note;
 
     /**
      * @return int
@@ -310,6 +316,22 @@ class Produits
     public function setPhotoUpdatedAt($photoUpdatedAt)
     {
         $this->photoUpdatedAt = $photoUpdatedAt;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param float $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
     }
 
 

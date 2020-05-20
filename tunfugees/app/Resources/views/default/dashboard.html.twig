@@ -136,13 +136,13 @@
 
             <li class="" style="padding: 10px 5px;">
 
-                    <a href="#"><span class="title">Evénements</span></a>
+                    <a href="{{ path('ajoutevent') }}"><span class="title">Evénements</span></a>
                     <span class=" bg-success  icon-thumbnail">Evt</span>
 
             </li>
             <li class="" style="padding: 10px 5px;">
 
-                <a href="#" class="detailed"><span class="title">Volantaires</span></a>
+                <a href="{{ path('show') }}" class="detailed"><span class="title">Volantaires</span></a>
                 <span class=" bg-success  icon-thumbnail">Vol</span>
 
 
@@ -174,6 +174,8 @@
                 </li>
 
                 <li class="" style="padding: 10px 5px;">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('addCat') }}" class="detailed"><span class="title">Reclamations</span></a>
                         <span class="{% if path('addCat') == currentPath %} bg-success {% endif %} icon-thumbnail">Recl</span>
                     {% else %}
                         <a href="#" class="detailed"><span class="title">Reclamations</span></a>
@@ -193,11 +195,11 @@
                         <span class="{% if path('da_show_commande') == currentPath %}bg-success{% endif %} icon-thumbnail">Cmd</span>
                     </li>
                     <li class="" style="padding: 10px 5px;">
-                        <a href="#"><span class="title">Camps</span></a>
+                        <a href="{{ path('Ca_camps_index') }}"><span class="title">Camps</span></a>
                         <span class=" bg-success  icon-thumbnail">Cmp</span>
                     </li>
             <li class="" style="padding: 10px 5px;">
-                <a href="#"><span class="title">Refugies</span></a>
+                <a href="{{ path('da_refugies_index') }}"><span class="title">Refugies</span></a>
                 <span class=" bg-success  icon-thumbnail">Ref</span>
             </li>
 

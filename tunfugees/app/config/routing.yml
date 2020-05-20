@@ -1,3 +1,4 @@
+
 message:
     resource: "@MessageBundle/Resources/config/routing.yml"
     prefix:   /
@@ -11,10 +12,27 @@ user:
     resource: "@UserBundle/Controller"
     type : annotation
     prefix:   /
+refugies:
+    resource: "@RefugiesBundle/Controller"
+    type: annotation
+    prefix:   /
+Camps:
+    resource: "@CampsBundle/Controller"
+    type: annotation
+    prefix:   /
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 app:
     resource: '@ProduitBundle/Controller/'
     type: annotation
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
 

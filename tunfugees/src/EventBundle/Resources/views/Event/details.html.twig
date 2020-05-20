@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Details
+{% endblock %}
+
+
+{% block body %}
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>Details event view</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="{{ path('event') }}">Events</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="singlevent">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="owl-carousel" id="event">
+                    <div class="item">
+                        <div class="image">
+                            <a href="#"><img src={{ asset('uploads/event/image/'~events.image) }}  class="img-responsive" alt="image" title="image" /></a>
+                        </div>
+                        <div class="common">
+                            <div class="pull-left">
+                                <h4>{{ events.nomEvent }}</h4>
+                            </div>
+
+                        </div>
+                        <ul class="list-inline link">
+                            <li><i class="icon_clock"></i> 08.00 - 16.00</li>
+                            <li>
+                                <i class="fa fa-map-marker"></i> {{ events.adresse }}
+                            </li>
+                        </ul>
+                        <h6 >This the description of our event : </h6>
+                        <p class="des">{{ events.description }} </p>
+                        <div class="col-sm-4 paddleft">
+                            <h6>Details</h6>
+                            <h3>Date</h3>
+                            <p class="des1">{{ events.date|date("d") }}-{{ events.date|date("m") }}-{{ events.date|date("y") }}</p>
+                            <h3>Time</h3>
+                            <p class="des1">08.00 am - 04.00 pm</p>
+
+                            <button class="btn-primary" data-target="#collapseSearch" data-toggle="collapse"
+                                    href="collapseSearch" role="button"><i class="fa fa-filter" aria-hidden="true"></i> list of volunteers
+
+                            </button>
+                            {% if events.volontaires|length>= events.nbrMax%}
+                            <div class="collapse col-md-12" id="collapseSearch">
+
+                                    <div class="card card-body col-md-12" style="padding: 20px; width: 200%">
+                                        <h6 class="m-t-10"> Full event
+                                        </h6>
+                                    </div>
+                            </div>
+                            {% else %}
+                            <div class="collapse col-md-12" id="collapseSearch">
+                         {% set f=events.nbrMax%}
+                                {% set c= events.volontaires|length %}
+                                {% set b= f-c %}
+
+                                <div class="card card-body col-md-12" style="padding: 20px; width: 200%">
+                                    <h6 class="m-t-10">  {{c}} volunteer (s) we have left {{b}}</h6>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% if events.adresse=='Tunis' %}
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102239.40008030635!2d10.073236888563171!3d36.79499988606579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd337f5e7ef543%3A0xd671924e714a0275!2sTunis!5e0!3m2!1sfr!2stn!4v1586722061364!5m2!1sfr!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        {% elseif events.adresse=='Hammamet' %}
+                        <div class="map">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25689.11641234715!2d10.603222687826278!3d36.40581880580713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd61fc0dac1583%3A0x8f1c841291df5ff!2sHammamet!5e0!3m2!1sfr!2stn!4v1586722632393!5m2!1sfr!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        {% elseif events.adresse=='Ariana Soghra' %}
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6381.123428532369!2d10.181466894468189!3d36.900831998932176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb763f2120bb%3A0xc3e79593db50c2e8!2sLa%20petite%20Ariana%2C%20Cebalat%20Ben%20Ammar!5e0!3m2!1sfr!2stn!4v1586722690370!5m2!1sfr!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        {% elseif events.adresse=='Gabes' %}
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26496.105740347837!2d10.085105682653973!3d33.88931343065071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12556fc5487bd237%3A0x4980e09bdb547a86!2zR2Fiw6hz!5e0!3m2!1sfr!2stn!4v1586722731737!5m2!1sfr!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                        {% elseif events.adresse=='Sousse' %}
+                            <div class="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103514.81194416071!2d10.547841895418756!3d35.82845331709097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130275759ac9d10d%3A0x698e3915682cef7d!2sSousse!5e0!3m2!1sfr!2stn!4v1586723092384!5m2!1sfr!2stn" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="icons text-center">
+                    <ul class="list-inline">
+                        <li>Help us by share : </li>
+                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://plus.google.com/" target="_blank"><i class="social_googleplus" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

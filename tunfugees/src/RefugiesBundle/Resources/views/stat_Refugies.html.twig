@@ -1,0 +1,74 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="//code.highcharts.com/highcharts.js"></script>
+    <script src="//code.highcharts.com/modules/exporting.js"></script>
+    <script>
+        var pieColors = (function () {
+            var colors = [],
+                base = Highcharts.getOptions().colors[0],
+                i;
+
+            for (i = 0; i < 10; i += 1) {
+                // Start out with a darkened base color (negative brighten), and end
+                // up with a much brighter color
+                colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+            }
+            return colors;
+        }());
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'population de réfugiés par pays'
+            },
+            tooltip: {
+                pointFormat: '<table> <br>{point.percentage:.1f} %</table>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    colors: pieColors,
+                    dataLabels: {
+                        enabled: true,
+                        format: '<table> <br>{point.percentage:.1f} %</table>',
+                        distance: -50,
+                        filter: {
+                            property: 'percentage',
+                            operator: '>',
+                            value: 4
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Share',
+                data: [{{ tab[1] }},{{ tab[2] }}, {{ tab[3] }}
+                ]
+            }]
+        });
+
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 offset-6 text-right">
+            <a href="{{ path('da_refugies_index') }}" class="btn btn-secondary">
+                <i class="fa fa-undo" aria-hidden="true"></i>  Retour à la liste</a>
+            <br>
+        </div>
+    </div>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+    </div>
+{% endblock %}

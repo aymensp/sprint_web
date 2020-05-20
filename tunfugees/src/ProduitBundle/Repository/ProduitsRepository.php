@@ -38,7 +38,7 @@ class ProduitsRepository extends \Doctrine\ORM\EntityRepository
     }
     public function RechercheTitreProduit($keyWord)
     {
-        $query = $this->getEntityManager()->createQuery('SELECT v from ProduitBundle:Produits v WHERE v.nomProd LiKE :val ')
+        $query = $this->getEntityManager()->createQuery('SELECT v from ProduitBundle:Produits v WHERE v.nomprod LiKE :val ')
         ->setParameter('val',$keyWord);
 
         return $query->getResult();

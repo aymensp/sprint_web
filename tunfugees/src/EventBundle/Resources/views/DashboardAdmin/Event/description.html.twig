@@ -1,0 +1,75 @@
+{% extends './Default/dashboard.html.twig' %}
+{% block title %}
+    Affichage d'un Event
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        .jumbotron {
+            height:  800px;
+            padding: 100px;
+            width:   100%;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+        <div class="jumbotron">
+            <div class="cover-photo text-center"  style="background-image:url('{{ asset('uploads/image/' ~ events.image) }}'); background-size: 100% 100%"><br>
+                <h3 class="text-center"><span class="bold text-center">Bienvenue </span></h3>
+                <p>Here is a brief description of our next event {{ events.nomEvent }},
+                    we hope you welcome among us </p>
+            </div>
+        </div>
+
+
+    <div class="row">
+        <div class="card col-md-5 offset-md-1" style="margin-right: 20px; padding: 15px 25px">
+            <h3 class="text-center"><span class="bold text-center">{{ events.nomEvent }}</span></h3>
+
+            <h5><b>Description :</b> <br>{{ events.description }}</h5><br>
+            A : {{ events.adresse }}<br>
+            Date : {{ events.date |date }}
+            <div>
+
+
+                <div class=" text-right">
+                    <p class="small hint-text m-t-5">
+                        <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i> A : {{ events.adresse }}
+                        <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>Date : {{ events.date |date }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row ">
+        {% if events.volontaires|length>= events.nbrMax%}
+        <div class="col-md-10 offset-md-1 card">
+            <h3 class="text-center"><span class="bold text-center">Full Event</span></h3>
+            <ul class="row list-unstyled ">
+                {% for participant in events.volontaires %}
+
+                      <h6> Volunteers: </h6>
+                    <br><br>
+                        <h6>{{ participant.nom }}  {{ participant.prenom }}</h6>
+
+                {% endfor %}
+            </ul>
+            <br>
+        </div>
+       {% else %}
+            <div class="col-md-10 offset-md-1 card">
+                <h3 class="text-center"><span class="bold text-center">Participants so far({{ events.volontaires | length }} participants)</span></h3>
+                <ul class="row list-unstyled ">
+                    {% for participant in events.volontaires %}
+                        <h6> Volunteers: </h6>
+                        <br><br>
+                            <h6>{{ participant.nom }}  {{ participant.prenom }}</h6>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <br>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

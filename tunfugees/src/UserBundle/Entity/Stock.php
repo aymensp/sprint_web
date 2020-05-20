@@ -7,7 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stock
  *
+<<<<<<< HEAD
  * @ORM\Table(name="stockss")
+=======
+ * @ORM\Table(name="stock")
+>>>>>>> origin/eyaaa1
  * @ORM\Entity
  */
 class Stock

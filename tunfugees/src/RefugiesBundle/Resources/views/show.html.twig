@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- bread-crumb start here -->
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>Refugee profile</h2>
+            </div>
+        </div>
+    </div>
+    <!-- bread-crumb end here -->
+    <!-- volunteer-profile start here -->
+    <div class="volunteer-profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <img src="{{ asset('images/refugies/' ~ Refugies.image) }} " class="img-responsive" alt="image" title="image" />
+                </div>
+
+                <div class="col-sm-8 col-xs-12">
+                    <div class="box">
+
+
+
+                        <table>
+                            <tr>
+                                <td>nom</td>
+                                <td class="text-center">-</td>
+                                <td><span>{{ Refugies.nom }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>prenom</td>
+                                <td class="text-center">-</td>
+                                <td><span>{{ Refugies.prenom }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>age</td>
+                                <td class="text-center">-</td>
+                                <td><span>{{ Refugies.age}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>pays</td>
+                                <td class="text-center">-</td>
+                                <td><span>{{ Refugies.pays}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>adresse Camp</td>
+                                <td class="text-center">-</td>
+                                <td><span>{{ Refugies.camps.adresse}}</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- volunteer-profile end here -->
+
+
+
+{% endblock %}

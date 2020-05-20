@@ -59,7 +59,7 @@
                             </td>
                             <td class="text-center">
         <form action="{{ path('payer_commande',{ 'id_c': value.id  }) }}" method="POST">
-<div>
+
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_vLKCodGS4RNdCDdWgq7ZvYnZ00XJ1JB5ko"
@@ -76,7 +76,7 @@
 
             </script>
 
-</div>
+
         </form>
                             </td>
     {% endif %}

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Participation
+{% endblock %}
+{% block body %}
+
+
+    <!-- bread-crumb start here -->
+    <div class="bread-crumb">
+        <img src="{{ asset('images/banner-top.jpg')}}" class="img-responsive" alt="banner-top" title="banner-top">
+        <div class="container">
+            <div class="matter">
+                <h2>become a volunteer</h2>
+                <ul class="list-inline">
+                    <li><a href="index-2.html">HOME</a></li>
+                    <li><a href="become-a-volunteers.html">become a volunteer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- bread-crumb end here -->
+
+    <!-- become start here -->
+    <div class="become">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    <h2>Become a <span>volunteer</span></h2>
+
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                        <div class="form-group">
+
+                            {{ form_start(formCateg) }}
+                            <br><br>
+                            {{ form_widget(formCateg.nom,{'attr':{'type':'text','class':'form-control','value':app.user.nom}}) }}
+                            <br>
+                            {{ form_widget(formCateg.prenom,{'attr':{'type':'text','class':'form-control','value':app.user.prenom}}) }}
+                            <br>
+
+                            {{ form_widget(formCateg.mail,{'attr':{'type':'text','class':'form-control','value':app.user.email}}) }}
+                            <br>
+                            {{ form_widget(formCateg.tel,{'attr':{'type':'text','class':'form-control','value':app.user.numero}}) }}
+                            <br>
+                            {{ form_widget(formCateg.GoCountMe,{'attr':{'type':'text','class':'btn btn-primary','value':'Go Count Me'}}) }}
+                            <br>
+
+                            {{ form_widget(formCateg.nom_event, { 'attr' : { 'style':'display:none'} }) }}
+                            {{ form_errors(formCateg.nom_event, { 'attr' : { 'style':'display:none'} }) }}
+                            {{ form_widget(formCateg.presence, { 'attr' : { 'style':'display:none'} }) }}
+                            {{ form_errors(formCateg.presence, { 'attr' : { 'style':'display:none'} }) }}
+
+                            {{ form_end(formCateg) }}
+                            <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+
+                        </div>
+   </form>
+
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <img src="{{ asset('images/thanks.jpg')}}" class="img-responsive" alt="image" title="image" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

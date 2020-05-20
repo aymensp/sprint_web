@@ -10,6 +10,9 @@ use MessageBundle\Form\categType;
 use MessageBundle\Form\categstockType;
 use MessageBundle\Form\stockType;
 
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use MessageBundle\Entity\message;
@@ -28,11 +31,348 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
+
 use Doctrine\ORM\QueryBuilder;
 
 
 class MessageController extends Controller
 {
+
+    ///////// partie mobile ////////////////////
+
+    public function allAction(Request $request)
+    {
+    //    $createur = $request->get('createur');
+
+
+
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:message')
+            ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+        
+    }
+
+
+    public function allstockAction()
+    {
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:stock')
+            ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+
+    }
+
+
+
+    public function allCatstockAction()
+    {
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:categstock')
+            ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+
+    }
+
+
+
+
+    public function jsoneditAction(int $id,String $title,String $description)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('MessageBundle:message')->find($id);
+        $date_auj=new \DateTime('now');
+       // $category = $this->getDoctrine()->getManager()
+       //   /->getRepository('MessageBundle:categ')
+          //  ->find($category);
+      //  $task->setCategory($category);
+        $task->setTitle($title);
+        $task->setDescription($description);
+       //$task->setPhoto($request->get('$image'));
+     $task->setPostdate($date_auj);
+     //   $createur = $this->getDoctrine()->getManager()
+        //    ->getRepository('UserBundle:User')
+        //    ->find($request->get('createur'));
+      //  $task->setCreateur($createur);
+
+
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+    public function jsoneditStockAction(int $id,String $title,String $description)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('MessageBundle:stock')->find($id);
+        $date_auj=new \DateTime('now');
+        // $category = $this->getDoctrine()->getManager()
+        //   /->getRepository('MessageBundle:categ')
+        //  ->find($category);
+        //  $task->setCategory($category);
+        $task->setTitle($title);
+        $task->setDescription($description);
+        //$task->setPhoto($request->get('$image'));
+       // $task->setPostdate();
+        //   $createur = $this->getDoctrine()->getManager()
+        //    ->getRepository('UserBundle:User')
+        //    ->find($request->get('createur'));
+        //  $task->setCreateur($createur);
+
+
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+
+    public function editAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $titre = $request->get('titile');
+        $sujet = $request->get('description');
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $taches = $em->getRepository('MessageBundle:message')->find($id);
+        $taches->setTitle($titre);
+        $taches->setDescription($sujet);
+        $em->persist($taches);
+        $em->flush();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoders);
+        $response = new Response($serializer->serialize($taches, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+
+    public function jsondeleteAction($id)
+    {
+        $publication = $this->getDoctrine()->getManager()
+            ->getRepository(message::class)
+            ->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($publication);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($publication);
+        return new JsonResponse($formatted);
+    }
+
+    public function jsondeletestockAction($id)
+    {
+        $publication = $this->getDoctrine()->getManager()
+            ->getRepository(stock::class)
+            ->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($publication);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($publication);
+        return new JsonResponse($formatted);
+    }
+
+
+
+    public function findAction($id)
+    {
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:message')
+            ->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+
+    public function listAction(Request $request)
+    {
+
+        $createur = $request->get('createur');
+        $em = $this->getDoctrine()->getManager();
+        $rec = $em->getRepository('MessageBundle:message')->findBy(array('createur' => $createur));
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoders);
+        $response = new Response($serializer->serialize($rec, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+
+    public function ReclamationviewAction(Request $request)
+    {
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $tache = $em->getRepository('MessageBundle:message')->find($id);
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoders);
+        $response = new Response($serializer->serialize($tache, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+
+
+    public function newAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = new Message();
+        $date_auj=new \DateTime('now');
+        $category = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:categ')
+            ->find($request->get('category'));
+        $task->setCategory($category);
+        $task->setTitle($request->get('title'));
+        $task->setDescription($request->get('description'));
+        $task->setPhoto($request->get('photo'));
+        $task->setPostdate( $date_auj);
+        $createur = $this->getDoctrine()->getManager()
+            ->getRepository('UserBundle:User')
+            ->find($request->get('createur'));
+        $task->setCreateur($createur);
+
+        $em->persist($task);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+
+
+    public function newStockAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $task = new Stock();
+        $date_auj=new \DateTime('now');
+        $category = $this->getDoctrine()->getManager()
+            ->getRepository('MessageBundle:categstock')
+            ->find($request->get('category'));
+        $task->setCategory($category);
+        $task->setTitle($request->get('title'));
+        $task->setDescription($request->get('description'));
+        $task->setPhoto($request->get('photo'));
+        $task->setPostdate($date_auj);
+        $createur = $this->getDoctrine()->getManager()
+            ->getRepository('UserBundle:User')
+            ->find($request->get('createur'));
+        $task->setCreateur($createur);
+
+        $em->persist($task);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+    /*
+        public function deleteRecAction(message $l, Request $request)
+        {
+            $id = $l->getId();
+            $em = $this->getDoctrine()->getManager();
+            $tache = $em->getRepository('MessageBundle:message')->find($id);
+            $em->remove($tache);
+            $em->flush();
+
+            $encoders = array(new XmlEncoder(), new JsonEncoder());
+            $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+            $serializer = new Serializer($normalizer, $encoders);
+            $response = new Response($serializer->serialize($tache, 'json'));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+        }
+    */
+
+    public function validerAction(Request $request)
+    {
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $taches = $em->getRepository('MessageBundle:message')->find($id);
+        //$taches->setEtat("Livrée");
+        //$taches->setDateLivraisonn(new \DateTime());
+        $em->persist($taches);
+        $em->flush();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoders);
+        $response = new Response($serializer->serialize($taches, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+/*
+ *
+ */
+
+
+
+    //////////////////// fin partie mobile ////////////////
+
+
+
+/*
+
+    public function addAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $titre = $request->get('title');
+        $sujet = $request->get('description');
+        $crea = $request->get('createur');
+        $c = $em->getRepository('UserBundle:User')->find($crea);
+        $reclamation = new Message();
+        $reclamation->setTitle($titre);
+        $reclamation->setDescription($sujet);
+        $reclamation->setCategory(15);
+        $reclamation->setCreateur($c);
+
+        $em->persist($reclamation);
+        $em->flush();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = array(new DateTimeNormalizer(), new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoders);
+        $response = new Response($serializer->serialize($reclamation, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+*/
+
+
+
+
+
 
     public function generate_pdfsAction(Request $request){
         //$id = $request->get('id');

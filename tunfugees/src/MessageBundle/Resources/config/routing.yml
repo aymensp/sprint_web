@@ -3,6 +3,79 @@ message_homepage:
     defaults: { _controller: MessageBundle:Default:index }
 
 
+
+all:
+    path:     /tasks/all/
+    defaults: { _controller: MessageBundle:Message:all }
+
+
+allStock:
+    path:     /stock/all
+    defaults: { _controller: MessageBundle:Message:allstock }
+
+
+
+allCatStock:
+    path:     /Catstock/all
+    defaults: { _controller: MessageBundle:Message:allCatstock }
+
+
+
+
+edit_task:
+    path:     /tasks/update/{id}/{title}/{description}
+    defaults: { _controller: MessageBundle:Message:jsonedit }
+
+
+edit_stock:
+    path:     /stock/update/{id}/{title}/{description}
+    defaults: { _controller: MessageBundle:Message:jsoneditStock }
+
+
+create_task:
+    path:     /tasks/new
+    defaults: { _controller: MessageBundle:Message:new}
+
+
+create_stock:
+    path:     /stock/new
+    defaults: { _controller: MessageBundle:Message:newStock}
+
+
+delete_task:
+    path:   /tasks/delete/{id}
+    defaults: { _controller: MessageBundle:Message:jsondelete}
+
+
+
+delete_stock:
+    path:   /stock/delete/{id}
+    defaults: { _controller: MessageBundle:Message:jsondeletestock}
+
+
+
+
+
+list:
+    path:     /reclamation1/all/{createur}
+    defaults: { _controller: MessageBundle:Message:list }
+
+reclamationCiew:
+    path: /reclamation1/view/{id}
+    defaults: { _controller: MessageBundle:message:Reclamationview }
+    requirements:
+        'id': '\d+'
+
+
+edit1:
+    path:     reclamation1/{id}/{title}/{description}/edit1/
+    defaults: { _controller: MessageBundle:message:edit }
+    requirements:
+        'id': '\d+'
+
+
+
+
 pdf:
     path:     /pdf
     defaults: { _controller: MessageBundle:Message:generate_pdfs }

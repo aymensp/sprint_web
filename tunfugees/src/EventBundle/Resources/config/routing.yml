@@ -1,0 +1,75 @@
+event_homepage:
+    path:     /
+    defaults: { _controller: EventBundle:Default:index }
+event:
+    path:     /event
+    defaults: { _controller: EventBundle:Event:event }
+
+ajoutvolo:
+    path:     /ajoutvolo/{id}
+    defaults: { _controller: EventBundle:Volontaire:ajoutvolo}
+ajoutevent:
+    path:     /ajoutevent
+    defaults: { _controller: EventBundle:Event:ajoutevent}
+deleteEvent:
+    path:     /deleteEvent/{id}
+    defaults: { _controller: EventBundle:Event:deleteEvent}
+ajouter:
+    path:     /ajouter
+    defaults: { _controller: EventBundle:Event:ajouter}
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: EventBundle:Event:edit}
+show:
+    path:     /show
+    defaults: { _controller: EventBundle:Volontaire:show}
+
+deleteVolo:
+    path:     /deleteVolo/{id}
+    defaults: { _controller: EventBundle:Volontaire:deleteVolo}
+editVolo:
+    path:     /editVolo/{id}
+    defaults: { _controller: EventBundle:Volontaire:editVolo}
+details:
+    path:     /details/{id}
+    defaults: { _controller: EventBundle:Event:details}
+description:
+    path:     /description/{id}
+    defaults: { _controller: EventBundle:Event:description}
+cancelVolo:
+    path:     /cancelVolo/{id}/{id1}
+    defaults: { _controller: EventBundle:Volontaire:cancelVolo}
+CalendarHome:
+    path:     /CalendarHome
+
+    defaults: { _controller: EventBundle:Event:CalendarHome}
+all:
+    path:     /all
+    defaults: { _controller: EventBundle:EventAPI:all }
+jsonadd:
+    path:     /events/jsonadd/{Nom}/{adresse}/{date}/{description}/{nbr}/{image}
+    defaults: { _controller: EventBundle:EventAPI:jsonadd}
+jsondelete:
+    path:     /events/jsondelete/{id}
+    defaults: { _controller: EventBundle:EventAPI:jsondelete}
+jsonedit:
+    path:     /events/jsonedit/{id}/{Nom}/{adresse}/{date}/{description}/{nbr}/{image}
+    defaults: { _controller: EventBundle:EventAPI:jsonedit}
+jsonlist:
+    path:     /events/jsonlist/{id}
+    defaults: { _controller: EventBundle:EventAPI:jsonlist}
+jsonlist2:
+    path:     /events/jsonlist2
+    defaults: { _controller: EventBundle:EventAPI:jsonlist2}
+jsonedit2:
+    path:     /volontaire/jsonedit2/{id}/{presence}
+    defaults: { _controller: EventBundle:EventAPI:jsonedit2}
+jsonadd2:
+    path:     /volontaire/jsonadd2/{id}/{Nom}/{Prenom}/{mail}/{nomevent}/{tel}
+    defaults: { _controller: EventBundle:EventAPI:jsonadd2}
+verif:
+    path:     /verif/{id}/{mail}
+    defaults: { _controller: EventBundle:EventAPI:verif}
+jmscancel:
+    path:     /volontaire/jmscancel/{id}/{mail}
+    defaults: { _controller: EventBundle:EventAPI:jmscancel}
