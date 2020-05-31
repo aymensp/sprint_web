@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+    <ui name="GUI 1" />
+    <ui name="GUI 2" />
+    <theme name="Theme">
+        <val key="@includeNativeBool" value="true" />
+    </theme>
+</resource>
